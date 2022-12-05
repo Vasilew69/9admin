@@ -1,5 +1,5 @@
 export default {
-    fxserverPath: 'E:\\FiveM\\BUILDS\\6030\\fxserver.exe',
+    fxserverPath: 'D:\\testing\\fxserver.exe',
     debouncerInterval: 250,
     preReleaseExpirationDays: 21,
     txAdminArgs: [
@@ -8,7 +8,7 @@ export default {
         // '+set', 'txAdminPort', '40121',
 
         //FIXME: broken
-        // '+set', 'txDebugPlayerlistGenerator', 'true',
+        '+set', 'txDebugPlayerlistGenerator', 'true',
         // '+set', 'txDebugExternalSource', 'xxxxxxxx:30120',
     ],
     copy: [
