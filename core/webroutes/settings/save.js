@@ -290,6 +290,7 @@ async function handleDiscord(ctx) {
         || isUndefined(ctx.request.body.announceChannel)
         || isUndefined(ctx.request.body.prefix)
         || isUndefined(ctx.request.body.statusMessage)
+        || isUndefined(ctx.request.body.newsMessage)
     ) {
         return ctx.utils.error(400, 'Invalid Request - missing parameters');
     }
@@ -301,6 +302,7 @@ async function handleDiscord(ctx) {
         announceChannel: ctx.request.body.announceChannel.trim(),
         prefix: ctx.request.body.prefix.trim(),
         statusMessage: ctx.request.body.statusMessage.trim(),
+        newsMessage: ctx.request.body.newsMessage.trim(),
     };
 
     //Preparing & saving config
@@ -310,6 +312,7 @@ async function handleDiscord(ctx) {
     newConfig.announceChannel = (cfg.announceChannel.length) ? cfg.announceChannel : false;
     newConfig.prefix = cfg.prefix;
     newConfig.statusMessage = cfg.statusMessage;
+    newConfig.newsMessage = cfg.newsMessage
     let saveStatus = globals.configVault.saveProfile('discordBot', newConfig);
 
     //Sending output

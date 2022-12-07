@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import { cloneDeep }  from 'lodash-es';
 import logger from '@core/extras/console.js';
 import { verbose } from '@core/globalData';
+import { DefaultDeserializer } from 'node:v8';
 const { dir, log, logOk, logWarn, logError } = logger(modulename);
 
 //Helper functions
@@ -148,7 +149,10 @@ export default class ConfigVault {
                 prefix: toDefault(cfg.discordBot.prefix, '!'),
                 statusMessage: toDefault(
                     cfg.discordBot.statusMessage,
-                    '**IP:** `change-me:<port>`\n**Players:** <players>\n**Uptime:** <uptime>',
+                    '**IP:** `change-me:<port>`\n**Players:** <players>\n**Uptime:** <uptime>',),
+                newsMessage: toDefault(
+                    cfg.discordBot.newsMessage,
+                    '**Update:** `change-me`\n **Added** `text`\n **Removed** `text`'
                 ),
                 commandCooldown: toDefault(cfg.discordBot.commandCooldown, null), //not in template
             };
@@ -228,6 +232,7 @@ export default class ConfigVault {
             cfg.discordBot.enabled = (cfg.discordBot.enabled === 'true' || cfg.discordBot.enabled === true);
             cfg.discordBot.prefix = cfg.discordBot.prefix || '!';
             cfg.discordBot.statusMessage = cfg.discordBot.statusMessage || '**Join:** `change-me:<port>`\n**Players:** <players>\n**Uptime:** <uptime>';
+            cfg.discordBot.newsMessage = cfg.discordBot.newsMessage || '**Update:** `change-me`\n **Added** `text`\n **Removed** `text`'
             cfg.discordBot.commandCooldown = parseInt(cfg.discordBot.commandCooldown) || 30; //not in template
 
             //FXRunner

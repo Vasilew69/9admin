@@ -51,7 +51,7 @@ export default {
             color: cardColor,
             title: cardTitle,
             description: desc,
-            footer: `Powered by txAdmin v${txEnv.txAdminVersion}.`,
+            footer: `Powered by 9City v${txEnv.txAdminVersion}.`,
         });
         return await message.reply({embeds: [outMsg]});
     },

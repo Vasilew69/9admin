@@ -19,6 +19,7 @@ export default class DiscordBot {
             help: 0,
             status: 0,
             txadmin: 0,
+            news: 0,
         };
 
         //NOTE: setting them up statically due to bundler requirements
@@ -27,6 +28,7 @@ export default class DiscordBot {
             ['help', commands.help],
             ['status', commands.status],
             ['txadmin', commands.txadmin],
+            ['news', commands.news],
 
             //FIXME: first we need to have player ids in the players db
             // ['info', commands.info],

@@ -3,6 +3,7 @@ import help from './help.js';
 import info from './info.js';
 import status from './status.js';
 import txadmin from './txadmin.js';
+import news from './news.js';
 
 export default {
     addwl,
@@ -10,4 +11,5 @@ export default {
     info,
     status,
     txadmin,
+    news,
 }

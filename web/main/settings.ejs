@@ -392,6 +392,20 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="frmDiscord-news" class="col-sm-3 col-form-label">
+                                News Command Message
+                                <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-sm-9">
+                                <textarea id="frmDiscord-news" rows="3" class="form-control expandable-textarea" placeholder="**Join:** `connect cfx.re/join/xxxxxx`&#10;**Players:** &lt;players&gt;&#10;**Uptime:** &lt;uptime&gt;" <%= readOnly ? 'disabled' : '' %>><%= discord.newsMessage || '' %></textarea>
+                                <span class="form-text text-muted">
+                                    The response to the <code>/news</code> command. <br>
+                                    Supported placeholders: <code></code>, <code></code>, <code>    </code>.
+                                </span>
+                            </div>
+                        </div>
+
 
                         <div class="text-center mt-4">
                             <button class="btn btn-sm btn-primary" type="submit" id="frmDiscord-save" <%= readOnly ? 'disabled' : '' %>>
@@ -635,10 +649,13 @@
             announceChannel: $('#frmDiscord-announceChannel').val().trim(),
             prefix: $('#frmDiscord-prefix').val().trim(),
             statusMessage: $('#frmDiscord-statusMessage').val().trim(),
+            newsMessage: $('#frmDiscord-newsMessage').val().trim(),
         };
         if (data.enabled && (!data.token.length || !data.prefix.length || !data.statusMessage.length)) {
             return $.notify({ message: 'The fields with "*" are required when the bot is enabled.' }, { type: 'warning' });
-        }
+        };
+        if (data.enabled && (!data.token.length || !data.prefix.length || !data.newsMessage.length)) {
+            return $.notify({ message: 'The fields with "*" are required when the bot is enabled.' }, { type: 'warning' });
         const notify = $.notify({ message: '<p class="text-center">Saving...</p>' }, {});
 
         txAdminAPI({
@@ -654,7 +671,7 @@
                 notify.update('progress', 0);
                 notify.update('type', 'danger');
                 notify.update('message', message);
-            }
+            },
         });
     });
 
