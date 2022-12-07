@@ -152,8 +152,7 @@ export default class ConfigVault {
                     '**IP:** `change-me:<port>`\n**Players:** <players>\n**Uptime:** <uptime>',),
                 newsMessage: toDefault(
                     cfg.discordBot.newsMessage,
-                    '**Update:** `change-me`\n **Added** `text`\n **Removed** `text`'
-                ),
+                    '**Update:** `change-me`\n **Added** `text`\n **Removed** `text`',),
                 commandCooldown: toDefault(cfg.discordBot.commandCooldown, null), //not in template
             };
             out.fxRunner = {
@@ -232,7 +231,7 @@ export default class ConfigVault {
             cfg.discordBot.enabled = (cfg.discordBot.enabled === 'true' || cfg.discordBot.enabled === true);
             cfg.discordBot.prefix = cfg.discordBot.prefix || '!';
             cfg.discordBot.statusMessage = cfg.discordBot.statusMessage || '**Join:** `change-me:<port>`\n**Players:** <players>\n**Uptime:** <uptime>';
-            cfg.discordBot.newsMessage = cfg.discordBot.newsMessage || '**Update:** `change-me`\n **Added** `text`\n **Removed** `text`'
+            cfg.discordBot.newsMessage = cfg.discordBot.newsMessage || '**Update:** `change-me`\n **Added** `text`\n **Removed** `text`';
             cfg.discordBot.commandCooldown = parseInt(cfg.discordBot.commandCooldown) || 30; //not in template
 
             //FXRunner

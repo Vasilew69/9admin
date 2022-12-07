@@ -9,20 +9,33 @@ export default {
     description: 'Says the new updates on the server',
     cooldown: 1,
     async execute (message, args) {
-        let replace = {};
+        let replaces = {};
         let cardColor, cardTitle;
         cardColor = 0x74EE15;
         cardTitle = 'News';
-        let desc = globals.discordBot.config.news;
+        replaces.update = '--';
+        replaces.added = '--';
+        replaces.removed = '--';
+
+        let desc = globals.discordBot.config.statusMessage;
         Object.entries(replaces).forEach(([key, value]) => {
             desc = desc.replace(`<${key}>`, value);
         });
+
+        let humanizeOptions = {
+            language: globals.translator.t('$meta.humanizer_language'),
+            round: true,
+            units: ['d', 'h', 'm', 's'],
+            fallbacks: ['en'],
+        };
+
         const outMsg = new MessageEmbed({
             color: cardColor,
             title: cardTitle,
             description: desc,
             footer: `Powered by 9City v${txEnv.txAdminVersion}.`,
         });
+
         return await message.reply({embeds: [outMsg]});
     }
 }

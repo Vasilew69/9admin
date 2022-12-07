@@ -656,6 +656,7 @@
         };
         if (data.enabled && (!data.token.length || !data.prefix.length || !data.newsMessage.length)) {
             return $.notify({ message: 'The fields with "*" are required when the bot is enabled.' }, { type: 'warning' });
+        };
         const notify = $.notify({ message: '<p class="text-center">Saving...</p>' }, {});
 
         txAdminAPI({
