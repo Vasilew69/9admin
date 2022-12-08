@@ -4,6 +4,7 @@ import got from '@core/extras/got.js';
 import logger from '@core/extras/console.js';
 import { txEnv, verbose } from '@core/globalData';
 const { dir, log, logOk, logWarn, logError } = logger(modulename);
+import { Octokit } from "octokit";
 
 //Helpers
 const now = () => { return Math.round(Date.now() / 1000); };
@@ -32,10 +33,9 @@ export default async () => {
     let apiResponse;
     try {
         //perform request - cache busting every ~1.4h
-        const owner = 'vasilew69';
-        const repo = '9admin';
-        
-        const reqUrl = `https://api.github.com/repos/${owner}/${repo}/releases/latest`;
+        const osTypeApiUrl = (txEnv.isWindows) ? 'win32' : 'linux';
+        const cacheBuster = Math.floor(now() / 5e3);
+        const reqUrl = `https://changelogs-live.fivem.net/api/changelog/versions/${osTypeApiUrl}/server?${cacheBuster}`;
         apiResponse = await got.get(reqUrl).json();
 
         //validate response

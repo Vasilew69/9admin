@@ -6,6 +6,7 @@ export default {
         '+set', 'txAdminDevMode', 'true',
         '+set', 'txAdminVerbose', 'true',
         // '+set', 'txAdminPort', '40121',
+        '+set', 'txBuildVersion', '9999',
 
         //FIXME: broken
         '+set', 'txDebugPlayerlistGenerator', 'true',
