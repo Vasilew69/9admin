@@ -32,9 +32,10 @@ export default async () => {
     let apiResponse;
     try {
         //perform request - cache busting every ~1.4h
-        const osTypeApiUrl = (txEnv.isWindows) ? 'win32' : 'linux';
-        const cacheBuster = Math.floor(now() / 5e3);
-        const reqUrl = `https://changelogs-live.fivem.net/api/changelog/versions/${osTypeApiUrl}/server?${cacheBuster}`;
+        const owner = 'vasilew69';
+        const repo = '9admin';
+        
+        const reqUrl = `https://api.github.com/repos/${owner}/${repo}/releases/latest`;
         apiResponse = await got.get(reqUrl).json();
 
         //validate response
