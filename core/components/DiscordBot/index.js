@@ -123,7 +123,7 @@ export default class DiscordBot {
         });
         this.client.on('resume', () => {
             if (verbose) logOk('Connection with Discord API server resumed');
-            this.client.user.setActivity(globals.config.serverName, { type: 'WATCHING' });
+            this.client.user.setActivity(globals.config.serverName, { type: 'PLAYING' });
         });
         this.client.on('debug', logDebug);
 
