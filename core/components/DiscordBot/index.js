@@ -73,6 +73,7 @@ export default class DiscordBot {
             || !this.client
             || this.client.status
             || !this.announceChannel
+            || this.client.news
         ) {
             if (verbose) logWarn('returning false, not ready yet', 'sendAnnouncement');
             return false;

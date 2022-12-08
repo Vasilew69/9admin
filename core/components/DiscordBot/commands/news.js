@@ -17,7 +17,7 @@ export default {
         replaces.added = '--';
         replaces.removed = '--';
 
-        let desc = globals.discordBot.config.statusMessage;
+        let desc = globals.discordBot.config.newsMessage;
         Object.entries(replaces).forEach(([key, value]) => {
             desc = desc.replace(`<${key}>`, value);
         });
