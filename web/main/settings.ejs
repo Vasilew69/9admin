@@ -393,12 +393,12 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="frmDiscord-news" class="col-sm-3 col-form-label">
+                            <label for="frmDiscord-newsMessage" class="col-sm-3 col-form-label">
                                 News Command Message
                                 <span class="text-danger">*</span>
                             </label>
                             <div class="col-sm-9">
-                                <textarea id="frmDiscord-news" rows="3" class="form-control expandable-textarea" placeholder="**Join:** `connect cfx.re/join/xxxxxx`&#10;**Players:** &lt;players&gt;&#10;**Uptime:** &lt;uptime&gt;" <%= readOnly ? 'disabled' : '' %>><%= discord.newsMessage || '' %></textarea>
+                                <textarea id="frmDiscord-newsMessage" rows="3" class="form-control expandable-textarea" placeholder="**Join:** `connect cfx.re/join/xxxxxx`&#10;**Players:** &lt;players&gt;&#10;**Uptime:** &lt;uptime&gt;" <%= readOnly ? 'disabled' : '' %>><%= discord.newsMessage || '' %></textarea>
                                 <span class="form-text text-muted">
                                     The response to the <code>/news</code> command. <br>
                                     Supported placeholders: <code></code>, <code></code>, <code>    </code>.

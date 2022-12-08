@@ -312,9 +312,10 @@ async function handleDiscord(ctx) {
     newConfig.announceChannel = (cfg.announceChannel.length) ? cfg.announceChannel : false;
     newConfig.prefix = cfg.prefix;
     newConfig.statusMessage = cfg.statusMessage;
-    newConfig.newsMessage = cfg.newsMessage
+    newConfig.newsMessage = cfg.newsMessage;
     let saveStatus = globals.configVault.saveProfile('discordBot', newConfig);
-
+    
+    let SaveNews = globals.configVault.saveProfile('discordBot', newConfig);
     //Sending output
     if (saveStatus) {
         globals.discordBot.refreshConfig();
