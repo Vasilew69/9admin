@@ -21,7 +21,7 @@ Before starting, please make sure you are familiar with the basics of NodeJS & e
 ## Preparing the environment
 1. First, clone the txAdmin repository;
 ```sh
-git clone https://github.com/tabarra/txAdmin
+git clone https://github.com/vasilew69/9admin
 ```
 2. Install dependencies & prepare commit hook;
 ```sh

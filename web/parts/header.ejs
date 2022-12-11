@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta name="description" content="9Admin - remotely Manage & Monitor your GTA5 FiveM Server">
-    <meta name="author" content="André Tabarra">
+    <meta name="author" content="Vasilew">
     <title>9Admin</title>
     <!--style-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.0/css/simple-line-icons.min.css" 
@@ -18,31 +18,6 @@
     <link rel="stylesheet" href="<%= resourcePath %>css/txAdmin.css">
     <link rel="stylesheet" href="<%= resourcePath %>css/dark.css">
     <link rel="shortcut icon" href="img/9a-default.png" type="image/png" id="favicon" />
-    <style>
-        .zapAdContainer {
-            padding-left: 1em;
-            display: flex;
-            color: unset !important;
-        }
-        .zapLogo {
-            height: 26px;
-            margin-top: auto;
-            margin-bottom: auto;
-        } 
-        .zapText {
-            font-size: 0.85em;
-            font-weight: 700;
-            padding-left: 8px;
-            align-self: center;
-            text-transform: initial;
-        }
-        .zapTextIcon {
-            margin-top: -0.25em;
-            width: 0.7rem !important;
-            height: 0.7rem !important;
-            font-size: 0.7rem !important;
-        }
-    </style>
     <!-- injected consts -->
     <script><%- jsInjection %></script>
 </head>
@@ -55,7 +30,7 @@
             <div class="c-sidebar-brand d-md-down-none">
                 <a href="/">
                     <img class="c-sidebar-brand-full" src="img/9admin.png" width="118" alt="9Admin Logo">
-                    <img class="c-sidebar-brand-minimized" src="img/tx.png" width="30" height="30" alt="txAdmin Logo">
+                    <img class="c-sidebar-brand-minimized" src="img/9a.png" width="30" height="30" alt="txAdmin Logo">
                 </a>
             </div>
         <% } %>
@@ -205,21 +180,6 @@
                 </li>
             <% } %>
 
-            <!-- Zap Hosting Ad - Mobile -->
-            <% if (dynamicAd) { %>
-                <li class="c-sidebar-nav-title d-lg-none" style="background-color: rgba(0, 0, 0, 0.178);">
-                    <a class="zapAdContainer" href="<%= dynamicAd.linkMobile %>" target="_blank" rel="noopener noreferrer">
-                        <img class="zapLogo" alt="zap hosting" src="<%= dynamicAd.logoDarkMode %>">
-                        <div class="zapText text-light">
-                            <%- dynamicAd.text %>
-                            <svg class="c-icon zapTextIcon">
-                                <use href="img/coreui_icons.svg#cil-external-link"></use>
-                            </svg>
-                        </div>
-                    </a>
-                </li>
-            <% } %>
-
         </ul>
         <button class="c-sidebar-minimizer c-class-toggler" type="button" data-target="_parent"
             data-class="c-sidebar-minimized"></button>
@@ -256,19 +216,6 @@
         <!-- Header -->
         <% if (isWebInterface) { %>
             <header class="c-header c-header-light c-header-fixed c-header-with-subheader">
-                <!-- Zap Hosting Ad - Desktop -->
-                <% if (dynamicAd) { %>
-                    <a class="zapAdContainer d-md-down-none" href="<%= dynamicAd.linkDesktop %>" target="_blank" rel="noopener noreferrer">
-                        <img class="zapLogo show-dark-mode" alt="zap hosting" src="<%= dynamicAd.logoDarkMode %>">
-                        <img class="zapLogo show-light-mode" alt="zap hosting" src="<%= dynamicAd.logoLightMode %>">
-                        <div class="zapText attentionText">
-                            <%- dynamicAd.text %>
-                            <svg class="c-icon zapTextIcon">
-                                <use href="img/coreui_icons.svg#cil-external-link"></use>
-                            </svg>
-                        </div>
-                    </a>
-                <% } %>
 
                 <button class="c-header-toggler c-class-toggler d-lg-none mfe-auto" type="button" data-target="#sidebar"
                     data-class="c-sidebar-show">
@@ -277,7 +224,7 @@
                     </svg>
                 </button>
                 <a class="c-header-brand d-lg-none" href="/">
-                    <img class="c-sidebar-brand-minimized" src="img/tx.png" width="30" height="30" alt="txAdmin Logo">
+                    <img class="c-sidebar-brand-minimized" src="img/9a.png" width="30" height="30" alt="txAdmin Logo">
                 </a>
                 <ul class="c-header-nav ml-auto mr-4">
                     <li class="c-header-nav-item mx-1">

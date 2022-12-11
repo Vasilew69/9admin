@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>9Admin Login</title>
     <meta name="description" content="Remotely Manage & Monitor your GTA5 FiveM Server with 9Admin v<%= txAdminVersion %> atop FXServer <%= fxServerVersion %>">
-    <meta name="author" content="André Tabarra">
+    <meta name="author" content="9admin">
     <meta name="robots" content="noindex">
     <!-- Open Graph Meta Tags -->
     <meta property="og:url" content="https://github.com/Vasilew69/9admin">
@@ -55,17 +55,6 @@
             box-shadow: 2px 4px 8px rgb(143, 143, 143);
             border-radius: 50em;
         }
-
-        .zapAdContainer{
-            width: 100%;
-            display: flex;
-            color: unset !important;
-        }
-        .zapLogo {
-            height: 44px;
-            margin-top: auto;
-            margin-bottom: auto;
-        }
         .zapText {
             font-size: 1.25em;
             font-weight: 700;
@@ -73,12 +62,7 @@
             padding-left: 8px;
             align-self: center;
         }
-        .zapTextIcon {
-            margin-top: -0.25em;
-            width: 0.9rem !important;
-            height: 0.9rem !important;
-            font-size: 0.9rem !important;
-        }
+
     </style>
     <% if (isMatrix) { %>
         <style>
@@ -335,20 +319,6 @@
                             <img src="https://discordapp.com/api/guilds/577993482761928734/widget.png?style=shield"></img>
                         </a>
                     </h5>
-                    
-                    <% if (dynamicAd) { %>
-                        <div class="hrsep hrsep-small">Ad</div>
-                        <a class="zapAdContainer" href="<%= dynamicAd.link %>" target="_blank" rel="noopener noreferrer">
-                            <img class="zapLogo show-dark-mode" alt="zap hosting" src="<%= dynamicAd.logoDarkMode %>">
-                            <img class="zapLogo show-light-mode" alt="zap hosting" src="<%= dynamicAd.logoLightMode %>">
-                            <div class="zapText attentionText">
-                                <%- dynamicAd.text %>
-                                <svg class="c-icon zapTextIcon">
-                                    <use href="img/coreui_icons.svg#cil-external-link"></use>
-                                </svg>
-                            </div>
-                        </a>
-                    <% } %>
 
                     <div class="hrsep hrsep-small">Info</div>
                     <div class="text-muted">

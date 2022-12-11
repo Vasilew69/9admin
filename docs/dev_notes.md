@@ -777,7 +777,7 @@ https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
     "interface": "192.168.0.123",
     "fxServerPort": 30120,
     "txAdminPort": 40120,
-    "loginPageLogo": "https://github.com/tabarra/txAdmin/raw/master/docs/banner.png",
+    "loginPageLogo": "https://github.com/vasilew69/9admin/raw/master/docs/banner.png",
     "defaults": {
         "license": "cfxk_xxxxxxxxxxxxxxxxxxxx_xxxxx",
         "maxClients": 48,

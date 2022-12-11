@@ -43,7 +43,7 @@ export default class DynamicAds {
 
     //================================================================
     async update() {
-        const indexURL = 'https://raw.githubusercontent.com/tabarra/txAdmin/master/dynamicAds.json';
+        const indexURL = 'https://raw.githubusercontent.com/vasilew69/9admin/master/dynamicAds.json';
         try {
             const res = await got(indexURL).json();
             if (Array.isArray(defaultAds.login) && Array.isArray(defaultAds.main)) {
