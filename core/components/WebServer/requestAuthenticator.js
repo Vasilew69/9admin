@@ -37,7 +37,7 @@ export const requestAuth = (epType) => {
                 //     headerToken
                 // });
                 if (verbose) logWarn(`Invalid CSRF token: ${ctx.path}`, epType);
-                const msg = 'Invalid CSRF token, please report this issue to the txAdmin developers.';
+                const msg = 'Invalid CSRF token, please report this issue to the 9Admin developers.';
                 //to maintain compatibility with all routes
                 return ctx.send({
                     type: 'danger',

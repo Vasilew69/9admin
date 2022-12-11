@@ -71,7 +71,7 @@ export default async function ProviderCallback(ctx) {
             return returnJustMessage(
                 ctx,
                 'Invalid Browser Session.',
-                'You may have restarted txAdmin right before entering this page, or copied the link to another browser. Please try again.',
+                'You may have restarted 9Admin right before entering this page, or copied the link to another browser. Please try again.',
             );
         } else {
             return returnJustMessage(ctx, 'Code Exchange error:', error.message);
@@ -96,7 +96,7 @@ export default async function ProviderCallback(ctx) {
         return returnJustMessage(
             ctx,
             'Invalid nameid identifier.',
-            `Could not extract the user identifier from the URL below. Please report this to the txAdmin dev team.\n${userInfo.nameid.toString()}`,
+            `Could not extract the user identifier from the URL below. Please report this to the 9Admin dev team.\n${userInfo.nameid.toString()}`,
         );
     }
 

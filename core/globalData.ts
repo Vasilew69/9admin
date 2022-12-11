@@ -62,24 +62,24 @@ const minFXServerVersion = 4574;
 const fxServerVersion = getBuild(getConvarString('version'));
 if (fxServerVersion === 9999) {
     logError('It looks like you are running a custom build of fxserver.');
-    logError('And because of that, there is no guarantee that txAdmin will work properly.');
+    logError('And because of that, there is no guarantee that 9Admin will work properly.');
 } else if (!fxServerVersion) {
-    logDie(`This version of FXServer is NOT compatible with txAdmin. Please update it to build ${minFXServerVersion} or above. (version convar not set or in the wrong format)`);
+    logDie(`This version of FXServer is NOT compatible with 9Admin. Please update it to build ${minFXServerVersion} or above. (version convar not set or in the wrong format)`);
 } else if (fxServerVersion < minFXServerVersion) {
-    logDie(`This version of FXServer is too outdated and NOT compatible with txAdmin, please update to artifact/build ${minFXServerVersion} or newer!`);
+    logDie(`This version of FXServer is too outdated and NOT compatible with 9Admin, please update to artifact/build ${minFXServerVersion} or newer!`);
 }
 
 //Getting txAdmin version
 const txAdminVersion = GetResourceMetadata(resourceName, 'version', 0);
 if (typeof txAdminVersion !== 'string' || txAdminVersion == 'null') {
-    logDie('txAdmin version not set or in the wrong format');
+    logDie('9Admin version not set or in the wrong format');
 }
 
 //Get txAdmin Resource Path
 let txAdminResourcePath;
 const txAdminResourcePathConvar = GetResourcePath(resourceName);
 if (typeof txAdminResourcePathConvar !== 'string' || txAdminResourcePathConvar == 'null') {
-    logDie('Could not resolve txAdmin resource path');
+    logDie('Could not resolve 9Admin resource path');
 } else {
     txAdminResourcePath = cleanPath(txAdminResourcePathConvar);
 }

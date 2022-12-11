@@ -6,7 +6,7 @@
 
         <!-- txAdmin Config Card -->
         <div class="card card-accent-danger" style="min-height: 160px;">
-            <div class="card-header font-weight-bold">txAdmin Info:</div>
+            <div class="card-header font-weight-bold">9Admin Info:</div>
             <div class="card-body">
                 <h5>Stats:</h5>
                 <strong>Versions:</strong> 
@@ -71,9 +71,9 @@
             <div class="card-body">
                 <% if (fxserver.versionMismatch) { %>
                     <div class="alert alert-danger text-center" role="alert">
-                        <strong>This version doesn't match txAdmin's version!</strong><br>
-                        If you just updated FXServer, restart txAdmin. <br>
-                        Otherwise, it means FXServer was already running before txAdmin started, and nothing is going to work properly.
+                        <strong>This version doesn't match 9Admin's version!</strong><br>
+                        If you just updated FXServer, restart 9Admin. <br>
+                        Otherwise, it means FXServer was already running before 9Admin started, and nothing is going to work properly.
                     </div>
                 <% } %>
                 <% if (fxserver.error !== false) { %>
@@ -84,7 +84,7 @@
                     <strong>Resources:</strong> <%= fxserver.resources %> <br>
                     <strong>OneSync:</strong> <%= fxserver.onesync %> <br>
                     <strong>Max Clients:</strong> <%= fxserver.maxClients %> <br>
-                    <strong>txAdmin Version:</strong> <%= fxserver.txAdminVersion %> <br>
+                    <strong>9Admin Version:</strong> <%= fxserver.txAdminVersion %> <br>
                 <% } %>
             </div>
         </div>

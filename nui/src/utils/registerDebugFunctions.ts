@@ -131,7 +131,7 @@ export const registerDebugFunctions = () => {
     (window as any).menuDebug = MenuObject;
 
     console.log(
-      "%ctxAdmin Menu Development",
+      "%c9Admin Menu Development",
       "font-weight: bold; font-size: 25px; color: red;"
     );
     console.log(

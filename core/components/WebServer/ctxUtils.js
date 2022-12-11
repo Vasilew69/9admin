@@ -115,7 +115,7 @@ async function renderView(view, reqSess, data, txVars) {
  * @param {string} message
  */
 async function renderLoginView(data, txVars) {
-    data.logoURL = convars.loginPageLogo || 'img/txadmin.png';
+    data.logoURL = convars.loginPageLogo || 'img/9admin.png';
     data.isMatrix = (Math.random() <= 0.05);
     data.ascii = helpers.txAdminASCII();
     data.message = data.message || '';
@@ -273,7 +273,7 @@ export default async function WebCtxUtils(ctx, next) {
                 csrfToken: (ctx.session?.auth?.csrfToken) ? ctx.session.auth.csrfToken : 'not_set',
                 isWebInterface: isWebInterface,
                 TX_BASE_PATH: (isWebInterface) ? '' : WEBPIPE_PATH,
-                PAGE_TITLE: data?.headerTitle ?? 'txAdmin',
+                PAGE_TITLE: data?.headerTitle ?? '9Admin',
             }),
         };
 

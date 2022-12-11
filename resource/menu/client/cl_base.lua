@@ -45,8 +45,8 @@ local function txadmin(_, args)
     sendMenuMessage('openPlayerModal', targetPlayer)
   end
 end
-RegisterCommand('txadmin', txadmin)
-RegisterCommand('tx', txadmin)
+RegisterCommand('9Admin', txadmin)
+RegisterCommand('9a', txadmin)
 
 RegisterCommand('txAdmin:menu:openPlayersPage', function()
   if not checkMenuAccessible() then return end
@@ -73,11 +73,11 @@ RegisterNetEvent('txcl:setAdmin', function(username, perms, rejectReason)
     print("^2[AUTH] logged in as '"..username.."' with perms: " .. json.encode(perms or "nil"))
     menuIsAccessible = true
     menuPermissions = perms
-    RegisterKeyMapping('txadmin', 'Menu: Open Main Page', 'keyboard', '')
-    RegisterKeyMapping('txAdmin:menu:openPlayersPage', 'Menu: Open Players page', 'KEYBOARD', '')
-    RegisterKeyMapping('txAdmin:menu:noClipToggle', 'Menu: Toggle NoClip', 'keyboard', '')
-    RegisterKeyMapping('txAdmin:menu:togglePlayerIDs', 'Menu: Toggle Player IDs', 'KEYBOARD', '')
-    RegisterKeyMapping('txAdmin:menu:endSpectate', 'Menu: Exit spectate mode', 'keyboard', 'BACK')
+    RegisterKeyMapping('9Admin', 'Menu: Open Main Page', 'keyboard', '')
+    RegisterKeyMapping('9Admin:menu:openPlayersPage', 'Menu: Open Players page', 'KEYBOARD', '')
+    RegisterKeyMapping('9Admin:menu:noClipToggle', 'Menu: Toggle NoClip', 'keyboard', '')
+    RegisterKeyMapping('9Admin:menu:togglePlayerIDs', 'Menu: Toggle Player IDs', 'KEYBOARD', '')
+    RegisterKeyMapping('9Admin:menu:endSpectate', 'Menu: Exit spectate mode', 'keyboard', 'BACK')
   else
     print("^3[AUTH] rejected (" .. tostring(rejectReason) ..")")
     menuIsAccessible = false
@@ -107,8 +107,8 @@ CreateThread(function()
   Wait(1000)
   TriggerEvent(
     'chat:addSuggestion',
-    '/tx',
-    'Opens the main txAdmin Menu or specific for a player.',
+    '/9a',
+    'Opens the main 9Admin Menu or specific for a player.',
     {{ name="player ID/name", help="(Optional) Open player modal for specific ID or name." }}
   )
   TriggerEvent(

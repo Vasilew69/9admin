@@ -191,7 +191,7 @@ const runDevTask = () => {
  */
 const runPublishTask = () => {
     //Copy static files
-    console.log('Starting txAdmin Prod Builder.');
+    console.log('Starting 9Admin Prod Builder.');
     copyStaticFiles('./dist/', 'publish');
     fs.writeFileSync('./dist/package.json', '{"type":"commonjs"}');
 

@@ -27,7 +27,7 @@ export default class DiscordBot {
             ['addwl', commands.addwl],
             ['help', commands.help],
             ['status', commands.status],
-            ['txadmin', commands.txadmin],
+            ['9admin', commands.txadmin],
             ['news', commands.news],
 
             //FIXME: first we need to have player ids in the players db

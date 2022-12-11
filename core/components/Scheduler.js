@@ -195,7 +195,7 @@ export default class Scheduler {
             if (!this.config.disableChatWarnings) {
                 const serverMsg = globals.translator.t('restarter.schedule_warn', tOptions);
                 globals.fxRunner.sendEvent('announcement', {
-                    author: 'txAdmin',
+                    author: '9Admin',
                     message: serverMsg,
                 });
             }

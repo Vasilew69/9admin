@@ -4,7 +4,7 @@ import got from 'got';
 export default got.extend({
     timeout: 5000,
     headers: {
-        'User-Agent': `txAdmin ${txEnv.txAdminVersion}`,
+        'User-Agent': `9Admin ${txEnv.txAdminVersion}`,
     },
     localAddress: convars.forceInterface ? convars.forceInterface : undefined,
 });

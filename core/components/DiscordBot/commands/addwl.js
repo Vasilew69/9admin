@@ -17,7 +17,7 @@ export default {
         //TODO: generalize this to other commands?
         const admin = globals.adminVault.getAdminByProviderUID(message.author.id);
         if (!admin) {
-            return await message.reply('your Discord ID is not registered in txAdmin :face_with_monocle:');
+            return await message.reply('your Discord ID is not registered in 9Admin :face_with_monocle:');
         }
         if (
             admin.master !== true
@@ -28,12 +28,12 @@ export default {
         }
 
         //FIXME: migrate this command
-        return await message.reply('This command is temporarily disabled, please use the txAdmin web interface to whitelist players.');
+        return await message.reply('This command is temporarily disabled, please use the 9Admin web interface to whitelist players.');
         
 
         //Check if whitelist is enabled
         if (!globals.playerDatabase.config.onJoinCheckWhitelist) {
-            return await message.reply('**txAdmin** whitelist is disabled :man_facepalming:\nGo to the settings and enable it first.');
+            return await message.reply('**9Admin** whitelist is disabled :man_facepalming:\nGo to the settings and enable it first.');
         }
 
         //Check usage

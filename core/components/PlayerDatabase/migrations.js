@@ -19,8 +19,8 @@ export default async (dbo) => {
         process.exit(1);
     }
     if (dbo.data.version > DATABASE_VERSION) {
-        logError(`Your players database is on v${dbo.data.version}, and this txAdmin supports up to v${DATABASE_VERSION}.`);
-        logError('This means you likely downgraded your txAdmin version. Please update txAdmin.');
+        logError(`Your players database is on v${dbo.data.version}, and this 9Admin supports up to v${DATABASE_VERSION}.`);
+        logError('This means you likely downgraded your 9Admin version. Please update 9Admin.');
         process.exit(1);
     }
 
@@ -60,7 +60,7 @@ export default async (dbo) => {
         logWarn('Migrating your players database from v2 to v3.');
         logWarn('This process will:');
         logWarn('\t- process player names for better readability/searchability');
-        logWarn('\t- allow txAdmin to save old player identifiers');
+        logWarn('\t- allow 9Admin to save old player identifiers');
         logWarn('\t- remove the whitelist action in favor of player property');
         logWarn('\t- remove empty notes');
         logWarn('\t- improve whitelist handling');
@@ -118,9 +118,9 @@ export default async (dbo) => {
     }
 
     if (dbo.data.version !== DATABASE_VERSION) {
-        logError(`Your players database is on v${dbo.data.version}, which is different from this version of txAdmin (v${DATABASE_VERSION}).`);
-        logError('Since there is currently no migration method ready for the migration, txAdmin will attempt to use it anyways.');
-        logError('Please make sure your txAdmin is on the most updated version!');
+        logError(`Your players database is on v${dbo.data.version}, which is different from this version of 9Admin (v${DATABASE_VERSION}).`);
+        logError('Since there is currently no migration method ready for the migration, 9Admin will attempt to use it anyways.');
+        logError('Please make sure your 9Admin is on the most updated version!');
         process.exit(1);
     }
     logOk('Database migrated successfully');

@@ -391,7 +391,7 @@ const validateCommands = async (parsedCommands) => {
         ) {
             toCommentOut.add(
                 cmd.file,
-                [cmd.line, 'you MUST NOT start/stop/ensure txadmin resources.'],
+                [cmd.line, 'you MUST NOT start/stop/ensure 9Admin resources.'],
             );
             continue;
         }
@@ -455,12 +455,12 @@ const validateCommands = async (parsedCommands) => {
             //Validating port
             const port = parseInt(portString);
             if (port >= 40120 && port <= 40150) {
-                const msg = `Line ${cmd.line}: the '${cmd.command}' port '${port}' is dedicated for txAdmin and CAN NOT be used for FXServer.`;
+                const msg = `Line ${cmd.line}: the '${cmd.command}' port '${port}' is dedicated for 9Admin and CAN NOT be used for FXServer.`;
                 errors.add(cmd.file, msg);
                 continue;
             }
             if (port === convars.txAdminPort) {
-                const msg = `Line ${cmd.line}: the '${cmd.command}' port '${port}' is being used by txAdmin and CAN NOT be used for FXServer at the same time.`;
+                const msg = `Line ${cmd.line}: the '${cmd.command}' port '${port}' is being used by 9Admin and CAN NOT be used for FXServer at the same time.`;
                 errors.add(cmd.file, msg);
                 continue;
             }
@@ -557,7 +557,7 @@ export const validateFixServerConfig = async (cfgPath, serverDataPath) => {
                 if (typeof cfgLines[ln - 1] !== 'string') {
                     throw new Error(`Line ${ln} not found.`);
                 }
-                cfgLines[ln - 1] = `## [txAdmin CFG validator]: ${reason}${fileEOL}# ${cfgLines[ln - 1]}`;
+                cfgLines[ln - 1] = `## [9Admin CFG validator]: ${reason}${fileEOL}# ${cfgLines[ln - 1]}`;
                 warnings.add(targetCfgPath, `Commented out line ${ln}: ${reason}`);
             }
 

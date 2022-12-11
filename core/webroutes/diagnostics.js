@@ -79,7 +79,7 @@ async function getProcessesData() {
 
             procList.push({
                 pid: pid,
-                ppid: (curr.ppid == process.pid) ? 'txAdmin' : curr.ppid,
+                ppid: (curr.ppid == process.pid) ? '9Admin' : curr.ppid,
                 name: procName,
                 cpu: (curr.cpu).toFixed(2) + '%',
                 memory: bytes(curr.memory),

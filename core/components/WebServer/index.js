@@ -62,7 +62,7 @@ export default class WebServer {
     setupKoa() {
         //Start Koa
         this.app = new Koa();
-        this.app.keys = ['txAdmin' + nanoid()];
+        this.app.keys = ['9Admin' + nanoid()];
 
         // Some people might want to enable it, but we are not guaranteeing XFF security
         // due to the many possible ways you can connect to koa.
@@ -110,7 +110,7 @@ export default class WebServer {
         const timeoutLimit = 15 * 1000;
         const jsonLimit = '16MB';
         this.app.use(async (ctx, next) => {
-            ctx.set('Server', `txAdmin v${txEnv.txAdminVersion}`);
+            ctx.set('Server', `9Admin v${txEnv.txAdminVersion}`);
             let timer;
             const timeout = new Promise((_, reject) => {
                 timer = setTimeout(() => {
@@ -126,7 +126,7 @@ export default class WebServer {
                     return ctx.body = '[no output from route]';
                 }
             } catch (error) {
-                const prefix = `[txAdmin v${txEnv.txAdminVersion}]`;
+                const prefix = `[9Admin v${txEnv.txAdminVersion}]`;
                 const reqPath = (ctx.path.length > 100) ? `${ctx.path.slice(0, 97)}...` : ctx.path;
                 const methodName = (error.stack && error.stack[0] && error.stack[0].name) ? error.stack[0].name : 'anonym';
 
@@ -160,7 +160,7 @@ export default class WebServer {
                     const desc = `${prefix} Internal Error\n`
                         + `Message: ${error.message}\n`
                         + `Route: ${reqPath}\n`
-                        + 'Make sure your txAdmin is updated.';
+                        + 'Make sure your 9Admin is updated.';
                     logError(desc, methodName);
                     if (verbose) dir(error);
                     ctx.status = 500;
@@ -253,8 +253,8 @@ export default class WebServer {
             const listenErrorHandler = (error) => {
                 if (error.code !== 'EADDRINUSE') return;
                 logError(`Failed to start HTTP server, port ${error.port} already in use.`);
-                logError('Maybe you already have another txAdmin running in this port.');
-                logError('If you want to run multiple txAdmin, check the documentation for the port convar.');
+                logError('Maybe you already have another 9Admin running in this port.');
+                logError('If you want to run multiple 9Admin, check the documentation for the port convar.');
                 process.exit(1);
             };
             this.httpServer = HttpClass.createServer(this.httpCallbackHandler.bind(this, 'httpserver'));

@@ -6,7 +6,7 @@ if GetConvar('txAdminServerMode', 'false') ~= 'true' then
     return
 end
 function logError(x)
-    print("^5[txAdminClient]^1 " .. x .. "^0")
+    print("^5[9AdminClient]^1 " .. x .. "^0")
 end
 local oneSyncConvar = GetConvar('onesync', 'off')
 local onesyncEnabled = oneSyncConvar == 'on' or oneSyncConvar == 'legacy'

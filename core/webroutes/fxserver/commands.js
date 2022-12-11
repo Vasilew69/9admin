@@ -47,7 +47,7 @@ export default async function FXServerCommands(ctx) {
     //DEBUG: Only available in the /advanced page
     if (action == 'profile_monitor') {
         if (!ensurePermission(ctx, 'all_permissions')) return false;
-        ctx.utils.logAction('Profiling txAdmin instance.');
+        ctx.utils.logAction('Profiling 9Admin instance.');
 
         const profSeconds = 5;
         const savePath = `${globals.info.serverProfilePath}/data/txProfile.bin`;
@@ -96,7 +96,7 @@ export default async function FXServerCommands(ctx) {
         if (parameter.length) {
             cmd = formatCommand('txaKickAll', parameter);
         } else {
-            cmd = 'txaKickAll "txAdmin Web Panel"';
+            cmd = 'txaKickAll "9Admin Web Panel"';
         }
         ctx.utils.logCommand(cmd);
         let toResp = await globals.fxRunner.srvCmdBuffer(cmd);
@@ -150,12 +150,12 @@ export default async function FXServerCommands(ctx) {
         if (toResp.includes('Pong!')) {
             return ctx.send({
                 type: 'success',
-                message: `<b>txAdminClient is running!</b><br> <pre>${xss(toResp)}</pre>`,
+                message: `<b>9AdminClient is running!</b><br> <pre>${xss(toResp)}</pre>`,
             });
         } else {
             return ctx.send({
                 type: 'danger',
-                message: `<b>txAdminClient is not running!</b><br> <pre>${xss(toResp)}</pre>`,
+                message: `<b>9AdminClient is not running!</b><br> <pre>${xss(toResp)}</pre>`,
             });
         }
 

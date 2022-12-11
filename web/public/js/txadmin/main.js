@@ -83,7 +83,7 @@ const updateStatusCard = (discordData, serverData) => {
 const updatePageTitle = (serverStatusClass, serverName, playerCount) => {
     if(!isWebInterface) return;
     
-    const pageName = PAGE_TITLE || 'txAdmin';
+    const pageName = PAGE_TITLE || '9Admin';
     document.title = `(${playerCount}) ${serverName} | ${pageName}`;
 
     let iconType = 'default';
@@ -94,7 +94,7 @@ const updatePageTitle = (serverStatusClass, serverName, playerCount) => {
     } else if (serverStatusClass === 'danger') {
         iconType = 'offline';
     }
-    faviconEl.href = `img/favicon_${iconType}.png`;
+    faviconEl.href = `img/favicon.png`;
 };
 
 const updateHostStats = (hostData) => {
@@ -144,8 +144,8 @@ function refreshData() {
                 $('#hostusage-cpu-text').html('error');
                 $('#hostusage-memory-bar').attr('aria-valuenow', 0).css('width', 0);
                 $('#hostusage-memory-text').html('error');
-                document.title = 'ERROR - txAdmin';
-                faviconEl.href = `img/favicon_offline.png`;
+                document.title = 'ERROR - 9Admin';
+                faviconEl.href = `img/favicon.png`;
                 processPlayers(out);
             }
         },

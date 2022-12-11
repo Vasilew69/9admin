@@ -27,7 +27,7 @@ export default async function MasterActionsAction(ctx: Context) {
         return ctx.send({error: 'Only the master account has permission to view/use this page.'});
     }
     if (!ctx.txVars.isWebInterface) {
-        return ctx.send({error: 'This functionality cannot be used by the in-game menu, please use the web version of txAdmin.'});
+        return ctx.send({error: 'This functionality cannot be used by the in-game menu, please use the web version of 9Admin.'});
     }
 
     //Delegate to the specific action functions

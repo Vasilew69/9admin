@@ -59,7 +59,7 @@ export default async () => {
             throw new Error(`expected prop ${missing} not found in api response.`);
         }
     } catch (error) {
-        if (verbose) logWarn(`Failed to retrieve FXServer/txAdmin update data with error: ${error.message}`);
+        if (verbose) logWarn(`Failed to retrieve FXServer/9Admin update data with error: ${error.message}`);
         if (globals.databus.updateChecker === null) globals.databus.updateChecker = false;
         return;
     }
@@ -71,8 +71,8 @@ export default async () => {
         if (isOutdated) {
             const semverDiff = semver.diff(txEnv.txAdminVersion, apiResponse.latest_txadmin);
             if (semverDiff === 'patch') {
-                logWarn('This version of txAdmin is outdated.');
-                logWarn('A patch (bug fix) update is available for txAdmin.');
+                logWarn('This version of 9Admin is outdated.');
+                logWarn('A patch (bug fix) update is available for 9Admin.');
                 logWarn('If you are experiencing any kind of issue, please update now.');
                 logWarn('For more information: https://discord.gg/uAmsGa2');
                 txOutput = {
@@ -81,7 +81,7 @@ export default async () => {
                     color: 'secondary',
                 };
             } else {
-                logError('This version of txAdmin is outdated.');
+                logError('This version of 9Admin is outdated.');
                 logError('Please update as soon as possible.');
                 logError('For more information: https://discord.gg/uAmsGa2');
                 txOutput = {
@@ -92,7 +92,7 @@ export default async () => {
             }
         }
     } catch (error) {
-        logWarn('Error checking for txAdmin updates. Enable verbosity for more information.');
+        logWarn('Error checking for 9Admin updates. Enable verbosity for more information.');
         if (verbose) dir(error);
     }
 

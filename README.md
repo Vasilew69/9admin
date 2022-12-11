@@ -1,6 +1,6 @@
 <p align="center">
 	<h1 align="center">
-		txAdmin for FiveM
+		9Admin for FiveM
 	</h1>
 	<p align="center">
 		<img width="420" height="237" src="docs/banner.png">
@@ -9,7 +9,7 @@
 		Join our Discord Server: &nbsp; <a href="https://discord.gg/AFAAXzq"><img src="https://discordapp.com/api/guilds/577993482761928734/widget.png?style=shield"></img></a>
 	</h4>
 	<p align="center">
-		<b>txAdmin</b> is a <b>full featured</b> web panel to Manage & Monitor your FiveM/RedM Server remotely, in use by over <strong>18000</strong> servers worldwide at any given time.
+		<b>9Admin</b> is a <b>full featured</b> web panel to Manage & Monitor your FiveM/RedM Server remotely, in use by over <strong>18000</strong> servers worldwide at any given time.
 	</p>
 	<p align="center">
 		<a href="https://zap-hosting.com/txadmin4" target="_blank" rel="noopener">

@@ -169,7 +169,7 @@ export default class HealthMonitor {
             globals.databus.txStatsData.monitorStats.freezeSeconds.push(elapsedRefreshStatus - 1);
             if (globals.databus.txStatsData.monitorStats.freezeSeconds.length > 30) globals.databus.txStatsData.monitorStats.freezeSeconds.shift();
             logError(`FXServer was frozen for ${elapsedRefreshStatus - 1} seconds for unknown reason (random issue, VPS Lag, DDoS, etc).`);
-            logError('Don\'t worry, txAdmin is preventing the server from being restarted.');
+            logError('Don\'t worry, 9Admin is preventing the server from being restarted.');
             this.lastRefreshStatus = currTimestamp;
             return;
         }
@@ -244,7 +244,7 @@ export default class HealthMonitor {
             ));
             // Dispatch `txAdmin:events:announcement`
             const _cmdOk = globals.fxRunner.sendEvent('announcement', {
-                author: 'txAdmin',
+                author: '9Admin',
                 message: globals.translator.t('restarter.partial_hang_warn'),
             });
 

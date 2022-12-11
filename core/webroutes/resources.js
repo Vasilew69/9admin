@@ -55,7 +55,7 @@ export default async function Resources(ctx) {
     const timeoutMessage = `<strong>Couldn't load the resources list.</strong> <br>
     - Make sure the server is online (try to join it). <br>
     - Make sure you don't have more than 200 resources. <br>
-    - Make sure you are not running the fxserver outside txAdmin. <br>
+    - Make sure you are not running the fxserver outside 9Admin. <br>
     - Check <a href="console">Live Console</a> for any errors. They may indicate that some resource has a malformed <code>fxmanifest</code> file.`;
 
     //Send command request

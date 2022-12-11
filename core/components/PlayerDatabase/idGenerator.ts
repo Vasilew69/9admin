@@ -50,7 +50,7 @@ const printDiagnostics = async () => {
     logError(`Uptime: ${uptime}`);
     logError(`Entropy: ${entropy}`);
     logError(`Distro: ${osDistro}`);
-    logError(`txAdmin: ${txEnv.txAdminVersion}`);
+    logError(`9Admin: ${txEnv.txAdminVersion}`);
     logError(`FXServer: ${txEnv.fxServerVersion}`);
     logError(`ZAP: ${convars.isZapHosting}`);
     logError(`Unique Test: secure ${secureStorage.size}/100, non-secure ${nonsecureStorage.size}/100`);

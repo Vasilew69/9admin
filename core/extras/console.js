@@ -3,7 +3,7 @@ import chalk from 'chalk';
 import colorize from 'json-colorizer';
 const verbose = false;
 
-const header = 'txAdmin';
+const header = '9Admin';
 let logHistory = [];
 
 //Helpers
@@ -83,16 +83,16 @@ function cleanTerminal() {
 }
 
 function setTTYTitle(version, title) {
-    title = (title) ? `txAdmin v${version}: ${title}` : 'txAdmin';
+    title = (title) ? `9Admin v${version}: ${title}` : '9Admin';
     process.stdout.write(`\x1B]0;${title}\x07`);
 }
 
 function dir(data) {
     if (data instanceof Error) {
         try {
-            console.log(`${chalk.redBright('[txAdmin Error]')} ${data.message}`);
-            if (typeof data.type !== 'undefined') console.log(`${chalk.redBright('[txAdmin Error] Type:')} ${data.type}`);
-            if (typeof data.code !== 'undefined') console.log(`${chalk.redBright('[txAdmin Error] Code:')} ${data.code}`);
+            console.log(`${chalk.redBright('[9Admin Error]')} ${data.message}`);
+            if (typeof data.type !== 'undefined') console.log(`${chalk.redBright('[9Admin Error] Type:')} ${data.type}`);
+            if (typeof data.code !== 'undefined') console.log(`${chalk.redBright('[9Admin Error] Code:')} ${data.code}`);
             data.stack.forEach((trace) => {
                 console.log(`    ${chalk.redBright('=>')} ${trace.file}:${trace.line} > ${chalk.yellowBright(trace.name || 'anonym')}`);
             });

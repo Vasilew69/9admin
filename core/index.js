@@ -34,7 +34,7 @@ setTimeout(() => {
             setTimeout(() => {
                 logError(sep);
                 logError('Major VPS freeze/lag detected!');
-                logError('THIS IS NOT AN ERROR CAUSED BY TXADMIN!');
+                logError('THIS IS NOT AN ERROR CAUSED BY 9ADMIN!');
                 logError(sep);
             }, 1000);
         }

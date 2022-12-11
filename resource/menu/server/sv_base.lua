@@ -115,7 +115,7 @@ local function syncServerCtx()
   ServerCtxObj.maxClients = svMaxClients
 
   -- Custom locale
-  local txAdminLocale = GetConvar('txAdmin-locale', 'en')
+  local txAdminLocale = GetConvar('txAdmin-locale', 'bg')
   ServerCtxObj.locale = txAdminLocale
   if txAdminLocale == 'custom' then
     ServerCtxObj.localeData = getCustomLocaleData()

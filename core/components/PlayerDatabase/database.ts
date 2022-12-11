@@ -103,7 +103,7 @@ export class Database {
             dbo = new LowWithLodash(adapterAsync);
             await dbo.read();
         } catch (errorMain) {
-            logError('Your txAdmin player/actions database could not be loaded.');
+            logError('Your 9Admin player/actions database could not be loaded.');
             try {
                 await fsp.copyFile(this.backupPath, this.dbPath);
                 const adapterAsync = new JSONFile<DatabaseDataType>(this.dbPath);

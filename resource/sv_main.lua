@@ -5,10 +5,10 @@ end
 
 --Helpers
 function log(x)
-    print("^5[txAdminClient]^0 " .. x)
+    print("^5[9AdminClient]^0 " .. x)
 end
 function logError(x)
-    print("^5[txAdminClient]^1 " .. x .. "^0")
+    print("^5[9AdminClient]^1 " .. x .. "^0")
 end
 function unDeQuote(x)
     local new, count = string.gsub(x, utf8.char(65282), '"')
@@ -31,7 +31,7 @@ TX_DEBUGMODE = (GetConvar('txAdmin-debugMode', 'false') == 'true') -- TODO: star
 
 -- Checking convars
 if TX_LUACOMHOST == "invalid" or TX_LUACOMTOKEN == "invalid" then
-    log('^1API Host or Pipe Token ConVars not found. Do not start this resource if not using txAdmin.')
+    log('^1API Host or Pipe Token ConVars not found. Do not start this resource if not using 9Admin.')
     return
 end
 if TX_LUACOMTOKEN == "removed" then
@@ -119,7 +119,7 @@ end
 -- stdin commands
 -- =============================================
 function txaPing(source, args)
-    log("Pong! (txAdmin resource is running)")
+    log("Pong! (9Admin resource is running)")
     CancelEvent()
 end
 
@@ -155,7 +155,7 @@ end
 
 -- Kicks a player
 local function handleKickEvent(eventData)
-    DropPlayer(eventData.target, '[txAdmin] ' .. eventData.reason)
+    DropPlayer(eventData.target, '[9Admin] ' .. eventData.reason)
 end
 
 -- Warn specific player via server ID
@@ -183,7 +183,7 @@ local function handleBanEvent(eventData)
                     if searchIdentifier == playerIdentifier then
                         log("handleBanEvent: Kicking #"..playerID..": "..eventData.reason)
                         kickCount = kickCount + 1
-                        DropPlayer(playerID, '[txAdmin] ' .. eventData.kickMessage)
+                        DropPlayer(playerID, '[9Admin] ' .. eventData.kickMessage)
                         found = true
                         break
                     end
@@ -204,7 +204,7 @@ local function handleShutdownEvent(eventData)
     rejectAllConnections = true
     local players = GetPlayers()
     for _, serverID in pairs(players) do
-        DropPlayer(serverID, '[txAdmin] ' .. eventData.message)
+        DropPlayer(serverID, '[9Admin] ' .. eventData.message)
     end
 end
 
@@ -272,7 +272,7 @@ function txaReportResources(source, args)
         txAdminToken = TX_LUACOMTOKEN,
         resources = resources
     }
-    log('Sending resources list to txAdmin.')
+    log('Sending resources list to 9Admin.')
     PerformHttpRequest(url, function(httpCode, data, resultHeaders)
         local resp = tostring(data)
         if httpCode ~= 200 then
@@ -289,7 +289,7 @@ function handleConnections(name, setKickReason, d)
     -- if server is shutting down
     if rejectAllConnections then
         CancelEvent()
-        setKickReason("[txAdmin] Server is shutting down, try again in a few seconds.")
+        setKickReason("[9Admin] Server is shutting down, try again in a few seconds.")
         return
     end
 
@@ -306,28 +306,28 @@ function handleConnections(name, setKickReason, d)
             playerName = name
         }
         if #exData.playerIds <= 1 then
-            d.done("[txAdmin] You do not have at least 1 valid identifier. If you own this server, make sure sv_lan is disabled in your server.cfg")
+            d.done("[9Admin] You do not have at least 1 valid identifier. If you own this server, make sure sv_lan is disabled in your server.cfg")
             return
         end
 
         --Attempt to validate the user
-        d.update("[txAdmin] Checking banlist/whitelist... (0/10)")
+        d.update("[9Admin] Checking banlist/whitelist... (0/10)")
         CreateThread(function()
             local attempts = 0
             local isDone = false;
             --Do 10 attempts
             while isDone == false and attempts < 10 do
                 attempts = attempts + 1
-                d.update("[txAdmin] Checking banlist/whitelist... ("..attempts.."/10)")
+                d.update("[9Admin] Checking banlist/whitelist... ("..attempts.."/10)")
                 PerformHttpRequest(url, function(httpCode, rawData, resultHeaders)
                     -- Validating response
                     local respStr = tostring(rawData)
                     if httpCode ~= 200 then
-                        logError("[txAdmin] Checking banlist/whitelist failed with code "..httpCode.." and message: "..respStr)
+                        logError("[9Admin] Checking banlist/whitelist failed with code "..httpCode.." and message: "..respStr)
                     end
                     local respObj = json.decode(respStr)
                     if not respObj or type(respObj.allow) ~= "boolean" then
-                        logError("[txAdmin] Checking banlist/whitelist failed with invalid response: "..respStr)
+                        logError("[9Admin] Checking banlist/whitelist failed with invalid response: "..respStr)
                     end
                     
                     if respObj.allow == true then
@@ -337,7 +337,7 @@ function handleConnections(name, setKickReason, d)
                         end
                     else 
                         if not isDone then
-                            local reason = respObj.reason or "[txAdmin] no reason provided"
+                            local reason = respObj.reason or "[9Admin] no reason provided"
                             d.done("\n"..reason)
                             isDone = true
                         end
@@ -348,7 +348,7 @@ function handleConnections(name, setKickReason, d)
 
             --Block client if failed
             if not isDone then
-                d.done('[txAdmin] Failed to validate your banlist/whitelist status. Try again later.')
+                d.done('[9Admin] Failed to validate your banlist/whitelist status. Try again later.')
                 isDone = true
             end
         end)

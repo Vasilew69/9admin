@@ -176,7 +176,7 @@ export default class ConfigVault {
             }
         } catch (error) {
             if (verbose) dir(error);
-            throw new Error(`Malformed configuration file! Make sure your txAdmin is updated!\nOriginal error: ${error.message}`);
+            throw new Error(`Malformed configuration file! Make sure your 9Admin is updated!\nOriginal error: ${error.message}`);
         }
 
         return out;
@@ -241,7 +241,7 @@ export default class ConfigVault {
             cfg.fxRunner.quiet = (cfg.fxRunner.quiet === 'true' || cfg.fxRunner.quiet === true);
         } catch (error) {
             if (verbose) dir(error);
-            throw new Error(`Malformed configuration file! Make sure your txAdmin is updated.\nOriginal error: ${error.message}`);
+            throw new Error(`Malformed configuration file! Make sure your 9Admin is updated.\nOriginal error: ${error.message}`);
         }
 
         return cfg;

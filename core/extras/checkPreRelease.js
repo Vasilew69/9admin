@@ -2,7 +2,7 @@ import humanizeDuration from 'humanize-duration';
 import chalk from 'chalk';
 
 const printWarning = (msg) => {
-    console.log(chalk.bold.bgRedBright(`[txAdmin] ATTENTION!`) + ' ' + msg);
+    console.log(chalk.bold.bgRedBright(`[9Admin] ATTENTION!`) + ' ' + msg);
 }
 
 const humanizeOptions = {
@@ -13,9 +13,9 @@ const humanizeOptions = {
 const printExpirationBanner = (timeUntilExpiration) => {
     const timeLeft = humanizeDuration(timeUntilExpiration, humanizeOptions)
     const timeLeftStyled = chalk.inverse(` ${timeLeft} `);
-    printWarning('This is a pre-release version of txAdmin!');
-    printWarning('This build is meant to be used by txAdmin beta testers.');
-    printWarning('txAdmin will automatically shut down when this pre-release expires.');
+    printWarning('This is a pre-release version of 9Admin!');
+    printWarning('This build is meant to be used by 9Admin beta testers.');
+    printWarning('9Admin will automatically shut down when this pre-release expires.');
     printWarning(`Time until expiration: ${timeLeftStyled}.`);
     printWarning('For more information: https://discord.gg/txAdmin.');
 }
@@ -23,7 +23,7 @@ const printExpirationBanner = (timeUntilExpiration) => {
 const cronCheckExpiration = () => {
     const timeUntilExpiration = TX_PRERELEASE_BUILD_EXPIRATION - Date.now();
     if (timeUntilExpiration < 0) {
-        printWarning('This pre-release version has expired, please update your txAdmin.');
+        printWarning('This pre-release version has expired, please update your 9Admin.');
         printWarning('For more information: https://discord.gg/txAdmin.');
         process.exit(1);
     } else if(timeUntilExpiration < 24 * 60 * 60 * 1000){
@@ -35,7 +35,7 @@ export default () => {
     if (typeof TX_PRERELEASE_BUILD_EXPIRATION !== 'number') return;
     const timeUntilExpiration = TX_PRERELEASE_BUILD_EXPIRATION - Date.now();
     if (timeUntilExpiration < 0) {
-        printWarning('This pre-release version has expired, please update your txAdmin.');
+        printWarning('This pre-release version has expired, please update your 9Admin.');
         process.exit(1);
     }
 

@@ -24,7 +24,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tabarra/txAdmin.git"
+    "url": "git+https://github.com/Vasilew69/9admin.git"
   },
   "keywords": [
     "fxserver",
@@ -37,9 +37,9 @@
   "author": "André Tabarra",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tabarra/txAdmin/issues"
+    "url": "https://github.com/Vasilew69/9admin/issues"
   },
-  "homepage": "https://github.com/tabarra/txAdmin#readme",
+  "homepage": "https://github.com/Vasilew69/9admin#readme",
   "dependencies": {
     "@citizenfx/discord.js": "^13.6.1",
     "@citizenfx/http-wrapper": "^0.2.2",

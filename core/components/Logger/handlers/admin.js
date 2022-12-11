@@ -19,7 +19,7 @@ export default class AdminLogger extends LoggerBase {
 
         };
         super(basePath, 'admin', lrDefaultOptions, lrProfileConfig);
-        this.lrStream.write(`\n${separator('txAdmin Starting')}\n`);
+        this.lrStream.write(`\n${separator('9Admin Starting')}\n`);
         this.lrStream.on('rotated', (filename) => {
             this.lrStream.write(`\n${separator('Log Rotated')}\n`);
             if (verbose) log(`Rotated file ${filename}`);

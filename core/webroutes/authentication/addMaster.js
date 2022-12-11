@@ -125,7 +125,7 @@ async function handleCallback(ctx) {
             return returnJustMessage(
                 ctx,
                 'Invalid Browser Session.',
-                'You may have restarted txAdmin right before entering this page, or copied the link to another browser. Please try again.',
+                'You may have restarted 9Admin right before entering this page, or copied the link to another browser. Please try again.',
             );
         } else {
             return returnJustMessage(ctx, 'Code Exchange error:', error.message);
@@ -197,7 +197,7 @@ async function handleSave(ctx) {
         return returnJustMessage(
             ctx,
             'Invalid Session.',
-            'You may have restarted txAdmin right before entering this page. Please try again.',
+            'You may have restarted 9Admin right before entering this page. Please try again.',
         );
     }
 
@@ -210,7 +210,7 @@ async function handleSave(ctx) {
         return returnJustMessage(
             ctx,
             'Invalid nameid identifier.',
-            `Could not extract the user identifier from the URL below. Please report this to the txAdmin dev team.\n${ctx.session.tmpAddMasterUserInfo.nameid.toString()}`,
+            `Could not extract the user identifier from the URL below. Please report this to the 9Admin dev team.\n${ctx.session.tmpAddMasterUserInfo.nameid.toString()}`,
         );
     }
 

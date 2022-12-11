@@ -16,7 +16,7 @@ export default async function MasterActionsGet(ctx: Context) {
         return ctx.utils.render('main/message', {message: 'Only the master account has permission to view/use this page.'});
     }
     if (!ctx.txVars.isWebInterface) {
-        return ctx.utils.render('main/message', {message: 'This functionality cannot be used by the in-game menu, please use the web version of txAdmin.'});
+        return ctx.utils.render('main/message', {message: 'This functionality cannot be used by the in-game menu, please use the web version of 9Admin.'});
     }
 
     const dbPath = `${globals.info.serverProfilePath}/data/playersDB.json`;

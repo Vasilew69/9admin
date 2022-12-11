@@ -30,5 +30,5 @@ export default async function txAdminLog(ctx) {
     const actionLog = xss(await globals.logger.admin.getRecentBuffer());
 
     //Output
-    return ctx.utils.render('main/txAdminLog', {headerTitle: 'txAdmin Log', consoleLog, actionLog});
+    return ctx.utils.render('main/txAdminLog', {headerTitle: '9Admin Log', consoleLog, actionLog});
 };

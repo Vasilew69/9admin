@@ -44,7 +44,7 @@ export default class AdminVault {
             'control.server': 'Start/Stop Server + Scheduler',
             'commands.resources': 'Start/Stop Resources',
             'server.cfg.editor': 'Read/Write server.cfg',
-            'txadmin.log.view': 'View txAdmin Log',
+            'txadmin.log.view': 'View 9Admin Log',
 
             'menu.vehicle': 'Spawn / Fix Vehicles',
             'menu.clear_area': 'Reset world area',
@@ -268,7 +268,7 @@ export default class AdminVault {
             const jsonData = await fse.readFile(this.adminsFile, 'utf8');
             const inboundHash = createHash('sha1').update(jsonData).digest('hex');
             if (this.adminsFileHash !== inboundHash) {
-                logWarn('The admins.json file was modified or deleted by an external source, txAdmin will try to restore it.');
+                logWarn('The admins.json file was modified or deleted by an external source, 9Admin will try to restore it.');
                 restore();
             }
         } catch (error) {

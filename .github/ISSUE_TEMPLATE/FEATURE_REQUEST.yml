@@ -14,7 +14,7 @@ body:
   id: scope
   attributes:
     label: Scope
-    description: What part of txAdmin is this feature targeting?
+    description: What part of 9admin is this feature targeting?
     multiple: true
     options:
       - Web

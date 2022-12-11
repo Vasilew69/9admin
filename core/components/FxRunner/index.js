@@ -74,7 +74,7 @@ export default class FXRunner {
         if (!this.config.autostart) return;
 
         if (this.config.serverDataPath === null || this.config.cfgPath === null) {
-            return logWarn('Please open txAdmin on the browser to configure your server.');
+            return logWarn('Please open 9Admin on the browser to configure your server.');
         }
 
         if (!globals.adminVault || !globals.adminVault.admins) {
@@ -185,7 +185,7 @@ export default class FXRunner {
             if (error.message.includes('unreadable')) {
                 logError('That is the file where you configure your server and start resources.');
                 logError('You likely moved/deleted your server files or copied the txData folder from another server.');
-                logError('To fix this issue, open the txAdmin web interface then go to "Settings > FXServer" and fix the "Server Data Folder" and "CFX File Path".');
+                logError('To fix this issue, open the 9Admin web interface then go to "Settings > FXServer" and fix the "Server Data Folder" and "CFX File Path".');
             }
             return errMsg;
         }
@@ -340,7 +340,7 @@ export default class FXRunner {
             };
             this.sendEvent('serverShuttingDown', {
                 delay: SHUTDOWN_NOTICE_DELAY,
-                author: author ?? 'txAdmin',
+                author: author ?? '9Admin',
                 message: globals.translator.t(`server_actions.${messageType}`, tOptions),
             });
             globals.discordBot.sendAnnouncement(

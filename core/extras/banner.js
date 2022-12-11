@@ -10,7 +10,7 @@ const { dir, log, logOk, logWarn, logError } = logger();
 
 
 const printMultiline = (lines, color) => {
-    const prefix = color('[txAdmin]');
+    const prefix = color('[9Admin]');
     if (!Array.isArray(lines)) lines = lines.split('\n');
     const message = lines.map((line) => `${prefix} ${line}`);
     console.log(message.join('\n'));
@@ -39,7 +39,7 @@ const getIPs = async () => {
 
 const getOSMessage = async () => {
     const serverMessage = [
-        `To be able to access txAdmin from the internet open port ${convars.txAdminPort}`,
+        `To be able to access 9Admin from the internet open port ${convars.txAdminPort}`,
         'on your OS Firewall as well as in the hosting company.',
     ];
     const winWorkstationMessage = [

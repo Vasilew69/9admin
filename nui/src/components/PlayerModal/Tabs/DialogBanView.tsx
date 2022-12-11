@@ -148,7 +148,7 @@ const DialogBanView: React.FC = () => {
       {!onJoinCheckBan && (
         <Alert severity="warning" variant="outlined" sx={{ mb: 2 }}>
           <strong>Ban checking is disabled.</strong> <br />
-          You need to enable it (<code>txAdmin &gt; Settings</code>) for the ban
+          You need to enable it (<code>9Admin &gt; Settings</code>) for the ban
           to take effect.
         </Alert>
       )}
