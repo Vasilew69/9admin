@@ -94,7 +94,7 @@ const updatePageTitle = (serverStatusClass, serverName, playerCount) => {
     } else if (serverStatusClass === 'danger') {
         iconType = 'offline';
     }
-    faviconEl.href = `img/favicon.png`;
+    faviconEl.href = `img/9a-${iconType}.png`;
 };
 
 const updateHostStats = (hostData) => {
@@ -145,7 +145,7 @@ function refreshData() {
                 $('#hostusage-memory-bar').attr('aria-valuenow', 0).css('width', 0);
                 $('#hostusage-memory-text').html('error');
                 document.title = 'ERROR - 9Admin';
-                faviconEl.href = `img/favicon.png`;
+                faviconEl.href = `img/9a.png`;
                 processPlayers(out);
             }
         },
