@@ -5,7 +5,6 @@
 	<p align="center">
 		<img width="420" height="237" src="docs/banner.png">
 	</p>
-	https://github.com/Vasilew69/9admin/actions/workflows/build-prerelease.yml/badge.svg
 	<h4 align="center">
 		Join our Discord Server: &nbsp; <a href="https://discord.gg/AFAAXzq"><img src="https://discordapp.com/api/guilds/577993482761928734/widget.png?style=shield"></img></a>
 	</h4>
