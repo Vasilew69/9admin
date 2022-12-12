@@ -320,6 +320,15 @@
                         </a>
                     </h5>
 
+                    <% if (dynamicAd) { %>
+                        <div class="hrsep hrsep-small">Ad</div>
+                        <a class="zapAdContainer" href="<%= dynamicAd.link %>" target="_blank" rel="noopener noreferrer">
+                            <div class="zapText attentionText">
+                                <%- dynamicAd.text %>
+                            </div>
+                        </a>
+                    <% } %>
+
                     <div class="hrsep hrsep-small">Info</div>
                     <div class="text-muted">
                         <strong>Server profile:</strong> <%= serverProfile %> <br>
