@@ -43,16 +43,16 @@ export default async () => {
         const requiredFields = [
             'recommended',
             'recommended_download',
-            'recommended_nineadmin',
+            'recommended_txadmin',
             'optional',
             'optional_download',
-            'optional_nineadmin',
+            'optional_txadmin',
             'latest',
             'latest_download',
-            'latest_nineadmin',
+            'latest_txadmin',
             'critical',
             'critical_download',
-            'critical_nineadmin',
+            'critical_txadmin',
         ];
         const missing = requiredFields.find((x) => !apiResponse.hasOwnProperty(x));
         if (missing) {
