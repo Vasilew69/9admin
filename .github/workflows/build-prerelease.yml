@@ -1,4 +1,4 @@
-name: Create Tagged Release Prod
+name: Create Tagged Pre-Release Prod
 
 on:
   push:
