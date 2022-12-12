@@ -42,7 +42,7 @@ export default async function DeployerStepper(ctx) {
             raw: globals.deployer.recipe.raw,
         };
     } else if (globals.deployer.step === 'input') {
-        renderData.defaultLicenseKey = process.env.TXADMIN_DEFAULT_LICENSE || '';
+        renderData.defaultLicenseKey = process.env.nineadmin_DEFAULT_LICENSE || '';
         renderData.requireDBConfig = globals.deployer.recipe.requireDBConfig;
         if (convars.deployerDefaults) {
             renderData.defaults = {
@@ -57,7 +57,7 @@ export default async function DeployerStepper(ctx) {
         } else {
             renderData.defaults = {
                 autofilled: false,
-                license: process.env.TXADMIN_DEFAULT_LICENSE || '',
+                license: process.env.nineadmin_DEFAULT_LICENSE || '',
                 mysqlHost: 'localhost',
                 mysqlUser: 'root',
                 mysqlPort: '3306',

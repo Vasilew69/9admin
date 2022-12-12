@@ -7,7 +7,7 @@ import React, {
   useMemo,
   useState,
 } from "react";
-import { txAdminMenuPage, usePage } from "../state/page.state";
+import { nineadminMenuPage, usePage } from "../state/page.state";
 import { useIsMenuVisibleValue } from "../state/visibility.state";
 
 const iFrameCtx = createContext(null);
@@ -53,8 +53,8 @@ export const IFrameProvider: React.FC<IFrameProviderProps> = ({ children }) => {
   // Call if you need to both navigate to iFrame page & set the iFrame path
   const goToFramePage = useCallback(
     (path: ValidPath) => {
-      if (menuPage !== txAdminMenuPage.IFrame) {
-        setMenuPage(txAdminMenuPage.IFrame);
+      if (menuPage !== nineadminMenuPage.IFrame) {
+        setMenuPage(nineadminMenuPage.IFrame);
       }
 
       setCurFramePg(path);

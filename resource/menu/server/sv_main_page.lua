@@ -1,5 +1,5 @@
 --Check Environment
-if GetConvar('txAdminServerMode', 'false') ~= 'true' then
+if GetConvar('nineadminServerMode', 'false') ~= 'true' then
   return
 end
 
@@ -8,11 +8,11 @@ end
 --  actions defined on Menu's "Main Page"
 -- =============================================
 
-RegisterNetEvent('txAdmin:menu:tpToWaypoint', function()
+RegisterNetEvent('nineadmin:menu:tpToWaypoint', function()
   local src = source
   local allow = PlayerHasTxPermission(src, 'players.teleport')
   if allow then
-    TriggerClientEvent('txAdmin:menu:tpToWaypoint', src)
+    TriggerClientEvent('nineadmin:menu:tpToWaypoint', src)
     Wait(250)
     local coords = GetEntityCoords(GetPlayerPed(src))
     TriggerEvent("txaLogger:menuEvent", src, "teleportWaypoint", true,
@@ -22,7 +22,7 @@ RegisterNetEvent('txAdmin:menu:tpToWaypoint', function()
   end
 end)
 
-RegisterNetEvent('txAdmin:menu:sendAnnouncement', function(message)
+RegisterNetEvent('nineadmin:menu:sendAnnouncement', function(message)
   --FIXME: this is not being relayed to discord
   local src = source
   if type(message) ~= 'string' then
@@ -32,34 +32,34 @@ RegisterNetEvent('txAdmin:menu:sendAnnouncement', function(message)
   TriggerEvent("txaLogger:menuEvent", src, "announcement", allow, message)
   if allow then
     local author = TX_ADMINS[tostring(src)].tag
-    TriggerClientEvent("txAdmin:receiveAnnounce", -1, message, author)
+    TriggerClientEvent("nineadmin:receiveAnnounce", -1, message, author)
   end
 end)
 
-RegisterNetEvent('txAdmin:menu:fixVehicle', function()
+RegisterNetEvent('nineadmin:menu:fixVehicle', function()
   local src = source
   local allow = PlayerHasTxPermission(src, 'menu.vehicle')
   TriggerEvent("txaLogger:menuEvent", src, "vehicleRepair", allow)
   if allow then
-    TriggerClientEvent('txAdmin:menu:fixVehicle', src)
+    TriggerClientEvent('nineadmin:menu:fixVehicle', src)
   end
 end)
 
-RegisterNetEvent('txAdmin:menu:boostVehicle', function()
+RegisterNetEvent('nineadmin:menu:boostVehicle', function()
   local src = source
   local allow = PlayerHasTxPermission(src, 'menu.vehicle')
   TriggerEvent("txaLogger:menuEvent", src, "vehicleBoost", allow)
   if allow then
-    TriggerClientEvent('txAdmin:menu:boostVehicle', src)
+    TriggerClientEvent('nineadmin:menu:boostVehicle', src)
   end
 end)
 
-RegisterNetEvent('txAdmin:menu:clearArea', function(radius)
+RegisterNetEvent('nineadmin:menu:clearArea', function(radius)
   local src = source
   local allow = PlayerHasTxPermission(src, 'menu.clear_area')
   TriggerEvent("txaLogger:menuEvent", src, "clearArea", allow, radius)
   if allow then
-    TriggerClientEvent('txAdmin:menu:clearArea', src, radius)
+    TriggerClientEvent('nineadmin:menu:clearArea', src, radius)
   end
 end)
 
@@ -68,7 +68,7 @@ local CREATE_AUTOMOBILE = GetHashKey('CREATE_AUTOMOBILE')
 --- Spawn a vehicle on the server at the request of a client
 ---@param model string
 ---@param isAutomobile boolean
-RegisterNetEvent('txAdmin:menu:spawnVehicle', function(model, isAutomobile)
+RegisterNetEvent('nineadmin:menu:spawnVehicle', function(model, isAutomobile)
   local src = source
   if type(model) ~= 'string' then
     return
@@ -128,7 +128,7 @@ RegisterNetEvent('txAdmin:menu:spawnVehicle', function(model, isAutomobile)
       debugPrint(("setting %d into seat index %d"):format(seatPed, seatIndex))
       local targetSrc = pedMap[seatPed]
       if type(targetSrc) == 'string' then
-        TriggerClientEvent('txAdmin:events:queueSeatInVehicle', targetSrc, netID, seatIndex)
+        TriggerClientEvent('nineadmin:events:queueSeatInVehicle', targetSrc, netID, seatIndex)
       end
     end
   end
@@ -136,7 +136,7 @@ end)
 
 --- Deletes the vehicle the player is currently in
 --- @param netId int
-RegisterNetEvent("txAdmin:menu:deleteVehicle", function(netId)
+RegisterNetEvent("nineadmin:menu:deleteVehicle", function(netId)
   local src = source
   local allow = PlayerHasTxPermission(src, 'menu.vehicle')
   TriggerEvent("txaLogger:menuEvent", src, "deleteVehicle", allow)
@@ -146,31 +146,31 @@ RegisterNetEvent("txAdmin:menu:deleteVehicle", function(netId)
   end
 end)
 
-RegisterNetEvent('txAdmin:menu:healAllPlayers', function()
+RegisterNetEvent('nineadmin:menu:healAllPlayers', function()
   local src = source
   local allow = PlayerHasTxPermission(src, 'players.heal')
   TriggerEvent("txaLogger:menuEvent", src, "healAll", true)
   if allow then
     -- For use with third party resources that handle players
     -- 'revive state' standalone from health (esx-ambulancejob, qb-ambulancejob, etc)
-    TriggerEvent("txAdmin:events:healedPlayer", {id = -1})
-    TriggerClientEvent('txAdmin:menu:healed', -1)
+    TriggerEvent("nineadmin:events:healedPlayer", {id = -1})
+    TriggerClientEvent('nineadmin:menu:healed', -1)
   end
 end)
 
-RegisterNetEvent('txAdmin:menu:healMyself', function()
+RegisterNetEvent('nineadmin:menu:healMyself', function()
   local src = source
   local allow = PlayerHasTxPermission(src, 'players.heal')
   TriggerEvent("txaLogger:menuEvent", src, "healSelf", allow)
   if allow then
     -- For use with third party resources that handle players
     -- 'revive state' standalone from health (esx-ambulancejob, qb-ambulancejob, etc)
-    TriggerEvent("txAdmin:events:healedPlayer", {id = src})
-    TriggerClientEvent('txAdmin:menu:healed', src)
+    TriggerEvent("nineadmin:events:healedPlayer", {id = src})
+    TriggerClientEvent('nineadmin:menu:healed', src)
   end
 end)
 
-RegisterNetEvent('txAdmin:menu:healPlayer', function(id)
+RegisterNetEvent('nineadmin:menu:healPlayer', function(id)
   local src = source
   if type(id) ~= 'string' and type(id) ~= 'number' then
     return
@@ -182,27 +182,27 @@ RegisterNetEvent('txAdmin:menu:healPlayer', function(id)
     if ped then
       -- For use with third party resources that handle players
       -- 'revive state' standalone from health (esx-ambulancejob, qb-ambulancejob, etc)
-      -- TriggerEvent('txAdmin:healedPlayer', id)
-      TriggerEvent("txAdmin:events:healedPlayer", {id = id})
-      TriggerClientEvent('txAdmin:menu:healed', id)
+      -- TriggerEvent('nineadmin:healedPlayer', id)
+      TriggerEvent("nineadmin:events:healedPlayer", {id = id})
+      TriggerClientEvent('nineadmin:menu:healed', id)
     end
   end
   TriggerEvent('txaLogger:menuEvent', src, "healPlayer", allow, id)
 end)
 
-RegisterNetEvent('txAdmin:menu:showPlayerIDs', function(enabled)
+RegisterNetEvent('nineadmin:menu:showPlayerIDs', function(enabled)
   local src = source
   local allow = PlayerHasTxPermission(src, 'menu.viewids')
   TriggerEvent("txaLogger:menuEvent", src, "showPlayerIDs", allow, enabled)
   if allow then
-    TriggerClientEvent('txAdmin:menu:showPlayerIDs', src, enabled)
+    TriggerClientEvent('nineadmin:menu:showPlayerIDs', src, enabled)
   end
 end)
 
 ---@param x number|nil
 ---@param y number|nil
 ---@param z number|nil
-RegisterNetEvent('txAdmin:menu:tpToCoords', function(x, y, z)
+RegisterNetEvent('nineadmin:menu:tpToCoords', function(x, y, z)
   local src = source
   if type(x) ~= 'number' or type(y) ~= 'number' or type(z) ~= 'number' then
     return
@@ -211,6 +211,6 @@ RegisterNetEvent('txAdmin:menu:tpToCoords', function(x, y, z)
   local allow = PlayerHasTxPermission(src, 'players.teleport')
   TriggerEvent("txaLogger:menuEvent", src, "teleportCoords", true, { x = x, y = y, z = z })
   if allow then
-    TriggerClientEvent('txAdmin:menu:tpToCoords', src, x, y, z)
+    TriggerClientEvent('nineadmin:menu:tpToCoords', src, x, y, z)
   end
 end)

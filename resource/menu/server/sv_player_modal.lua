@@ -1,5 +1,5 @@
 --Check Environment
-if GetConvar('txAdminServerMode', 'false') ~= 'true' then
+if GetConvar('nineadminServerMode', 'false') ~= 'true' then
   return
 end
 
@@ -9,7 +9,7 @@ end
 --  "Player Modal"
 -- =============================================
 
-RegisterNetEvent('txAdmin:menu:tpToPlayer', function(tgtId)
+RegisterNetEvent('nineadmin:menu:tpToPlayer', function(tgtId)
   local src = source
 
   if type(tgtId) ~= 'number' then
@@ -38,14 +38,14 @@ RegisterNetEvent('txAdmin:menu:tpToPlayer', function(tgtId)
       data.x = coords[1]
       data.y = coords[2]
       data.z = coords[3]
-      TriggerClientEvent('txAdmin:menu:tpToCoords', src, data.x, data.y, data.z)
+      TriggerClientEvent('nineadmin:menu:tpToCoords', src, data.x, data.y, data.z)
     end
   end
 
   TriggerEvent('txaLogger:menuEvent', src, 'teleportPlayer', allow, data)
 end)
 
-RegisterNetEvent('txAdmin:menu:summonPlayer', function(id)
+RegisterNetEvent('nineadmin:menu:summonPlayer', function(id)
   local src = source
   if type(id) ~= 'number' then
     return
@@ -56,7 +56,7 @@ RegisterNetEvent('txAdmin:menu:summonPlayer', function(id)
     local ped = GetPlayerPed(id)
     if ped then
       local coords = GetEntityCoords(GetPlayerPed(src))
-      TriggerClientEvent('txAdmin:menu:tpToCoords', id, coords[1], coords[2], coords[3])
+      TriggerClientEvent('nineadmin:menu:tpToCoords', id, coords[1], coords[2], coords[3])
     end
   end
   TriggerEvent('txaLogger:menuEvent', src, 'summonPlayer', allow, id)

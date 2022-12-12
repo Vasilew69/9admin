@@ -45,11 +45,11 @@
     },
     "nui_menu": {
         "misc": {
-            "help_message": "txAdmin Menyn är aktiverad, skriv /tx i chatten för att öppna den.\nDu kan ändra knapp på [Game Settings > Key Bindings > FiveM > Menu: Open Main Page].",
-            "menu_not_allowed": "Dina id stämmer inte överns med dom som är registerade i txAdmin regisrtert.\nOm du är registerad på Txadmin,gå till administratör hanteraren och dubbelkolla att id:en är korrekta.",
+            "help_message": "nineadmin Menyn är aktiverad, skriv /tx i chatten för att öppna den.\nDu kan ändra knapp på [Game Settings > Key Bindings > FiveM > Menu: Open Main Page].",
+            "menu_not_allowed": "Dina id stämmer inte överns med dom som är registerade i nineadmin regisrtert.\nOm du är registerad på nineadmin,gå till administratör hanteraren och dubbelkolla att id:en är korrekta.",
             "no_perms": "Du har inte behörighet för detta.",
             "unknown_error": "Ett okänt problem har uppstått",
-            "not_enabled": "Txadmin menyn är inte aktiverad! Du kan aktivera den på Txadmin panelen.",
+            "not_enabled": "nineadmin menyn är inte aktiverad! Du kan aktivera den på nineadmin panelen.",
             "announcement_title": "Server meddelande skickat av %{author}:",
             "dialog_empty_input": "Du kan inte ha ett tomt fält.",
             "directmessage_title": "DM from admin %{author}:"

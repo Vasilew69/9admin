@@ -2,7 +2,7 @@
 --  Server PlayerList handler
 -- =============================================
 --Check Environment
-if GetConvar('txAdminServerMode', 'false') ~= 'true' then
+if GetConvar('nineadminServerMode', 'false') ~= 'true' then
     return
 end
 function logError(x)
@@ -124,7 +124,7 @@ AddEventHandler('playerJoining', function(srcString, _oldID)
         hwids = GetPlayerTokens(source),
     }
     PrintStructuredTrace(json.encode({
-        type = 'txAdminPlayerlistEvent',
+        type = 'nineadminPlayerlistEvent',
         event = 'playerJoining',
         id = source,
         player = playerData
@@ -144,7 +144,7 @@ AddEventHandler('playerDropped', function(reason)
     end
 
     PrintStructuredTrace(json.encode({
-        type = 'txAdminPlayerlistEvent',
+        type = 'nineadminPlayerlistEvent',
         event = 'playerDropped',
         id = source,
         reason = reason

@@ -5,13 +5,13 @@ import {
   useSetRecoilState,
 } from "recoil";
 
-export enum txAdminMenuPage {
+export enum nineadminMenuPage {
   Main,
   Players,
   IFrame,
 }
 
-const pageState = atom<txAdminMenuPage>({
+const pageState = atom<nineadminMenuPage>({
   default: 0,
   key: "menuPage",
 });

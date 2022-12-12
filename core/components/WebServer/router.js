@@ -95,7 +95,7 @@ export default (config) => {
     router.post('/advanced', requestAuth('api'), webRoutes.advanced_actions); //FIXME: add action to URL
 
     //Data routes
-    router.get('/txAdminLog', requestAuth('web'), webRoutes.txAdminLog);
+    router.get('/nineadminLog', requestAuth('web'), webRoutes.nineadminLog);
     router.get('/serverLog', requestAuth('web'), webRoutes.serverLog);
     router.get('/serverLog/partial', requestAuth('api'), webRoutes.serverLogPartial);
     router.get('/status/:scope?', requestAuth('api'), webRoutes.status); //FIXME: param fix due to missing search

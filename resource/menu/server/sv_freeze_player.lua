@@ -1,5 +1,5 @@
 --Check Environment
-if GetConvar('txAdminServerMode', 'false') ~= 'true' then
+if GetConvar('nineadminServerMode', 'false') ~= 'true' then
   return
 end
 
@@ -13,7 +13,7 @@ local function setPlayerFrozenInMap(targetId, status)
   frozenPlayers[targetId] = status or nil
 end
 
-RegisterNetEvent("txAdmin:menu:freezePlayer", function(targetId)
+RegisterNetEvent("nineadmin:menu:freezePlayer", function(targetId)
   local src = source
   local allow = PlayerHasTxPermission(src, 'players.freeze')
   TriggerEvent("txaLogger:menuEvent", src, "freezePlayer", allow, targetId)
@@ -21,7 +21,7 @@ RegisterNetEvent("txAdmin:menu:freezePlayer", function(targetId)
     local newFrozenStatus = not isPlayerFrozen(targetId)
     setPlayerFrozenInMap(targetId, newFrozenStatus)
 
-    TriggerClientEvent("txAdmin:menu:freezeResp", src, newFrozenStatus)
-    TriggerClientEvent("txAdmin:menu:freezePlayer", targetId, newFrozenStatus)
+    TriggerClientEvent("nineadmin:menu:freezeResp", src, newFrozenStatus)
+    TriggerClientEvent("nineadmin:menu:freezePlayer", targetId, newFrozenStatus)
   end
 end)

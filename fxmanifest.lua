@@ -5,7 +5,7 @@
 author 'Vasilew'
 description 'Remotely Manage & Monitor your GTA5 FiveM Server'
 repository 'https://github.com/Vasilew69/9admin'
-version '5.0.2'
+version '1.0.1'
 ui_label '9admin'
 
 rdr3_warning 'I acknowledge that this is a prerelease build of RedM, and I am aware my resources *will* become incompatible once RedM ships.'
@@ -65,13 +65,13 @@ files {
     -- WebPipe optimization:
     'web/public/css/coreui.min.css',
     'web/public/css/jquery-confirm.min.css',
-    'web/public/css/txAdmin.css',
+    'web/public/css/nineadmin.css',
     'web/public/css/dark.css',
     'web/public/js/coreui.bundle.min.js',
     'web/public/js/bootstrap-notify.min.js',
     'web/public/js/jquery-confirm.min.js',
     'web/public/js/humanizeDuration.min.js',
-    'web/public/js/txadmin/base.js',
-    'web/public/js/txadmin/main.js',
-    'web/public/js/txadmin/players.js',
+    'web/public/js/nineadmin/base.js',
+    'web/public/js/nineadmin/main.js',
+    'web/public/js/nineadmin/players.js',
 }

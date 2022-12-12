@@ -31,12 +31,12 @@ const getMutableConvars = (isCmdLine = false) => {
 
     return [
         //type, name, value
-        [`${p}setr`, 'txAdmin-locale', globals.translator.language ?? 'en'],
-        [`${p}set`, 'txAdmin-localeFile', globals.translator.customLocalePath ?? 'false'],
-        [`${p}setr`, 'txAdmin-verbose', verbose],
-        [`${p}set`, 'txAdmin-checkPlayerJoin', checkPlayerJoin],
-        [`${p}set`, 'txAdmin-menuAlignRight', globals.config.menuAlignRight],
-        [`${p}set`, 'txAdmin-menuPageKey', globals.config.menuPageKey],
+        [`${p}setr`, 'nineadmin-locale', globals.translator.language ?? 'en'],
+        [`${p}set`, 'nineadmin-localeFile', globals.translator.customLocalePath ?? 'false'],
+        [`${p}setr`, 'nineadmin-verbose', verbose],
+        [`${p}set`, 'nineadmin-checkPlayerJoin', checkPlayerJoin],
+        [`${p}set`, 'nineadmin-menuAlignRight', globals.config.menuAlignRight],
+        [`${p}set`, 'nineadmin-menuPageKey', globals.config.menuPageKey],
     ];
 };
 const SHUTDOWN_NOTICE_DELAY = 5000;
@@ -97,18 +97,18 @@ export default class FXRunner {
         }
 
         // Prepare default args (these convars can't change without restart)
-        const txAdminInterface = (convars.forceInterface)
-            ? `${convars.forceInterface}:${convars.txAdminPort}`
-            : `127.0.0.1:${convars.txAdminPort}`;
+        const nineadminInterface = (convars.forceInterface)
+            ? `${convars.forceInterface}:${convars.nineadminPort}`
+            : `127.0.0.1:${convars.nineadminPort}`;
         const cmdArgs = [
             getMutableConvars(true),
             extraArgs,
             '+set', 'onesync', this.config.onesync,
-            '+sets', 'txAdmin-version', txEnv.txAdminVersion,
-            '+setr', 'txAdmin-menuEnabled', globals.config.menuEnabled,
-            '+set', 'txAdmin-luaComHost', txAdminInterface,
-            '+set', 'txAdmin-luaComToken', globals.webServer.luaComToken,
-            '+set', 'txAdminServerMode', 'true', //Can't change this one due to fxserver code compatibility
+            '+sets', 'nineadmin-version', txEnv.nineadminVersion,
+            '+setr', 'nineadmin-menuEnabled', globals.config.menuEnabled,
+            '+set', 'nineadmin-luaComHost', nineadminInterface,
+            '+set', 'nineadmin-luaComToken', globals.webServer.luaComToken,
+            '+set', 'nineadminServerMode', 'true', //Can't change this one due to fxserver code compatibility
             '+exec', this.config.cfgPath,
         ].flat(2);
 
@@ -260,7 +260,7 @@ export default class FXRunner {
             this.history[historyIndex].timestamps.exit = now();
             if (this.history[historyIndex].timestamps.exit - this.history[historyIndex].timestamps.start <= 5) {
                 setTimeout(() => {
-                    logWarn('FXServer didn\'t start. This is not an issue with txAdmin.');
+                    logWarn('FXServer didn\'t start. This is not an issue with nineadmin.');
                 }, 500);
             }
         }.bind(this));
@@ -372,8 +372,8 @@ export default class FXRunner {
     //================================================================
     /**
      * Resets the convars in the server.
-     * Useful for when we change txAdmin settings and want it to reflect on the server.
-     * This will also fire the `txAdmin:event:configChanged`
+     * Useful for when we change nineadmin settings and want it to reflect on the server.
+     * This will also fire the `nineadmin:event:configChanged`
      */
     resetConvars() {
         log('Refreshing fxserver convars.');
@@ -396,7 +396,7 @@ export default class FXRunner {
 
     //================================================================
     /**
-     * Fires an `txAdmin:event` inside the server via srvCmd > stdin > command > lua broadcaster.
+     * Fires an `nineadmin:event` inside the server via srvCmd > stdin > command > lua broadcaster.
      * @param {string} eventType
      * @param {object} data
      */

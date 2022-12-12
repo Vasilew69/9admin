@@ -2,7 +2,7 @@
 --  This file contains functionality purely related
 --  to player modes (noclip, godmode)
 -- ===============
-if (GetConvar('txAdmin-menuEnabled', 'false') ~= 'true') then
+if (GetConvar('nineadmin-menuEnabled', 'false') ~= 'true') then
     return
 end
 
@@ -133,11 +133,11 @@ local function askChangePlayerMode(mode)
         nearbyPlayers[#nearbyPlayers + 1] = GetPlayerServerId(player)
     end
 
-    TriggerServerEvent('txAdmin:menu:playerModeChanged', mode, nearbyPlayers)
+    TriggerServerEvent('nineadmin:menu:playerModeChanged', mode, nearbyPlayers)
 end
 
 -- NoClip toggle keybind
-RegisterCommand('txAdmin:menu:noClipToggle', function()
+RegisterCommand('nineadmin:menu:noClipToggle', function()
     if not menuIsAccessible then return end
     if not DoesPlayerHavePerm(menuPermissions, 'players.playermode') then
         return sendSnackbarMessage('error', 'nui_menu.misc.no_perms', true)
@@ -152,7 +152,7 @@ RegisterNUICallback('playerModeChanged', function(mode, cb)
 end)
 
 -- [[ Player mode changed cb event ]]
-RegisterNetEvent('txAdmin:menu:playerModeChanged', function(mode, ptfx)
+RegisterNetEvent('nineadmin:menu:playerModeChanged', function(mode, ptfx)
     if ptfx then 
         createPlayerModePtfxLoop(PlayerPedId())
     end

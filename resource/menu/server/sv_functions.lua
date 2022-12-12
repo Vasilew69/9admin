@@ -1,5 +1,5 @@
 --Check Environment
-if GetConvar('txAdminServerMode', 'false') ~= 'true' then
+if GetConvar('nineadminServerMode', 'false') ~= 'true' then
   return
 end
 

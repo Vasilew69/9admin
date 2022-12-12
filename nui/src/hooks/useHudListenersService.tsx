@@ -12,7 +12,7 @@ import {
   useSetPlayersFilterIsTemp,
 } from "../state/players.state";
 import { useSetAssociatedPlayer } from "../state/playerDetails.state";
-import { txAdminMenuPage, useSetPage } from "../state/page.state";
+import { nineadminMenuPage, useSetPage } from "../state/page.state";
 import { useAnnounceNotiPosValue } from "../state/server.state";
 import { useSetPlayerModalVisibility } from "@nui/src/state/playerModal.state";
 
@@ -145,7 +145,7 @@ export const useHudListenersService = () => {
       if (foundPlayers.length === 1) targetPlayer = foundPlayers[0];
       else if (foundPlayers.length > 1) {
         setPlayerFilter(target);
-        setPage(txAdminMenuPage.Players);
+        setPage(nineadminMenuPage.Players);
         setPlayersFilterIsTemp(true);
         return;
       }
@@ -157,7 +157,7 @@ export const useHudListenersService = () => {
         { variant: "error" }
       );
 
-    setPage(txAdminMenuPage.Players);
+    setPage(nineadminMenuPage.Players);
     setAssocPlayer(targetPlayer);
     setModalOpen(true);
   });

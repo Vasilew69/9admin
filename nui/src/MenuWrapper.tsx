@@ -12,7 +12,7 @@ import { useServerCtxValue } from "./state/server.state";
 import { WarnPage } from "./components/WarnPage/WarnPage";
 import { IFrameProvider } from "./provider/IFrameProvider";
 import { PlayerModalProvider } from "./provider/PlayerModalProvider";
-import { txAdminMenuPage, useSetPage } from "./state/page.state";
+import { nineadminMenuPage, useSetPage } from "./state/page.state";
 import { useListenerForSomething } from "./hooks/useListenerForSomething";
 import {
   usePlayersFilterIsTemp,
@@ -55,7 +55,7 @@ const MenuWrapper: React.FC = () => {
     if (visible) return;
 
     const changeTimer = setTimeout(() => {
-      setPage(txAdminMenuPage.Main);
+      setPage(nineadminMenuPage.Main);
     }, 750);
 
     if (playersFilterIsTemp) {

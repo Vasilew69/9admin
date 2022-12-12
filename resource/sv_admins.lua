@@ -2,11 +2,11 @@
 --    Lua Admin Manager
 -- =============================================
 -- Checking Environment (sv_main MUST run first)
-if GetConvar('txAdminServerMode', 'false') ~= 'true' then
+if GetConvar('nineadminServerMode', 'false') ~= 'true' then
     return
 end
 if TX_LUACOMHOST == "invalid" or TX_LUACOMTOKEN == "invalid" then
-    log('^1API Host or Pipe Token ConVars not found. Do not start this resource if not using txAdmin.')
+    log('^1API Host or Pipe Token ConVars not found. Do not start this resource if not using nineadmin.')
     return
 end
 if TX_LUACOMTOKEN == "removed" then
@@ -45,8 +45,8 @@ RegisterNetEvent('txsv:checkAdminStatus', function()
     local url = "http://"..TX_LUACOMHOST.."/nui/auth"
     local headers = {
         ['Content-Type'] = 'application/json',
-        ['X-TxAdmin-Token'] = TX_LUACOMTOKEN,
-        ['X-TxAdmin-Identifiers'] = table.concat(GetPlayerIdentifiers(src), ', ')
+        ['X-nineadmin-Token'] = TX_LUACOMTOKEN,
+        ['X-nineadmin-Identifiers'] = table.concat(GetPlayerIdentifiers(src), ', ')
     }
 
     -- Making http request
@@ -88,7 +88,7 @@ end)
 
 
 -- Handle updated admin list
-AddEventHandler('txAdmin:events:adminsUpdated', function(onlineAdminIDs)
+AddEventHandler('nineadmin:events:adminsUpdated', function(onlineAdminIDs)
     debugPrint('^3Admins list updated. Online admins: ' .. json.encode(onlineAdminIDs))
 
     -- Collect old and new admin IDs as key to prevent duplicate
@@ -107,6 +107,6 @@ AddEventHandler('txAdmin:events:adminsUpdated', function(onlineAdminIDs)
 
     -- Informing clients that they need to reauth
     for id, _ in pairs(refreshAdminIds) do
-        TriggerClientEvent('txAdmin:menu:reAuth', tonumber(id))
+        TriggerClientEvent('nineadmin:menu:reAuth', tonumber(id))
     end
 end)

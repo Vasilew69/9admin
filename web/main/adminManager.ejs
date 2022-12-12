@@ -194,7 +194,7 @@
             citizenfxID: params.get('citizenfx'),
             discordID: params.get('discord').split(':')[1],
         }
-        window.history.pushState(null, 'txAdmin', 'adminManager?');
+        window.history.pushState(null, 'nineadmin', 'adminManager?');
         getAdminModal();
     }
 
@@ -211,7 +211,7 @@
             modalType = 'add';
             data = {autofill: true}
         }
-        txAdminAPI({
+        nineadminAPI({
             type: "POST",
             url: `adminManager/getModal/${modalType}`,
             data,
@@ -255,7 +255,7 @@
         const notify = $.notify({ message: '<p class="text-center">Saving...</p>' }, {});
         const action = (isNewAdmin) ? 'add' : 'edit';
 
-        txAdminAPI({
+        nineadminAPI({
             type: "POST",
             url: `/adminManager/${action}`, 
             data: formData,
@@ -283,13 +283,13 @@
 
     //============================================== Delete Admin
     async function deleteAdmin(name){
-        const confirmation = await txAdminConfirm({
+        const confirmation = await nineadminConfirm({
             content: `Are you sure you want to delete <b>${xss(name)}</b>?`
         })
         if(!confirmation) return;
 
         const notify = $.notify({ message: '<p class="text-center">Deleting...</p>' }, {});
-        txAdminAPI({
+        nineadminAPI({
             type: "POST",
             url: '/adminManager/delete',
             data: {name: name},

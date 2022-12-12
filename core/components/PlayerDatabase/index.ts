@@ -4,7 +4,7 @@ import { verbose } from '@core/globalData';
 // eslint-disable-next-line no-unused-vars
 import { SAVE_PRIORITY_LOW, SAVE_PRIORITY_MEDIUM, SAVE_PRIORITY_HIGH, Database } from './database';
 import { genActionID, genWhitelistRequestID } from './idGenerator';
-import TxAdmin from '@core/txAdmin.js';
+import nineadmin from '@core/nineadmin.js';
 import { DatabaseActionType, DatabaseDataType, DatabasePlayerType, DatabaseWhitelistApprovalsType, DatabaseWhitelistRequestsType } from './databaseTypes';
 import { cloneDeep } from 'lodash-es';
 import { now } from '@core/extras/helpers';
@@ -33,10 +33,10 @@ type PlayerDbConfigType = {
  */
 export default class PlayerDatabase {
     readonly #db: Database;
-    readonly #txAdmin: TxAdmin;
+    readonly #nineadmin: nineadmin;
 
-    constructor(txAdmin: TxAdmin, public config: PlayerDbConfigType) {
-        this.#txAdmin = txAdmin;
+    constructor(nineadmin: nineadmin, public config: PlayerDbConfigType) {
+        this.#nineadmin = nineadmin;
         this.#db = new Database();
 
         //Database optimization cron function
@@ -60,7 +60,7 @@ export default class PlayerDatabase {
      * Refresh configurations
      */
     refreshConfig() {
-        this.config = this.#txAdmin.configVault.getScoped('playerDatabase');
+        this.config = this.#nineadmin.configVault.getScoped('playerDatabase');
     }
 
     /**
@@ -128,7 +128,7 @@ export default class PlayerDatabase {
             .assign(cloneDeep(srcData))
             .cloneDeep()
             .value();
-        this.#txAdmin.playerlistManager.handleDbDataSync(newData, srcUniqueId);
+        this.#nineadmin.playerlistManager.handleDbDataSync(newData, srcUniqueId);
         return newData;
     }
 
@@ -147,7 +147,7 @@ export default class PlayerDatabase {
             if (player.tsWhitelisted && filterFunc(player)) {
                 cntChanged++;
                 player.tsWhitelisted = undefined;
-                this.#txAdmin.playerlistManager.handleDbDataSync(cloneDeep(player), srcSymbol);
+                this.#nineadmin.playerlistManager.handleDbDataSync(cloneDeep(player), srcSymbol);
             }
         });
 

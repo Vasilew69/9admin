@@ -2,7 +2,7 @@
 --  This file is for all main page logic not controlled in its
 --  own file (mainly simpler logic)
 -- =============================================
-if (GetConvar('txAdmin-menuEnabled', 'false') ~= 'true') then
+if (GetConvar('nineadmin-menuEnabled', 'false') ~= 'true') then
     return
 end
 
@@ -12,23 +12,23 @@ end
 -- Data is a object with x, y, z
 RegisterNUICallback('tpToCoords', function(data, cb)
     debugPrint(json.encode(data))
-    TriggerServerEvent('txAdmin:menu:tpToCoords', data.x + 0.0, data.y + 0.0, data.z + 0.0)
+    TriggerServerEvent('nineadmin:menu:tpToCoords', data.x + 0.0, data.y + 0.0, data.z + 0.0)
     cb({})
 end)
 
 RegisterNUICallback('tpToWaypoint', function(_, cb)
-    TriggerServerEvent('txAdmin:menu:tpToWaypoint')
+    TriggerServerEvent('nineadmin:menu:tpToWaypoint')
     cb({})
 end)
 
 RegisterNUICallback('tpToPlayer', function(data, cb)
-    TriggerServerEvent('txAdmin:menu:tpToPlayer', tonumber(data.id))
+    TriggerServerEvent('nineadmin:menu:tpToPlayer', tonumber(data.id))
     cb({})
 end)
 
 RegisterNUICallback('tpBack', function(_, cb)
     if lastTpCoords then
-        TriggerServerEvent('txAdmin:menu:tpToCoords', lastTpCoords.x, lastTpCoords.y, lastTpCoords.z)
+        TriggerServerEvent('nineadmin:menu:tpToCoords', lastTpCoords.x, lastTpCoords.y, lastTpCoords.z)
         cb({})
     else
         cb({ e = true })
@@ -36,7 +36,7 @@ RegisterNUICallback('tpBack', function(_, cb)
 end)
 
 RegisterNUICallback('summonPlayer', function(data, cb)
-    TriggerServerEvent('txAdmin:menu:summonPlayer', tonumber(data.id))
+    TriggerServerEvent('nineadmin:menu:summonPlayer', tonumber(data.id))
     cb({})
 end)
 
@@ -50,7 +50,7 @@ RegisterNUICallback('copyCurrentCoords', function(_, cb)
 end)
 
 RegisterNUICallback('clearArea', function(radius, cb)
-    TriggerServerEvent('txAdmin:menu:clearArea', radius)
+    TriggerServerEvent('nineadmin:menu:clearArea', radius)
     cb({})
 end)
 
@@ -83,7 +83,7 @@ RegisterNUICallback('spawnVehicle', function(data, cb)
             DeleteVehicle(oldVeh)
         end
 
-        TriggerServerEvent('txAdmin:menu:spawnVehicle', model, isAutomobile)
+        TriggerServerEvent('nineadmin:menu:spawnVehicle', model, isAutomobile)
         cb({})
     end
 end)
@@ -93,7 +93,7 @@ RegisterNUICallback("deleteVehicle", function(data, cb)
     local veh = GetVehiclePedIsIn(ped, false)
     if veh and veh > 0 then
         local netId = NetworkGetNetworkIdFromEntity(veh)
-        TriggerServerEvent("txAdmin:menu:deleteVehicle", netId)
+        TriggerServerEvent("nineadmin:menu:deleteVehicle", netId)
 
         cb({})
     else
@@ -102,24 +102,24 @@ RegisterNUICallback("deleteVehicle", function(data, cb)
 end)
 
 RegisterNUICallback('healPlayer', function(data, cb)
-    TriggerServerEvent('txAdmin:menu:healPlayer', tonumber(data.id))
+    TriggerServerEvent('nineadmin:menu:healPlayer', tonumber(data.id))
     cb({})
 end)
 
 RegisterNUICallback('healMyself', function(_, cb)
-    TriggerServerEvent('txAdmin:menu:healMyself')
+    TriggerServerEvent('nineadmin:menu:healMyself')
     cb({})
 end)
 
 RegisterNUICallback('healAllPlayers', function(_, cb)
-    TriggerServerEvent('txAdmin:menu:healAllPlayers')
+    TriggerServerEvent('nineadmin:menu:healAllPlayers')
     cb({})
 end)
 
 -- Data will be an object with a message attribute
 RegisterNUICallback('sendAnnouncement', function(data, cb)
     debugPrint(data.message)
-    TriggerServerEvent('txAdmin:menu:sendAnnouncement', data.message)
+    TriggerServerEvent('nineadmin:menu:sendAnnouncement', data.message)
     cb({})
 end)
 
@@ -130,7 +130,7 @@ RegisterNUICallback('fixVehicle', function(_, cb)
         return cb({ e = true })
     end
 
-    TriggerServerEvent('txAdmin:menu:fixVehicle')
+    TriggerServerEvent('nineadmin:menu:fixVehicle')
     cb({})
 end)
 
@@ -142,7 +142,7 @@ RegisterNUICallback('boostVehicle', function(_, cb)
         return cb({ e = true })
     end
 
-    TriggerServerEvent('txAdmin:menu:boostVehicle')
+    TriggerServerEvent('nineadmin:menu:boostVehicle')
     cb({})
 end)
 
@@ -184,7 +184,7 @@ local boostableVehicleClasses = {
     [22]='Open Wheel'
 }
 
-RegisterNetEvent('txAdmin:menu:boostVehicle', function()
+RegisterNetEvent('nineadmin:menu:boostVehicle', function()
     local ped = PlayerPedId()
     local veh = GetVehiclePedIsIn(ped, false)
 
@@ -241,7 +241,7 @@ RegisterNetEvent('txAdmin:menu:boostVehicle', function()
     sendSnackbarMessage('success', 'nui_menu.page_main.vehicle.boost.success', true)
 end)
 
-RegisterNetEvent('txAdmin:menu:fixVehicle', function()
+RegisterNetEvent('nineadmin:menu:fixVehicle', function()
     local ped = PlayerPedId()
     local veh = GetVehiclePedIsIn(ped, false)
     if veh and veh > 0 then
@@ -254,7 +254,7 @@ RegisterNetEvent('txAdmin:menu:fixVehicle', function()
 end)
 
 -- Spawn vehicles, with support for entity lockdown
-RegisterNetEvent('txAdmin:events:queueSeatInVehicle', function(vehNetID, seat)
+RegisterNetEvent('nineadmin:events:queueSeatInVehicle', function(vehNetID, seat)
     if type(vehNetID) ~= 'number' then return end
     if type(seat) ~= 'number' then return end
 
@@ -278,7 +278,7 @@ RegisterNetEvent('txAdmin:events:queueSeatInVehicle', function(vehNetID, seat)
     oldVehVelocity = 0.0
 end)
 
-RegisterNetEvent('txAdmin:menu:clearArea', function(radius)
+RegisterNetEvent('nineadmin:menu:clearArea', function(radius)
     local curCoords = GetEntityCoords(PlayerPedId())
     local radiusToFloat = radius + 0.0
     debugPrint(('Radius to clear %d'):format(radius))
@@ -370,12 +370,12 @@ end
 ---@param x number
 ---@param y number
 ---@param z number
-RegisterNetEvent('txAdmin:menu:tpToCoords', function(x, y, z)
+RegisterNetEvent('nineadmin:menu:tpToCoords', function(x, y, z)
     teleportToCoords(vec3(x, y, z))
 end)
 
 -- Teleport to the current waypoint
-RegisterNetEvent('txAdmin:menu:tpToWaypoint', function()
+RegisterNetEvent('nineadmin:menu:tpToWaypoint', function()
     local waypoint = GetFirstBlipInfoId(GetWaypointBlipEnumId())
     if waypoint and waypoint > 0 then
         sendSnackbarMessage('success', 'nui_menu.page_main.teleport.generic_success', true)

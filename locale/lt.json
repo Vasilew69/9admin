@@ -45,11 +45,11 @@
     },
     "nui_menu": {
         "misc": {
-            "help_message": "txAdmin Meniu iįjungtas, rašykite /tx norėdami jį atidaryti.\nMygtuką galite priskirti ar pakeisti [Game Settings > Key Bindings > FiveM > Menu: Open Main Page].",
-            "menu_not_allowed": "Jūsų identifikavimas txAdmin sistemai nebuvo rastas.\nJei esate užregistruotas txAdmin sistemoje, eikite į Admin Manager ir įsitikinkite, kad jūsų atpažinimas išsaugotas.",
+            "help_message": "nineadmin Meniu iįjungtas, rašykite /tx norėdami jį atidaryti.\nMygtuką galite priskirti ar pakeisti [Game Settings > Key Bindings > FiveM > Menu: Open Main Page].",
+            "menu_not_allowed": "Jūsų identifikavimas nineadmin sistemai nebuvo rastas.\nJei esate užregistruotas nineadmin sistemoje, eikite į Admin Manager ir įsitikinkite, kad jūsų atpažinimas išsaugotas.",
             "no_perms": "Neturite tam teisių.",
             "unknown_error": "Nežinoma klaida.",
-            "not_enabled": "txAdmin meniu nėra įjungtas! Tai galite padaryti per txAdmin nustatymų (settings) puslapį.",
+            "not_enabled": "nineadmin meniu nėra įjungtas! Tai galite padaryti per nineadmin nustatymų (settings) puslapį.",
             "announcement_title": "Serverio pranešimas nuo: %{author}:",
             "dialog_empty_input": "Turite užpildyti įvesties laukelius.",
             "directmessage_title": "DM from admin %{author}:"

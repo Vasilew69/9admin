@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { txAdminMenuPage, usePageValue } from "../state/page.state";
+import { nineadminMenuPage, usePageValue } from "../state/page.state";
 import { useNuiEvent } from "./useNuiEvent";
 import { useSetPlayersState } from "../state/players.state";
 import { fetchNui } from "../utils/fetchNui";
@@ -52,7 +52,7 @@ export const usePlayerListListener = () => {
   useEffect(() => {
     // Since our player list is never technically unmounted,
     // we target page changes as our interval entrance technique
-    if (curPage !== txAdminMenuPage.Players) return;
+    if (curPage !== nineadminMenuPage.Players) return;
 
     // Getting detailed playerlist
     fetchNui("signalPlayersPageOpen", {}, { mockResp: {} }).catch();

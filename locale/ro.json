@@ -45,11 +45,11 @@
     },
     "nui_menu": {
         "misc": {
-            "help_message": "Meniul txAdmin este activat, Scrie /tx pentru a îl deschide.\nPoți reconfigura keybind-ul utilizând [Game Settings > Key Bindings > FiveM > Menu: Open Main Page].",
-            "menu_not_allowed": "Identificatorii dvs. nu se potrivesc cu niciun administrator înregistrat pe txAdmin.\nDacă sunteți înregistrat pe txAdmin, accesați Admin Manager și asigurați-vă că identificatorii dvs. bine configurați.",
+            "help_message": "Meniul nineadmin este activat, Scrie /tx pentru a îl deschide.\nPoți reconfigura keybind-ul utilizând [Game Settings > Key Bindings > FiveM > Menu: Open Main Page].",
+            "menu_not_allowed": "Identificatorii dvs. nu se potrivesc cu niciun administrator înregistrat pe nineadmin.\nDacă sunteți înregistrat pe nineadmin, accesați Admin Manager și asigurați-vă că identificatorii dvs. bine configurați.",
             "no_perms": "Nu ai această permisie.",
             "unknown_error": "A apărut o eroare necunoscută.",
-            "not_enabled": "Meniul txAdmin nu este activat! Puteți să o activați din pagina de setări txAdmin.",
+            "not_enabled": "Meniul nineadmin nu este activat! Puteți să o activați din pagina de setări nineadmin.",
             "announcement_title": "Anunț de la %{author}:",
             "dialog_empty_input": "Nu poți avea un input gol.",
             "directmessage_title": "DM from admin %{author}:"

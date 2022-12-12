@@ -9,7 +9,7 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { txAdminMenuPage, usePageValue } from "../state/page.state";
+import { nineadminMenuPage, usePageValue } from "../state/page.state";
 import { useIsMenuVisibleValue } from "../state/visibility.state";
 import { useDialogContext } from "./DialogProvider";
 
@@ -46,13 +46,13 @@ export const TooltipProvider: React.FC<TooltipProviderProps> = ({
     if (tooltipText === "") return false;
     if (isDialogOpen) return false;
     if (!isMenuVisible) return false;
-    if (curPage !== txAdminMenuPage.Main) return false;
+    if (curPage !== nineadminMenuPage.Main) return false;
 
     return _tooltipOpen;
   }, [tooltipText, isDialogOpen, isMenuVisible, curPage, _tooltipOpen]);
 
   useLayoutEffect(() => {
-    if (curPage !== txAdminMenuPage.Main) {
+    if (curPage !== nineadminMenuPage.Main) {
       firstDisplayFinished.current = false;
       return setTooltipOpen(false);
     }

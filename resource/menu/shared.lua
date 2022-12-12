@@ -13,7 +13,7 @@ function debugPrint(...)
   end
 end
 
--- Used whenever we want to convey a message as from txAdminMenu without
+-- Used whenever we want to convey a message as from nineadminMenu without
 -- being in debug mode.
 function txPrint(...)
   local args = {...}
@@ -27,5 +27,5 @@ function txPrint(...)
 end
 
 CreateThread(function()
-  debugModeEnabled = (GetConvar('txAdmin-menuDebug', 'false') == 'true')
+  debugModeEnabled = (GetConvar('nineadmin-menuDebug', 'false') == 'true')
 end)

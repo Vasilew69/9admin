@@ -1,5 +1,5 @@
 import { useSetIsMenuVisible } from "../state/visibility.state";
-import { txAdminMenuPage, useSetPage } from "../state/page.state";
+import { nineadminMenuPage, useSetPage } from "../state/page.state";
 import { useNuiEvent } from "./useNuiEvent";
 import {
   ResolvablePermission,
@@ -25,7 +25,7 @@ export const useNuiListenerService = () => {
   useNuiEvent<boolean>("setVisible", setVisible);
   useNuiEvent<ResolvablePermission[]>("setPermissions", setPermsState);
   useNuiEvent<ServerCtx>("setServerCtx", setServerCtxState);
-  useNuiEvent<txAdminMenuPage>("setMenuPage", setMenuPage);
+  useNuiEvent<nineadminMenuPage>("setMenuPage", setMenuPage);
   useNuiEvent("resetSession", ()=>{
     fetchWebPipe<string>("/resetSession").catch();
   });

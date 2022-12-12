@@ -351,7 +351,7 @@
         searchButton.innerHTML = getSVG('x') + ` Clear`;
         searchMessage.innerText = '';
 
-        txAdminAPI({
+        nineadminAPI({
             type: "GET",
             url: '/player/search?query=' + encodeURI(searchString),
             timeout: REQ_TIMEOUT_LONG,
@@ -497,7 +497,7 @@
         data.identifiers = frmIdentifiers.split(/[,;'"\s]+/).filter(x => x.length);
         const notify = $.notify({ message: '<p class="text-center">Banning...</p>' }, {});
 
-        txAdminAPI({
+        nineadminAPI({
             type: "POST",
             url: '/database/ban_ids',
             timeout: REQ_TIMEOUT_LONG,

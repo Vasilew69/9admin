@@ -38,7 +38,7 @@ export default async function ProviderCallback(ctx) {
     }
 
     //Check the state changed
-    const stateSeed = `txAdmin:${ctx.session._sessCtx.externalKey}`;
+    const stateSeed = `nineadmin:${ctx.session._sessCtx.externalKey}`;
     const stateExpected = crypto.createHash('SHA1').update(stateSeed).digest('hex');
     if (reqState != stateExpected) {
         return returnJustMessage(

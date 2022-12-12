@@ -16,7 +16,7 @@ export interface ServerCtx {
   localeData: LocaleType | boolean;
   switchPageKey: string;
   announceNotiPos: string;
-  txAdminVersion: string;
+  nineadminVersion: string;
   alignRight: boolean;
 }
 

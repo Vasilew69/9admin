@@ -1,5 +1,5 @@
 import { ResolvablePermission } from "../state/permissions.state";
-import { TxAdminActionRespType } from "../components/PlayerModal/Tabs/DialogActionView";
+import { nineadminActionRespType } from "../components/PlayerModal/Tabs/DialogActionView";
 import { VariantType } from "notistack";
 
 export const userHasPerm = (
@@ -30,8 +30,8 @@ const lookupTable: Record<string, VariantType> = {
   warning: "warning",
 };
 export const translateAlertType = (
-  txAdminType: TxAdminActionRespType
-): VariantType => lookupTable[txAdminType];
+  nineadminType: nineadminActionRespType
+): VariantType => lookupTable[nineadminType];
 
 /**
  * Returns whether we are in browser or in NUI

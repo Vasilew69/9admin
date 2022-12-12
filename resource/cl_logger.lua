@@ -148,8 +148,8 @@ end
 
 -- Trigger Event From External Script
 -- NOTE: couldn't people just call the txaLogger:DeathNotice event???
-RegisterNetEvent('txAdmin:beta:deathLog')
-AddEventHandler('txAdmin:beta:deathLog', function(ped)
+RegisterNetEvent('nineadmin:beta:deathLog')
+AddEventHandler('nineadmin:beta:deathLog', function(ped)
 	processDeath(ped) -- Remember to add a wait function before reviving into an animation.
 end)
 

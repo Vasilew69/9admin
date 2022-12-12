@@ -383,11 +383,11 @@ const validateCommands = async (parsedCommands) => {
             continue;
         }
 
-        //Check for start/stop/ensure txAdmin/txAdminClient/monitor
+        //Check for start/stop/ensure nineadmin/nineadminClient/monitor
         if (
             ['start', 'stop', 'ensure'].includes(cmd.command)
             && cmd.args.length >= 1
-            && ['txadmin', 'txadminclient', 'monitor'].includes(cmd.args[0].toLowerCase())
+            && ['nineadmin', 'nineadminclient', 'monitor'].includes(cmd.args[0].toLowerCase())
         ) {
             toCommentOut.add(
                 cmd.file,
@@ -411,7 +411,7 @@ const validateCommands = async (parsedCommands) => {
         if (cmd.getSetForVariable('onesync')) {
             toCommentOut.add(
                 cmd.file,
-                [cmd.line, 'onesync MUST only be set in the txAdmin settings page.'],
+                [cmd.line, 'onesync MUST only be set in the nineadmin settings page.'],
             );
             continue;
         }
@@ -459,7 +459,7 @@ const validateCommands = async (parsedCommands) => {
                 errors.add(cmd.file, msg);
                 continue;
             }
-            if (port === convars.txAdminPort) {
+            if (port === convars.nineadminPort) {
                 const msg = `Line ${cmd.line}: the '${cmd.command}' port '${port}' is being used by 9Admin and CAN NOT be used for FXServer at the same time.`;
                 errors.add(cmd.file, msg);
                 continue;

@@ -9,8 +9,8 @@ const { dir, log, logOk, logWarn, logError } = logger(modulename);
 
 //NOTE: There used to be a rule "\x0B-\x1F" that was replaced with "x0B-\x1A\x1C-\x1F" to allow the \x1B terminal escape character.
 //This is neccessary for the terminal to have color, but beware of side effects.
-//This regex was done in the first place to prevent fxserver output to be interpreted as txAdmin output by the host terminal
-//IIRC the issue was that one user with a TM on their nick was making txAdmin's console to close or freeze. I couldn't reproduce the issue.
+//This regex was done in the first place to prevent fxserver output to be interpreted as nineadmin output by the host terminal
+//IIRC the issue was that one user with a TM on their nick was making nineadmin's console to close or freeze. I couldn't reproduce the issue.
 // \x00-\x08 control chars
 // allow \r and \t
 // \x0B-\x1A control chars

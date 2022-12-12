@@ -10,12 +10,12 @@ isMenuDebug = false
 isMenuVisible = false
 menuPermissions = {}
 lastTpCoords = false;
-local isMenuEnabled = (GetConvar('txAdmin-menuEnabled', 'false') == 'true')
+local isMenuEnabled = (GetConvar('nineadmin-menuEnabled', 'false') == 'true')
 
 
 -- Check if menu is in debug mode 
 CreateThread(function()
-  isMenuDebug = (GetConvar('txAdmin-menuDebug', 'false') == 'true')
+  isMenuDebug = (GetConvar('nineadmin-menuDebug', 'false') == 'true')
 end)
 
 local function checkMenuAccessible()
@@ -32,8 +32,8 @@ local function checkMenuAccessible()
 end
 
 
--- Register txAdmin command
-local function txadmin(_, args)
+-- Register nineadmin command
+local function nineadmin(_, args)
   if not checkMenuAccessible() then return end
 
   -- Make visible
@@ -45,10 +45,10 @@ local function txadmin(_, args)
     sendMenuMessage('openPlayerModal', targetPlayer)
   end
 end
-RegisterCommand('9Admin', txadmin)
-RegisterCommand('9a', txadmin)
+RegisterCommand('9Admin', nineadmin)
+RegisterCommand('9a', nineadmin)
 
-RegisterCommand('txAdmin:menu:openPlayersPage', function()
+RegisterCommand('nineadmin:menu:openPlayersPage', function()
   if not checkMenuAccessible() then return end
   sendMenuMessage('setMenuPage', 1)
   toggleMenuVisibility(true)
@@ -97,12 +97,12 @@ local function retryAuthentication()
   sendMenuMessage('setPermissions', menuPermissions)
   TriggerServerEvent('txsv:checkAdminStatus')
 end
-RegisterCommand('txAdmin-reauth', retryAuthentication)
-RegisterNetEvent('txAdmin:menu:reAuth', retryAuthentication)
+RegisterCommand('nineadmin-reauth', retryAuthentication)
+RegisterNetEvent('nineadmin:menu:reAuth', retryAuthentication)
 
 
 -- Register chat suggestions
--- txAdmin starts before the chat resource, so we need to wait a bit
+-- nineadmin starts before the chat resource, so we need to wait a bit
 CreateThread(function()
   Wait(1000)
   TriggerEvent(
@@ -113,12 +113,12 @@ CreateThread(function()
   )
   TriggerEvent(
     'chat:addSuggestion',
-    '/txAdmin-reauth',
+    '/nineadmin-reauth',
     'Retries to authenticate the menu NUI.'
   )
   TriggerEvent(
     'chat:addSuggestion',
-    '/txAdmin-debug',  -- on /scripts/menu/server/sv_base.lua
+    '/nineadmin-debug',  -- on /scripts/menu/server/sv_base.lua
     'Enables or disables the debug mode. Requires \'control.server\' permission.',
     {{ name="1|0", help="1 to enable, 0 to disable" }}
   )
@@ -126,7 +126,7 @@ end)
 
 
 -- Will toggle debug logging
-RegisterNetEvent('txAdmin:events:setDebugMode', function(enabled)
+RegisterNetEvent('nineadmin:events:setDebugMode', function(enabled)
   isMenuDebug = enabled
   debugModeEnabled = enabled
   sendMenuMessage('setDebugMode', isMenuDebug)

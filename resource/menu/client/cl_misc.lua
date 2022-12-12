@@ -1,7 +1,7 @@
 -- =============================================
 --  This file contains misc stuff, maybe deprecate?
 -- =============================================
-if (GetConvar('txAdmin-menuEnabled', 'false') ~= 'true') then
+if (GetConvar('nineadmin-menuEnabled', 'false') ~= 'true') then
     return
 end
 
@@ -18,7 +18,7 @@ RegisterNUICallback('playSound', function(sound, cb)
 end)
 
 -- Heals local player
-RegisterNetEvent('txAdmin:menu:healed', function()
+RegisterNetEvent('nineadmin:menu:healed', function()
     debugPrint('Received heal event, healing to full')
     local ped = PlayerPedId()
     local pos = GetEntityCoords(ped)

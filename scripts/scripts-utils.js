@@ -3,13 +3,13 @@ import path from 'node:path';
 
 
 /**
- * txAdmin in ASCII
+ * nineadmin in ASCII
  * @returns {String}
  */
-export const txAdminASCII = () => {
+export const nineadminASCII = () => {
     //NOTE: precalculating the ascii art for efficiency
     // const figlet = require('figlet');
-    // let ascii = figlet.textSync('txAdmin');
+    // let ascii = figlet.textSync('nineadmin');
     // let b64 = Buffer.from(ascii).toString('base64');
     // console.log(b64);
     const preCalculated = `ICBfICAgICAgICAgICAgXyAgICAgICBfICAgICAgICAgICBfICAgICAgIAogfCB8X19fICBfX
@@ -21,7 +21,7 @@ export const txAdminASCII = () => {
 
 
 /**
- * txAdmin + license banner for bundled files
+ * nineadmin + license banner for bundled files
  * @returns {String}
  */
 export const licenseBanner = () => {
@@ -31,7 +31,7 @@ export const licenseBanner = () => {
     const contentLines = [
         '',
         lineSep,
-        ...txAdminASCII().split('\n').map((x) => logoPad + x),
+        ...nineadminASCII().split('\n').map((x) => logoPad + x),
         lineSep,
         'Author: Vasilew (https://github.com/vasilew69)',
         'Repository: https://github.com/vasilew69/9admin',

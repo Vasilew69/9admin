@@ -2,7 +2,7 @@ const modulename = 'PlayerlistManager';
 import { cloneDeep } from 'lodash-es';
 import logger from '@core/extras/console.js';
 import { verbose } from '@core/globalData';
-import TxAdmin from '@core/txAdmin.js';
+import nineadmin from '@core/nineadmin.js';
 import { ServerPlayer } from '@core/playerLogic/playerClasses.js';
 import { DatabasePlayerType } from '../PlayerDatabase/databaseTypes';
 const { dir, log, logOk, logWarn, logError } = logger(modulename);
@@ -16,13 +16,13 @@ const { dir, log, logOk, logWarn, logError } = logger(modulename);
  * The idea is: all players with license will be in the database, so storing only license is enough to find them.
  */
 export default class PlayerlistManager {
-    readonly #txAdmin: TxAdmin;
+    readonly #nineadmin: nineadmin;
     #playerlist: (ServerPlayer | undefined)[] = [];
     licenseCache: [mutexid: string, license: string][] = [];
     licenseCacheLimit = 50_000; //mutex+id+license * 50_000 = ~4mb
 
-    constructor(txAdmin: TxAdmin) {
-        this.#txAdmin = txAdmin;
+    constructor(nineadmin: nineadmin) {
+        this.#nineadmin = nineadmin;
     }
 
 
@@ -101,7 +101,7 @@ export default class PlayerlistManager {
 
 
     /**
-     * Handler for all txAdminPlayerlistEvent structured trace events
+     * Handler for all nineadminPlayerlistEvent structured trace events
      */
     async handleServerEvents(payload: any, mutex: string) {
         if (payload.event === 'playerJoining') {
@@ -109,8 +109,8 @@ export default class PlayerlistManager {
                 if (typeof payload.id !== 'number') throw new Error(`invalid player id`);
                 if (typeof this.#playerlist[payload.id] !== 'undefined') throw new Error(`duplicated player id`);
                 //TODO: pass serverInstance instead of playerDatabase
-                this.#playerlist[payload.id] = new ServerPlayer(payload.id, payload.player, this.#txAdmin.playerDatabase);
-                this.#txAdmin.logger.server.write([{
+                this.#playerlist[payload.id] = new ServerPlayer(payload.id, payload.player, this.#nineadmin.playerDatabase);
+                this.#nineadmin.logger.server.write([{
                     type: 'playerJoining',
                     src: payload.id,
                     ts: Date.now(),
@@ -125,7 +125,7 @@ export default class PlayerlistManager {
                 if (typeof payload.id !== 'number') throw new Error(`invalid player id`);
                 if (!(this.#playerlist[payload.id] instanceof ServerPlayer)) throw new Error(`player id not found`);
                 this.#playerlist[payload.id]!.disconnect();
-                this.#txAdmin.logger.server.write([{
+                this.#nineadmin.logger.server.write([{
                     type: 'playerDropped',
                     src: payload.id,
                     ts: Date.now(),

@@ -45,11 +45,11 @@
     },
     "nui_menu": {
         "misc": {
-            "help_message": "Menüü txAdmin on lubatud, selle avamiseks tippige /tx.\nSaate konfigureerida ka klahvide sidumise menüüs [Mängu seaded > Klahvide sidumised > FiveM > Menüü: ava põhileht].",
-            "menu_not_allowed": "Teie identifikaatorid ei ühti ühegi txAdminis registreeritud administraatoriga.\nKui olete txAdminis registreeritud, minge administraatorihaldurisse ja veenduge, et teie identifikaatorid on salvestatud.",
+            "help_message": "Menüü nineadmin on lubatud, selle avamiseks tippige /tx.\nSaate konfigureerida ka klahvide sidumise menüüs [Mängu seaded > Klahvide sidumised > FiveM > Menüü: ava põhileht].",
+            "menu_not_allowed": "Teie identifikaatorid ei ühti ühegi nineadminis registreeritud administraatoriga.\nKui olete nineadminis registreeritud, minge administraatorihaldurisse ja veenduge, et teie identifikaatorid on salvestatud.",
             "no_perms": "Teil pole seda luba.",
             "unknown_error": "Ilmnes tundmatu viga.",
-            "not_enabled": "Menüü txAdmin pole lubatud! Saate selle lubada txAdmini seadete lehel.",
+            "not_enabled": "Menüü nineadmin pole lubatud! Saate selle lubada nineadmini seadete lehel.",
             "announcement_title": "Serveri teadaanne %{author}:",
             "dialog_empty_input": "Sul ei saa olla tühi sisend.",
             "directmessage_title": "DM from admin %{author}:"

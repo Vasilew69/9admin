@@ -13,7 +13,7 @@
     <link href="css/coreui.min.css" rel="stylesheet">
     <link href="css/dark.css" rel="stylesheet">
     <link rel="shortcut icon" type="image/png" href="img/9a-default.png" id="favicon" />
-    <link rel="stylesheet" href="css/txAdmin.css">
+    <link rel="stylesheet" href="css/nineadmin.css">
 
     <!-- Page CSS -->
     <!-- <link rel="stylesheet" href="css/codemirror.css"> -->
@@ -52,7 +52,7 @@
 
         <!-- Logo Row -->
         <div class="row justify-content-center pt-4 mb-4">
-            <img src="img/9admin.png" alt="txAdmin Logo">
+            <img src="img/9admin.png" alt="nineadmin Logo">
         </div>
 
         <!-- Stepper Row -->
@@ -327,7 +327,7 @@
             <div class="col-md-4 ">
                 <div class="alert alert-secondary text-center small" style="min-width: 280px;" role="alert">
                     <strong>Server profile:</strong> <%= serverProfile %> <br>
-                    <strong>9Admin version:</strong> <%= txAdminVersion %> <br>
+                    <strong>9Admin version:</strong> <%= nineadminVersion %> <br>
                     <strong>FXServer build:</strong> <%= fxServerVersion %> 
                     <div class="hrsep hrsep-small">//</div>
                     <h5 class="text-muted">
@@ -358,7 +358,7 @@
     <script src="https://cdn.jsdelivr.net/npm/marked@4.0.16/lib/marked.umd.min.js"></script>
     <script src="js/coreui.bundle.min.js"></script>
     <script src="js/bootstrap-notify.min.js"></script>
-    <script src="js/txadmin/base.js"></script>
+    <script src="js/nineadmin/base.js"></script>
 
     <!-- JS -->
     <!-- <script src="js/codeEditor/codemirror.js"></script> -->
@@ -399,7 +399,7 @@
             }
             const notify = $.notify({ message: '<p class="text-center">Saving...</p>' }, {});
 
-            txAdminAPI({
+            nineadminAPI({
                 type: "POST",
                 url: '/deployer/recipe/confirmRecipe',
                 timeout: REQ_TIMEOUT_LONG,
@@ -473,7 +473,7 @@
             }
 
             const notify = $.notify({ message: '<p class="text-center">Saving...</p>' }, {});
-            txAdminAPI({
+            nineadminAPI({
                 type: "POST",
                 url: '/deployer/recipe/setVariables',
                 timeout: REQ_TIMEOUT_LONG,
@@ -506,7 +506,7 @@
             nextButton: document.getElementById('step3NextButton'),
         }
         const refreshStatus = async () => {
-            txAdminAPI({
+            nineadminAPI({
                 type: "GET",
                 url: '/deployer/status',
                 timeout: REQ_TIMEOUT_LONG,
@@ -562,7 +562,7 @@
                 return $.notify({ message: `Please change the <strong>sv_licenseKey</strong>.` }, { type: 'danger' });
             }
 
-            txAdminAPI({
+            nineadminAPI({
                 type: "POST",
                 url: '/deployer/recipe/commit',
                 timeout: REQ_TIMEOUT_LONG,
@@ -586,7 +586,7 @@
         //============================================== cancel action
         function cancelAction(){
             const notify = $.notify({ message: '<p class="text-center">Cancelling...</p>' }, {});
-            txAdminAPI({
+            nineadminAPI({
                 type: "POST",
                 url: '/deployer/recipe/cancel',
                 timeout: REQ_TIMEOUT_LONG,

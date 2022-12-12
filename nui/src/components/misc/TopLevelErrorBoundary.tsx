@@ -45,7 +45,7 @@ export class TopLevelErrorBoundary extends Component<any, ErrorCompState> {
           <DialogTitle>Fatal Error Encountered</DialogTitle>
           <DialogContent>
             <DialogContentText>
-              The txAdmin menu has an encountered an error it was unable to
+              The nineadmin menu has an encountered an error it was unable to
               recover from, the NUI frame will need to be reloaded. The error
               message is shown below for developer reference.
               <br />

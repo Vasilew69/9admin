@@ -76,7 +76,7 @@
         const magicPre = document.getElementById("magicPre");
         magicPre.innerText = 'doing magic';
         const notify = $.notify({ message: '<p class="text-center">Performing Magic...</p>' }, {});
-        txAdminAPI({
+        nineadminAPI({
             type: "POST",
             url: '/advanced',
             timeout: REQ_TIMEOUT_LONG,
@@ -109,7 +109,7 @@
             parameter: desiredState
         }
         const notify = $.notify({ message: '<p class="text-center">Executing Command...</p>' }, {});
-        txAdminAPI({
+        nineadminAPI({
             type: "POST",
             url: '/advanced',
             data: data,
@@ -131,7 +131,7 @@
     //============================================== Profiler
     function doProfileMonitor() {
         const notify = $.notify({ message: '<p class="text-center">Executing Command...</p>' }, {});
-        txAdminAPI({
+        nineadminAPI({
             type: "POST",
             url: '/fxserver/commands',
             data: {

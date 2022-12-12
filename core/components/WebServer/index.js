@@ -96,7 +96,7 @@ export default class WebServer {
                 }
             } else {
                 logError(`Probably harmless error on ${ctx.path}`);
-                logError('Please be kind and send a screenshot of this error to the txAdmin developer.');
+                logError('Please be kind and send a screenshot of this error to the nineadmin developer.');
                 dir(error);
             }
         });
@@ -110,7 +110,7 @@ export default class WebServer {
         const timeoutLimit = 15 * 1000;
         const jsonLimit = '16MB';
         this.app.use(async (ctx, next) => {
-            ctx.set('Server', `9Admin v${txEnv.txAdminVersion}`);
+            ctx.set('Server', `9Admin v${txEnv.nineadminVersion}`);
             let timer;
             const timeout = new Promise((_, reject) => {
                 timer = setTimeout(() => {
@@ -126,7 +126,7 @@ export default class WebServer {
                     return ctx.body = '[no output from route]';
                 }
             } catch (error) {
-                const prefix = `[9Admin v${txEnv.txAdminVersion}]`;
+                const prefix = `[9Admin v${txEnv.nineadminVersion}]`;
                 const reqPath = (ctx.path.length > 100) ? `${ctx.path.slice(0, 97)}...` : ctx.path;
                 const methodName = (error.stack && error.stack[0] && error.stack[0].name) ? error.stack[0].name : 'anonym';
 
@@ -169,7 +169,7 @@ export default class WebServer {
             }
         });
         //Setting up additional middlewares:
-        this.app.use(KoaServe(path.join(txEnv.txAdminResourcePath, 'web/public'), { index: false, defer: false }));
+        this.app.use(KoaServe(path.join(txEnv.nineadminResourcePath, 'web/public'), { index: false, defer: false }));
         this.app.use(this.sessionInstance);
         this.app.use(KoaBodyParser({ jsonLimit }));
 
@@ -269,7 +269,7 @@ export default class WebServer {
                 iface = '0.0.0.0';
             }
 
-            this.httpServer.listen(convars.txAdminPort, iface, async () => {
+            this.httpServer.listen(convars.nineadminPort, iface, async () => {
                 logOk(`Listening on ${iface}.`);
                 this.isListening = true;
             });

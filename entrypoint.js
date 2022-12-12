@@ -14,7 +14,7 @@ try {
 try {
     if (GetConvar('monitorMode', 'false') == 'true') {
         require('./core/index.js');
-    } else if (GetConvar('txAdminServerMode', 'false') == 'true') {
+    } else if (GetConvar('nineadminServerMode', 'false') == 'true') {
         //Nothing, for now
     }
 } catch (error) {

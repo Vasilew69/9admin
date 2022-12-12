@@ -48,10 +48,10 @@ const StyledDialogContent = styled(DialogContent)({
   },
 });
 
-export type TxAdminActionRespType = "success" | "warning" | "danger";
+export type nineadminActionRespType = "success" | "warning" | "danger";
 
-export interface TxAdminAPIResp {
-  type: TxAdminActionRespType;
+export interface nineadminAPIResp {
+  type: nineadminActionRespType;
   message: string;
 }
 

@@ -154,7 +154,7 @@
                                     <span class="c-switch-slider" data-checked="On" data-unchecked="Off"></span>
                                 </label>
                                 <span class="form-text text-muted">
-                                    Start the server automatically after <strong>txAdmin</strong> starts.
+                                    Start the server automatically after <strong>nineadmin</strong> starts.
                                 </span>
                             </div>
                         </div>
@@ -530,7 +530,7 @@
         }
         const notify = $.notify({ message: '<p class="text-center">Saving...</p>' }, {});
 
-        txAdminAPI({
+        nineadminAPI({
             type: "POST",
             url: '/settings/save/global',
             data: data,
@@ -568,7 +568,7 @@
         data.commandLine = data.commandLine.replace(/\+?setr? txEnableMenuBeta true\s?/gi, '');
         const notify = $.notify({ message: '<p class="text-center">Saving...</p>' }, {});
 
-        txAdminAPI({
+        nineadminAPI({
             type: "POST",
             url: '/settings/save/fxserver',
             data: data,
@@ -596,7 +596,7 @@
         }
         const notify = $.notify({ message: '<p class="text-center">Saving...</p>' }, {});
 
-        txAdminAPI({
+        nineadminAPI({
             type: "POST",
             url: '/settings/save/playerDatabase',
             data: data,
@@ -623,7 +623,7 @@
         }
         const notify = $.notify({ message: '<p class="text-center">Saving...</p>' }, {});
 
-        txAdminAPI({
+        nineadminAPI({
             type: "POST",
             url: '/settings/save/monitor',
             data: data,
@@ -659,7 +659,7 @@
         };
         const notify = $.notify({ message: '<p class="text-center">Saving...</p>' }, {});
 
-        txAdminAPI({
+        nineadminAPI({
             type: "POST",
             url: '/settings/save/discord',
             data: data,
@@ -697,7 +697,7 @@
         };
         const notify = $.notify({ message: '<p class="text-center">Saving...</p>' }, {});
 
-        txAdminAPI({
+        nineadminAPI({
             type: "POST",
             url: '/settings/save/menu',
             data: data,

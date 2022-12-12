@@ -45,11 +45,11 @@
     },
     "nui_menu": {
         "misc": {
-            "help_message": "txAdmin Menu päällä. Kirjoita /tx avataksesi.\nVoit myös asettaa menulle oman näppäimen: [Game Settings > Key Bindings > FiveM > Menu: Open Main Page].",
-            "menu_not_allowed": "Tietosi eivät vastaa yhtäkään txAdminiin rekisteröityä ylläpitäjää.\nMikäli olet rekisteröitynyt txAdminiin, siirry kohtaan [Admin Manager] ja varmista että tietosi ovat tallennettu.",
+            "help_message": "nineadmin Menu päällä. Kirjoita /tx avataksesi.\nVoit myös asettaa menulle oman näppäimen: [Game Settings > Key Bindings > FiveM > Menu: Open Main Page].",
+            "menu_not_allowed": "Tietosi eivät vastaa yhtäkään nineadminiin rekisteröityä ylläpitäjää.\nMikäli olet rekisteröitynyt nineadminiin, siirry kohtaan [Admin Manager] ja varmista että tietosi ovat tallennettu.",
             "no_perms": "Sinulla ei ole oikeuksia tähän.",
             "unknown_error": "Tuntematon virhe",
-            "not_enabled": "txAdmin Menu ei ole käytössä! Voit ottaa sen käyttöön txAdminin asetuksista.",
+            "not_enabled": "nineadmin Menu ei ole käytössä! Voit ottaa sen käyttöön nineadminin asetuksista.",
             "announcement_title": "Palvelinilmoitus henkilöltä %{author}:",
             "dialog_empty_input": "Tekstikenttä ei voi olla tyhjä.",
             "directmessage_title": "DM from admin %{author}:"

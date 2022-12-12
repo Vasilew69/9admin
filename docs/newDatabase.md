@@ -1,4 +1,4 @@
-NOTE: mesmo arquivo da pasta ~/Desktop/PROGRAMMING/txAdmin-newDatabase
+NOTE: mesmo arquivo da pasta ~/Desktop/PROGRAMMING/nineadmin-newDatabase
 
 ## FIXME: i just found out two players in the same server can have the same license, and doesn't seem to be just cl2, please investigate and check the logic below.
 

@@ -612,7 +612,7 @@ export const MainPageList: React.FC = () => {
           fontSize: 12,
         }}
       >
-        v{serverCtx.txAdminVersion}
+        v{serverCtx.nineadminVersion}
       </Typography>  */}
     </Box>
   );

@@ -76,13 +76,13 @@ export default class OutputHandler {
                 && data.type == 'script_structured_trace'
                 && data.resource === 'monitor'
             ) {
-                if (data.payload.type === 'txAdminHeartBeat') {
+                if (data.payload.type === 'nineadminHeartBeat') {
                     globals.healthMonitor.handleHeartBeat('fd3');
-                } else if (data.payload.type === 'txAdminLogData') {
+                } else if (data.payload.type === 'nineadminLogData') {
                     globals.logger.server.write(data.payload.logs, mutex);
-                } else if (data.payload.type === 'txAdminResourceEvent') {
+                } else if (data.payload.type === 'nineadminResourceEvent') {
                     globals.resourcesManager.handleServerEvents(data.payload, mutex);
-                } else if (data.payload.type === 'txAdminPlayerlistEvent') {
+                } else if (data.payload.type === 'nineadminPlayerlistEvent') {
                     globals.playerlistManager.handleServerEvents(data.payload, mutex);
                 }
             }

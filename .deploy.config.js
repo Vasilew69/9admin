@@ -2,10 +2,10 @@ export default {
     fxserverPath: 'D:\\testing\\fxserver.exe',
     debouncerInterval: 250,
     preReleaseExpirationDays: 21,
-    txAdminArgs: [
-        '+set', 'txAdminDevMode', 'true',
-        '+set', 'txAdminVerbose', 'true',
-        // '+set', 'txAdminPort', '40121',
+    nineadminArgs: [
+        '+set', 'nineadminDevMode', 'true',
+        '+set', 'nineadminVerbose', 'true',
+        // '+set', 'nineadminPort', '40121',
         '+set', 'txBuildVersion', '9999',
         
 

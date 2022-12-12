@@ -3,11 +3,11 @@
 --  handling and caching.
 -- =============================================
 -- Checking Environment (sv_main MUST run first)
-if GetConvar('txAdminServerMode', 'false') ~= 'true' then
+if GetConvar('nineadminServerMode', 'false') ~= 'true' then
   return
 end
 if TX_LUACOMHOST == "invalid" or TX_LUACOMTOKEN == "invalid" then
-  log('^1API Host or Pipe Token ConVars not found. Do not start this resource if not using txAdmin.')
+  log('^1API Host or Pipe Token ConVars not found. Do not start this resource if not using nineadmin.')
   return
 end
 if TX_LUACOMTOKEN == "removed" then
@@ -38,10 +38,10 @@ local function sendResponse(src, callbackId, statusCode, path, body, headers, ca
     debugPrint(("^3WebPipe[^5%d^0:^1%d^3]^0 %s<< Headers: %s^0"):format(
       src, callbackId, resultColor, json.encode(headers)))
   end
-  TriggerLatentClientEvent('txAdmin:WebPipe', src, 125000, callbackId, statusCode, body, headers)
+  TriggerLatentClientEvent('nineadmin:WebPipe', src, 125000, callbackId, statusCode, body, headers)
 end
 
-RegisterNetEvent('txAdmin:WebPipe', function(callbackId, method, path, headers, body)
+RegisterNetEvent('nineadmin:WebPipe', function(callbackId, method, path, headers, body)
   local s = source
   local src = tostring(s)
   if type(callbackId) ~= 'number' or type(headers) ~= 'table' then
@@ -69,7 +69,7 @@ RegisterNetEvent('txAdmin:WebPipe', function(callbackId, method, path, headers, 
     end
     debugPrint(string.format(
         "^3WebPipe[^5%d^0:^1%d^3]^0 ^1rejected request from ^3%s^1 for ^5%s^0", s, callbackId, s, path))
-    TriggerClientEvent('txAdmin:WebPipe', s, callbackId, 403, "{}", {})
+    TriggerClientEvent('nineadmin:WebPipe', s, callbackId, 403, "{}", {})
     return
   end
 
@@ -82,10 +82,10 @@ RegisterNetEvent('txAdmin:WebPipe', function(callbackId, method, path, headers, 
 
   -- Adding auth information for NUI routes
   if path:sub(1, 5) == '/nui/' then
-    headers['X-TxAdmin-Token'] = TX_LUACOMTOKEN
-    headers['X-TxAdmin-Identifiers'] = table.concat(GetPlayerIdentifiers(s), ', ')
+    headers['X-nineadmin-Token'] = TX_LUACOMTOKEN
+    headers['X-nineadmin-Identifiers'] = table.concat(GetPlayerIdentifiers(s), ', ')
   else
-    headers['X-TxAdmin-Token'] = 'not_required' -- so it's easy to detect webpipes
+    headers['X-nineadmin-Token'] = 'not_required' -- so it's easy to detect webpipes
   end
 
   

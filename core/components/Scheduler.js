@@ -190,7 +190,7 @@ export default class Scheduler {
             const discordMsg = globals.translator.t('restarter.schedule_warn_discord', tOptions);
             globals.discordBot.sendAnnouncement(discordMsg);
 
-            // Dispatch `txAdmin:events:announcement`
+            // Dispatch `nineadmin:events:announcement`
             //TODO: remove disableChatWarnings?
             if (!this.config.disableChatWarnings) {
                 const serverMsg = globals.translator.t('restarter.schedule_warn', tOptions);
@@ -200,7 +200,7 @@ export default class Scheduler {
                 });
             }
 
-            //Dispatch `txAdmin:events:scheduledRestart` 
+            //Dispatch `nineadmin:events:scheduledRestart` 
             globals.fxRunner.sendEvent('scheduledRestart', {
                 secondsRemaining: nextDistMins * 60,
             });

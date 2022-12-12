@@ -1,13 +1,13 @@
 import consts from "./consts";
 
 /**
- * txAdmin in ASCII
+ * nineadmin in ASCII
  */
 let __ascii: string;
-export const txAdminASCII = () => {
+export const nineadminASCII = () => {
     //NOTE: precalculating the ascii art for efficiency
     // import figlet from 'figlet';
-    // let ascii = figlet.textSync('txAdmin');
+    // let ascii = figlet.textSync('nineadmin');
     // let b64 = Buffer.from(ascii).toString('base64');
     // console.log(b64);
     if (!__ascii) {

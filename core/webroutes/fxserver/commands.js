@@ -69,7 +69,7 @@ export default async function FXServerCommands(ctx) {
         if (!ensurePermission(ctx, 'players.message')) return false;
         const message = (parameter ?? '').trim();
 
-        // Dispatch `txAdmin:events:announcement`
+        // Dispatch `nineadmin:events:announcement`
         const cmdOk = globals.fxRunner.sendEvent('announcement', {
             message,
             author: ctx.session.auth.username,

@@ -6,7 +6,7 @@
             <!-- Footer -->
             <% if (isWebInterface) { %>
                 <footer class="c-footer text-center">
-                    <div class="mx-auto d-md-none"> <strong>v<%= txAdminVersion %></strong> atop FXServer <strong><%= fxServerVersion %></strong></div>
+                    <div class="mx-auto d-md-none"> <strong>v<%= nineadminVersion %></strong> atop FXServer <strong><%= fxServerVersion %></strong></div>
                     <div class="d-sm-down-none"> 
                         &copy; 2019-<%= (new Date).getUTCFullYear() %>
                         <a href="https://github.com/Vasilew69" class="credit-links" target="_blank">Vasilew</a>, under 
@@ -16,7 +16,7 @@
                         <% if (txaOutdated || fxsOutdated) { %>
                             <strong class="text-danger">(outdated)</strong>
                         <% } %>
-                        <strong>v<%= txAdminVersion %></strong> atop FXServer <strong><%= fxServerVersion %></strong>
+                        <strong>v<%= nineadminVersion %></strong> atop FXServer <strong><%= fxServerVersion %></strong>
                     </div>
                 </footer>
             <% } %>
@@ -37,8 +37,8 @@
     <script src="<%= resourcePath %>js/bootstrap-notify.min.js"></script>
     <script src="<%= resourcePath %>js/jquery-confirm.min.js"></script>
     <script src="<%= resourcePath %>js/humanizeDuration.min.js"></script>
-    <script src="<%= resourcePath %>js/txadmin/base.js"></script>
-    <script src="<%= resourcePath %>js/txadmin/main.js"></script>
-    <script src="<%= resourcePath %>js/txadmin/players.js"></script>
+    <script src="<%= resourcePath %>js/nineadmin/base.js"></script>
+    <script src="<%= resourcePath %>js/nineadmin/main.js"></script>
+    <script src="<%= resourcePath %>js/nineadmin/players.js"></script>
 </body>
 </html>

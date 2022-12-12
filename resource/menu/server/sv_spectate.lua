@@ -1,5 +1,5 @@
 --Check Environment
-if GetConvar('txAdminServerMode', 'false') ~= 'true' then
+if GetConvar('nineadminServerMode', 'false') ~= 'true' then
   return
 end
 
@@ -7,7 +7,7 @@ end
 -- bucket so we can use it on end spectate.
 local ORIGINAL_SPEC_BUCKET = {}
 
-RegisterNetEvent('txAdmin:menu:spectatePlayer', function(id)
+RegisterNetEvent('nineadmin:menu:spectatePlayer', function(id)
   local src = source
   -- Sanity as this is still converted tonumber on client side
   if type(id) ~= 'string' and type(id) ~= 'number' then
@@ -39,12 +39,12 @@ RegisterNetEvent('txAdmin:menu:spectatePlayer', function(id)
     end
 
     local tgtCoords = GetEntityCoords(target)
-    TriggerClientEvent('txAdmin:menu:specPlayerResp', src, id, tgtCoords)
+    TriggerClientEvent('nineadmin:menu:specPlayerResp', src, id, tgtCoords)
   end
   TriggerEvent('txaLogger:menuEvent', src, 'spectatePlayer', allow, id)
 end)
 
-RegisterNetEvent('txAdmin:menu:endSpectate', function()
+RegisterNetEvent('nineadmin:menu:endSpectate', function()
   local src = source
   local allow = PlayerHasTxPermission(src, 'players.spectate')
   if allow then

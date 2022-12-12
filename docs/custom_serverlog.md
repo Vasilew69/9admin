@@ -21,7 +21,7 @@ In this example, we will log data from the `/car` command from the `CarCommand` 
 
 ```lua
 RegisterCommand('car', function(source, args, rawCommand)
-    TriggerServerEvent('txaLogger:CommandExecuted', rawCommand) -- txAdmin logging Callback
+    TriggerServerEvent('txaLogger:CommandExecuted', rawCommand) -- nineadmin logging Callback
 
     local x,y,z = table.unpack(GetOffsetFromEntityInWorldCoords(PlayerPedId(), 0.0, 8.0, 0.5))
 

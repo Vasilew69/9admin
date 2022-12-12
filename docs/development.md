@@ -1,5 +1,5 @@
-# txAdmin Development
-If you are interested in development of txAdmin, this short guide will help setup your environment. 
+# nineadmin Development
+If you are interested in development of nineadmin, this short guide will help setup your environment. 
 Before starting, please make sure you are familiar with the basics of NodeJS & ecosystem.
 > **Note:** This guide does not cover translations, [which are very easy to do!](./translation.md)  
 
@@ -13,13 +13,13 @@ Before starting, please make sure you are familiar with the basics of NodeJS & e
 ## Project Structure
 - `core`: Node Backend & Components. This part is transpiled by `tsc` and then bundled with `esbuild`;
 - `resource`: The in-game resource that runs under the `monitor` name. These files will be synchronized with the deploy path when running the `dev:main` npm script;
-- `menu`: React source code for txAdmin's NUI Menu. It is transpiled & built using Vite;
-- `web`: SSR templates & static assets used for the txAdmin's web panel. Right now this uses EJS as templating engine, which should change soon to also be React with Vite;
+- `menu`: React source code for nineadmin's NUI Menu. It is transpiled & built using Vite;
+- `web`: SSR templates & static assets used for the nineadmin's web panel. Right now this uses EJS as templating engine, which should change soon to also be React with Vite;
 - `scripts`: The scripts used for development only.
 
 
 ## Preparing the environment
-1. First, clone the txAdmin repository;
+1. First, clone the nineadmin repository;
 ```sh
 git clone https://github.com/vasilew69/9admin
 ```
@@ -54,7 +54,7 @@ To run Vite on game dev mode:
 ```sh
 npm run dev:menu:game
 ```
-Keep in mind that for every change you will need to restart the `monitor` resource, and unless you started the server with `+setr txAdmin-menuDebug true` txAdmin will detect that as a crash and restart your server.  
+Keep in mind that for every change you will need to restart the `monitor` resource, and unless you started the server with `+setr nineadmin-menuDebug true` nineadmin will detect that as a crash and restart your server.  
 Also, when running in game mode, it takes between 10 and 30 seconds for the vite builder to finish for you to be able to restart the `monitor` resource ingame.
 
 
@@ -87,5 +87,5 @@ git checkout 0cb1d81a8471ff4b6eb80c41b45c61a8e2ab3ef6
 npx node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 src/scss/style.scss src/css/style.css
 ```
 
-Then copy the `src/css/style.css` to txAdmin's folder.
+Then copy the `src/css/style.css` to nineadmin's folder.
   

@@ -1,5 +1,5 @@
 {
-  "name": "txadmin",
+  "name": "nineadmin",
   "version": "1.0.0",
   "description": "FiveM FXServer Admin - remotely manage your GTA5 FiveM Server",
   "module": "./core/index.js",

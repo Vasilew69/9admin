@@ -1,8 +1,8 @@
 -- =============================================
---  Report all resource events to txAdmin
+--  Report all resource events to nineadmin
 -- =============================================
 --Check Environment
-if GetConvar('txAdminServerMode', 'false') ~= 'true' then
+if GetConvar('nineadminServerMode', 'false') ~= 'true' then
     return
 end
 
@@ -10,7 +10,7 @@ end
 local function reportResourceEvent(event, resource)
     -- print(string.format("\27[107m\27[30m %s: %s \27[0m", event, resource))
     PrintStructuredTrace(json.encode({
-        type = 'txAdminResourceEvent',
+        type = 'nineadminResourceEvent',
         event = event,
         resource = resource
     }))
@@ -48,7 +48,7 @@ AddEventHandler('onServerResourceStop', function(resource)
     reportResourceEvent('onServerResourceStop', resource)
 end)
 
--- TODO: As soon as the server start, send full list of resources to txAdmin
+-- TODO: As soon as the server start, send full list of resources to nineadmin
 -- CreateThread(function()
 --     blabla
 -- end)

@@ -13,7 +13,7 @@ const { dir, log, logOk, logWarn, logError } = logger(modulename);
 //Consts
 type IdStorageTypes = DatabaseObjectType | Set<string>;
 const maxAttempts = 10;
-const noIdErrorMessage = 'Unnable to generate new Random ID possibly due to the decreased available entropy. Please send a screenshot of the detailed information in the terminal for the txAdmin devs.';
+const noIdErrorMessage = 'Unnable to generate new Random ID possibly due to the decreased available entropy. Please send a screenshot of the detailed information in the terminal for the nineadmin devs.';
 
 
 /**
@@ -50,7 +50,7 @@ const printDiagnostics = async () => {
     logError(`Uptime: ${uptime}`);
     logError(`Entropy: ${entropy}`);
     logError(`Distro: ${osDistro}`);
-    logError(`9Admin: ${txEnv.txAdminVersion}`);
+    logError(`9Admin: ${txEnv.nineadminVersion}`);
     logError(`FXServer: ${txEnv.fxServerVersion}`);
     logError(`ZAP: ${convars.isZapHosting}`);
     logError(`Unique Test: secure ${secureStorage.size}/100, non-secure ${nonsecureStorage.size}/100`);

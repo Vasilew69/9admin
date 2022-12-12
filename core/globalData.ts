@@ -35,7 +35,7 @@ const getConvarString = (convarName: string) => {
 
 
 /**
- * txAdmin Env
+ * nineadmin Env
  */
 //Get OSType
 const osTypeVar = os.type();
@@ -69,19 +69,19 @@ if (fxServerVersion === 9999) {
     logDie(`This version of FXServer is too outdated and NOT compatible with 9Admin, please update to artifact/build ${minFXServerVersion} or newer!`);
 }
 
-//Getting txAdmin version
-const txAdminVersion = GetResourceMetadata(resourceName, 'version', 0);
-if (typeof txAdminVersion !== 'string' || txAdminVersion == 'null') {
+//Getting nineadmin version
+const nineadminVersion = GetResourceMetadata(resourceName, 'version', 0);
+if (typeof nineadminVersion !== 'string' || nineadminVersion == 'null') {
     logDie('9Admin version not set or in the wrong format');
 }
 
-//Get txAdmin Resource Path
-let txAdminResourcePath;
-const txAdminResourcePathConvar = GetResourcePath(resourceName);
-if (typeof txAdminResourcePathConvar !== 'string' || txAdminResourcePathConvar == 'null') {
+//Get nineadmin Resource Path
+let nineadminResourcePath;
+const nineadminResourcePathConvar = GetResourcePath(resourceName);
+if (typeof nineadminResourcePathConvar !== 'string' || nineadminResourcePathConvar == 'null') {
     logDie('Could not resolve 9Admin resource path');
 } else {
-    txAdminResourcePath = cleanPath(txAdminResourcePathConvar);
+    nineadminResourcePath = cleanPath(nineadminResourcePathConvar);
 }
 
 //Get citizen Root
@@ -125,8 +125,8 @@ if (nonASCIIRegex.test(fxServerPath) || nonASCIIRegex.test(dataPath)) {
 /**
  * Convars - Debug
  */
-const isDevMode = getConvarBool('txAdminDevMode');
-const verboseConvar = getConvarBool('txAdminVerbose');
+const isDevMode = getConvarBool('nineadminDevMode');
+const verboseConvar = getConvarBool('nineadminVerbose');
 const debugPlayerlistGenerator = getConvarBool('txDebugPlayerlistGenerator');
 const debugExternalSource = getConvarString('txDebugExternalSource');
 
@@ -135,8 +135,8 @@ const debugExternalSource = getConvarString('txDebugExternalSource');
  * Convars - ZAP dependant
  */
 //Checking for ZAP Configuration file
-const zapCfgFile = path.join(dataPath, 'txAdminZapConfig.json');
-let zapCfgData, isZapHosting, forceInterface, forceFXServerPort, txAdminPort, loginPageLogo, defaultMasterAccount, deployerDefaults;
+const zapCfgFile = path.join(dataPath, 'nineadminZapConfig.json');
+let zapCfgData, isZapHosting, forceInterface, forceFXServerPort, nineadminPort, loginPageLogo, defaultMasterAccount, deployerDefaults;
 const loopbackInterfaces = ['::1', '127.0.0.1', '127.0.1.1'];
 if (fs.existsSync(zapCfgFile)) {
     log('Loading ZAP-Hosting configuration file.');
@@ -145,7 +145,7 @@ if (fs.existsSync(zapCfgFile)) {
         isZapHosting = true;
         forceInterface = zapCfgData.interface;
         forceFXServerPort = zapCfgData.fxServerPort;
-        txAdminPort = zapCfgData.txAdminPort;
+        nineadminPort = zapCfgData.nineadminPort;
         loginPageLogo = zapCfgData.loginPageLogo;
         defaultMasterAccount = false;
         deployerDefaults = {
@@ -181,19 +181,19 @@ if (fs.existsSync(zapCfgFile)) {
     defaultMasterAccount = false;
     deployerDefaults = false;
 
-    const txAdminPortConvar = GetConvar('txAdminPort', '40120').trim();
-    if (!/^\d+$/.test(txAdminPortConvar)) logDie('txAdminPort is not valid.');
-    txAdminPort = parseInt(txAdminPortConvar);
+    const nineadminPortConvar = GetConvar('nineadminPort', '40120').trim();
+    if (!/^\d+$/.test(nineadminPortConvar)) logDie('nineadminPort is not valid.');
+    nineadminPort = parseInt(nineadminPortConvar);
 
-    const txAdminInterfaceConvar = getConvarString('txAdminInterface');
-    if (!txAdminInterfaceConvar) {
+    const nineadminInterfaceConvar = getConvarString('nineadminInterface');
+    if (!nineadminInterfaceConvar) {
         forceInterface = false;
     } else {
-        if (!/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/.test(txAdminInterfaceConvar)) logDie('txAdminInterface is not valid.');
-        forceInterface = txAdminInterfaceConvar;
+        if (!/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/.test(nineadminInterfaceConvar)) logDie('nineadminInterface is not valid.');
+        forceInterface = nineadminInterfaceConvar;
     }
 }
-if (verboseConvar) dir({ isZapHosting, forceInterface, forceFXServerPort, txAdminPort, loginPageLogo, deployerDefaults });
+if (verboseConvar) dir({ isZapHosting, forceInterface, forceFXServerPort, nineadminPort, loginPageLogo, deployerDefaults });
 
 
 /**
@@ -203,8 +203,8 @@ export const txEnv = Object.freeze({
     osType,
     isWindows,
     fxServerVersion,
-    txAdminVersion,
-    txAdminResourcePath,
+    nineadminVersion,
+    nineadminResourcePath,
     fxServerPath,
     dataPath
 });
@@ -218,7 +218,7 @@ export const convars = Object.freeze({
     isZapHosting,
     forceInterface,
     forceFXServerPort,
-    txAdminPort,
+    nineadminPort,
     loginPageLogo,
     defaultMasterAccount,
     deployerDefaults,

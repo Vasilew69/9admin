@@ -45,11 +45,11 @@
     },
     "nui_menu": {
         "misc": {
-            "help_message": "txAdmin Menü aktiviert, tippe /tx ein, um es zu öffnen.\nDu kannst zusätzlich in den Einstellungen eine Taste zuweisen [Einstellungen > Steuerung > FiveM > txAdmin].",
-            "menu_not_allowed": "Deine IDs stimmen mit keiner bei txAdmin registrierten überein.\n Wenn du bei txAdmin registriert bist, stelle sicher, dass die richtigen IDs gespeichert sind.",
+            "help_message": "nineadmin Menü aktiviert, tippe /tx ein, um es zu öffnen.\nDu kannst zusätzlich in den Einstellungen eine Taste zuweisen [Einstellungen > Steuerung > FiveM > nineadmin].",
+            "menu_not_allowed": "Deine IDs stimmen mit keiner bei nineadmin registrierten überein.\n Wenn du bei nineadmin registriert bist, stelle sicher, dass die richtigen IDs gespeichert sind.",
             "no_perms": "Dafür hast du keine Berechtigung.",
             "unknown_error": "Ein unbekannter Fehler ist aufgetreten.",
-            "not_enabled": "Das txAdmin Menü ist nicht aktiviert. Du kannst es in den txAdmin Einstellungen aktivieren.",
+            "not_enabled": "Das nineadmin Menü ist nicht aktiviert. Du kannst es in den nineadmin Einstellungen aktivieren.",
             "announcement_title": "Serverweite Ankündigung von %{author}:",
             "dialog_empty_input": "Du kannst keine leere Eingabe senden.",
             "directmessage_title": "DM von Admin %{author}:"

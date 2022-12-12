@@ -301,7 +301,7 @@
             viewNewerBtn.disabled = false;
 
             //Get log from API
-            txAdminAPI({
+            nineadminAPI({
                 type: 'GET',
                 url: `/serverLog/partial?dir=${direction}&ref=${ref}`,
                 timeout: REQ_TIMEOUT_MEDIUM,

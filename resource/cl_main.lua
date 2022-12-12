@@ -6,17 +6,17 @@ ServerCtx = false
 -- NOTE: for now the ServerCtx is only being set when the menu tries to load (enabled or not)
 --- Will update ServerCtx based on GlobalState and will send it to NUI
 function updateServerCtx()
-    _ServerCtx = GlobalState.txAdminServerCtx
+    _ServerCtx = GlobalState.nineadminServerCtx
     if _ServerCtx == nil then
         print('^3ServerCtx fallback support activated.')
-        TriggerServerEvent('txAdmin:events:getServerCtx')
+        TriggerServerEvent('nineadmin:events:getServerCtx')
     else
         ServerCtx = _ServerCtx
         print('^2ServerCtx updated from global state')
     end
 end
 
-RegisterNetEvent('txAdmin:events:setServerCtx', function(ctx)
+RegisterNetEvent('nineadmin:events:setServerCtx', function(ctx)
     if type(ctx) ~= 'table' then return end
     ServerCtx = ctx
     print('^2ServerCtx updated from server event.')
@@ -29,7 +29,7 @@ end)
 --  Announcement, DirectMessage and Warn handling
 -- =============================================
 -- Dispatch Announcements
-RegisterNetEvent('txAdmin:receiveAnnounce', function(message, author)
+RegisterNetEvent('nineadmin:receiveAnnounce', function(message, author)
     sendMenuMessage(
         'addAnnounceMessage',
         {
@@ -38,7 +38,7 @@ RegisterNetEvent('txAdmin:receiveAnnounce', function(message, author)
         }
     )
 end)
-RegisterNetEvent('txAdmin:receiveDirectMessage', function(message, author)
+RegisterNetEvent('nineadmin:receiveDirectMessage', function(message, author)
     sendMenuMessage(
         'addDirectMessage',
         {
@@ -52,7 +52,7 @@ end)
 local isRDR = not TerraingridActivate and true or false
 local dismissKey = isRDR and 0xD9D0E1C0 or 22
 local dismissKeyGroup = isRDR and 1 or 0
-RegisterNetEvent('txAdminClient:warn', function(author, reason)
+RegisterNetEvent('nineadminClient:warn', function(author, reason)
     toggleMenuVisibility(false)
     sendMenuMessage('setWarnOpen', {
         reason = reason,
@@ -83,40 +83,40 @@ end)
 --  Other stuff
 -- =============================================
 -- Removing unwanted chat suggestions
--- We only want suggestion for: /tx, /txAdmin-debug, /txAdmin-reauth
+-- We only want suggestion for: /tx, /nineadmin-debug, /nineadmin-reauth
 -- The suggestion is added after 500ms, so we need to wait more
 CreateThread(function()
     Wait(1000)
     --Commands
-    TriggerEvent('chat:removeSuggestion', '/txadmin') --too spammy
+    TriggerEvent('chat:removeSuggestion', '/nineadmin') --too spammy
     TriggerEvent('chat:removeSuggestion', '/txaPing')
     TriggerEvent('chat:removeSuggestion', '/txaKickAll')
     TriggerEvent('chat:removeSuggestion', '/txaEvent')
     TriggerEvent('chat:removeSuggestion', '/txaReportResources')
 
     --Keybinds
-    TriggerEvent('chat:removeSuggestion', '/txAdmin:menu:noClipToggle')
-    TriggerEvent('chat:removeSuggestion', '/txAdmin:menu:endSpectate')
-    TriggerEvent('chat:removeSuggestion', '/txAdmin:menu:openPlayersPage')
-    TriggerEvent('chat:removeSuggestion', '/txAdmin:menu:togglePlayerIDs')
+    TriggerEvent('chat:removeSuggestion', '/nineadmin:menu:noClipToggle')
+    TriggerEvent('chat:removeSuggestion', '/nineadmin:menu:endSpectate')
+    TriggerEvent('chat:removeSuggestion', '/nineadmin:menu:openPlayersPage')
+    TriggerEvent('chat:removeSuggestion', '/nineadmin:menu:togglePlayerIDs')
 
     --Convars
-    TriggerEvent('chat:removeSuggestion', '/txAdmin-version')
-    TriggerEvent('chat:removeSuggestion', '/txAdmin-locale')
-    TriggerEvent('chat:removeSuggestion', '/txAdmin-localeFile')
-    TriggerEvent('chat:removeSuggestion', '/txAdmin-verbose')
-    TriggerEvent('chat:removeSuggestion', '/txAdmin-luaComHost')
-    TriggerEvent('chat:removeSuggestion', '/txAdmin-luaComToken')
-    TriggerEvent('chat:removeSuggestion', '/txAdmin-checkPlayerJoin')
-    TriggerEvent('chat:removeSuggestion', '/txAdmin-pipeToken')
-    TriggerEvent('chat:removeSuggestion', '/txAdminServerMode')
+    TriggerEvent('chat:removeSuggestion', '/nineadmin-version')
+    TriggerEvent('chat:removeSuggestion', '/nineadmin-locale')
+    TriggerEvent('chat:removeSuggestion', '/nineadmin-localeFile')
+    TriggerEvent('chat:removeSuggestion', '/nineadmin-verbose')
+    TriggerEvent('chat:removeSuggestion', '/nineadmin-luaComHost')
+    TriggerEvent('chat:removeSuggestion', '/nineadmin-luaComToken')
+    TriggerEvent('chat:removeSuggestion', '/nineadmin-checkPlayerJoin')
+    TriggerEvent('chat:removeSuggestion', '/nineadmin-pipeToken')
+    TriggerEvent('chat:removeSuggestion', '/nineadminServerMode')
 
     --Menu convars
-    TriggerEvent('chat:removeSuggestion', '/txAdmin-menuEnabled')
-    TriggerEvent('chat:removeSuggestion', '/txAdmin-menuAlignRight')
-    TriggerEvent('chat:removeSuggestion', '/txAdmin-menuPageKey')
-    TriggerEvent('chat:removeSuggestion', '/txAdmin-menuDebug')
-    TriggerEvent('chat:removeSuggestion', '/txAdmin-playerIdDistance')
-    TriggerEvent('chat:removeSuggestion', '/txAdmin-menuDrunkDuration')
+    TriggerEvent('chat:removeSuggestion', '/nineadmin-menuEnabled')
+    TriggerEvent('chat:removeSuggestion', '/nineadmin-menuAlignRight')
+    TriggerEvent('chat:removeSuggestion', '/nineadmin-menuPageKey')
+    TriggerEvent('chat:removeSuggestion', '/nineadmin-menuDebug')
+    TriggerEvent('chat:removeSuggestion', '/nineadmin-playerIdDistance')
+    TriggerEvent('chat:removeSuggestion', '/nineadmin-menuDrunkDuration')
 end)
 

@@ -120,7 +120,7 @@ async function handleBandIds(ctx: Context, sess: any): Promise<GenericApiResp> {
             kickMessage = globals.translator.t('ban_messages.kick_permanent', tOptions);
         }
 
-        // Dispatch `txAdmin:events:playerBanned`
+        // Dispatch `nineadmin:events:playerBanned`
         globals.fxRunner.sendEvent('playerBanned', {
             author: sess.auth.username,
             reason,
@@ -171,7 +171,7 @@ async function handleRevokeAction(ctx: Context, sess: any): Promise<GenericApiRe
     }
 
     try {
-        // Dispatch `txAdmin:events:actionRevoked`
+        // Dispatch `nineadmin:events:actionRevoked`
         globals.fxRunner.sendEvent('actionRevoked', {
             actionId: action.id,
             actionType: action.type,

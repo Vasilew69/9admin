@@ -17,14 +17,14 @@ const printExpirationBanner = (timeUntilExpiration) => {
     printWarning('This build is meant to be used by 9Admin beta testers.');
     printWarning('9Admin will automatically shut down when this pre-release expires.');
     printWarning(`Time until expiration: ${timeLeftStyled}.`);
-    printWarning('For more information: https://discord.gg/txAdmin.');
+    printWarning('For more information: https://discord.gg/nineadmin.');
 }
 
 const cronCheckExpiration = () => {
     const timeUntilExpiration = TX_PRERELEASE_BUILD_EXPIRATION - Date.now();
     if (timeUntilExpiration < 0) {
         printWarning('This pre-release version has expired, please update your 9Admin.');
-        printWarning('For more information: https://discord.gg/txAdmin.');
+        printWarning('For more information: https://discord.gg/nineadmin.');
         process.exit(1);
     } else if(timeUntilExpiration < 24 * 60 * 60 * 1000){
         printExpirationBanner(timeUntilExpiration);

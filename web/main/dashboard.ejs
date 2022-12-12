@@ -262,7 +262,7 @@
     <div class="col-md-6 text-center">
         <div id="tsMessage" class="d-none">
             🏆 With <span id="tsMedianPlayerCount">?</span> median players, your server may be in the worldwide Top 500 servers. <br>
-            Join <strong><a href="https://discord.gg/qmMq79D59T" target="_blank">discord.gg/txAdmin</a></strong> to check the rank and maybe get the <i>TOP SERVER</i> role.
+            Join <strong><a href="https://discord.gg/qmMq79D59T" target="_blank">discord.gg/nineadmin</a></strong> to check the rank and maybe get the <i>TOP SERVER</i> role.
         </div>
         <% if (fxsOutdated) { %>
             <div class="alert alert-<%= fxsOutdated.color %> border-<%= fxsOutdated.color %>" role="alert">
@@ -271,7 +271,7 @@
                 <i><%= fxsOutdated.subtext %></i>
             </div>
         <% } %>
-        <% if (txAdminVersion.includes('-')) { %>
+        <% if (nineadminVersion.includes('-')) { %>
             <span class="text-danger font-weight-bold">
                 You are using a pre-release version of 9Admin destined for developers and beta testers only! <br>
                 Your server stability might be impacted by this.
@@ -285,7 +285,7 @@
 
 <script src="https://d3js.org/d3.v6.min.js"></script>
 <script type="module">
-    import { drawHeatmap } from "<%= basePath %>js/txadmin/chart.js";
+    import { drawHeatmap } from "<%= basePath %>js/nineadmin/chart.js";
 
     //Elements & vars
     let perfData;
@@ -373,7 +373,7 @@
     async function controlCommand(action) {
         let message = null;
         if(action == 'admin_broadcast'){
-            message = await txAdminPrompt({
+            message = await nineadminPrompt({
                 modalColor: 'orange',
                 confirmBtnClass: 'btn-orange',
                 title: 'Announcement',
@@ -386,7 +386,7 @@
                 return;
             }
         }else if(action == 'kick_all'){
-            message = await txAdminPrompt({
+            message = await nineadminPrompt({
                 modalColor: 'red',
                 confirmBtnClass: 'btn-red',
                 title: 'Kick All Players',
@@ -399,7 +399,7 @@
         if(message === null || message === false) return;
 
         const notify = $.notify({ message: 'Executing Command...' }, {});
-        txAdminAPI({
+        nineadminAPI({
             type: "POST",
             url: '/fxserver/commands',
             data: {
@@ -422,7 +422,7 @@
     //============================================== Scheduler Stuff
     const schedulerApiCall = (action, parameter) => {
         const notify = $.notify({ message: 'Executing Command...' }, {});
-        txAdminAPI({
+        nineadminAPI({
             type: "POST",
             url: '/fxserver/schedule',
             data: {action, parameter},
@@ -447,7 +447,7 @@
         statusCard.nextRestartBtnEnable.classList.add('d-none');
     }
     document.getElementById('ctrl-schedule-restart').onclick = async () => {
-        const input = await txAdminPrompt({
+        const input = await nineadminPrompt({
             modalColor: 'orange',
             confirmBtnClass: 'btn-orange',
             title: 'Schedule Restart',

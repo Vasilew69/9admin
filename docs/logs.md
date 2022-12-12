@@ -1,5 +1,5 @@
 # Logging
-In version v4.6.0, **txAdmin** added support for persistent logging with file rotate, meaning you will have an organized folder (`txData/<profile>/logs/`) containing your log files up to a maximum size and number of days.
+In version v4.6.0, **nineadmin** added support for persistent logging with file rotate, meaning you will have an organized folder (`txData/<profile>/logs/`) containing your log files up to a maximum size and number of days.
 
 > Note: player warn/ban/whitelist actions are not just stored in the Admin Logs, but also on the players database.
 
@@ -25,7 +25,7 @@ Contains all actions that happen inside the server, for example player join/leav
 - maxSize: 10G
 
 ## Console log (not released):
-Contains everything that txAdmin prints on the console.
+Contains everything that nineadmin prints on the console.
 - Recent Buffer: last 500 lines
 - Interval: 1d
 - maxFiles: 7

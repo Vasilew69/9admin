@@ -23,13 +23,13 @@ export default class HealthMonitor {
             timeout: 1500,
             defaultWarningTimes: [30, 15, 10, 5, 4, 3, 2, 1],
 
-            //HTTP GET /dynamic.json from txAdmin to sv_main.lua
+            //HTTP GET /dynamic.json from nineadmin to sv_main.lua
             healthCheck: {
                 failThreshold: 15,
                 failLimit: 300,
             },
 
-            //HTTP POST /intercom/monitor from sv_main.lua to txAdmin
+            //HTTP POST /intercom/monitor from sv_main.lua to nineadmin
             heartBeat: {
                 failThreshold: 15,
                 failLimit: 60,
@@ -150,7 +150,7 @@ export default class HealthMonitor {
     /**
      * Refreshes the Server Status and calls for a restart if neccessary.
      *  - HealthCheck: performing an GET to the /dynamic.json file
-     *  - HeartBeat: receiving an intercom POST or FD3 txAdminHeartBeat event
+     *  - HeartBeat: receiving an intercom POST or FD3 nineadminHeartBeat event
      */
     refreshServerStatus() {
         //Check if the server is supposed to be offline
@@ -242,7 +242,7 @@ export default class HealthMonitor {
                 'restarter.partial_hang_warn_discord',
                 { servername: globals.config.serverName },
             ));
-            // Dispatch `txAdmin:events:announcement`
+            // Dispatch `nineadmin:events:announcement`
             const _cmdOk = globals.fxRunner.sendEvent('announcement', {
                 author: '9Admin',
                 message: globals.translator.t('restarter.partial_hang_warn'),

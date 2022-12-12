@@ -350,7 +350,7 @@
         if(activeSearchString) urlSearch.append('searchString', activeSearchString);
         if(page) urlSearch.append('page', page);
 
-        txAdminAPI({
+        nineadminAPI({
             type: "GET",
             url: `/whitelist/requests?${urlSearch.toString()}`,
             timeout: REQ_TIMEOUT_LONG,
@@ -398,7 +398,7 @@
     function approveDenyRequest(reqId, action){
         const notify = $.notify({ message: '<p class="text-center">Processing...</p>' }, {});
 
-        txAdminAPI({
+        nineadminAPI({
             type: 'POST',
             url: `/whitelist/requests/${action}`,
             data: {reqId},
@@ -426,11 +426,11 @@
             title: 'Deny all whitelist requests?',
             content: `Players will still be able to try to join again, and will receive a new request ID.`,
         };
-        if (!await txAdminConfirm(confirmOptions)) return;
+        if (!await nineadminConfirm(confirmOptions)) return;
 
         const notify = $.notify({ message: '<p class="text-center">Processing...</p>' }, {});
 
-        txAdminAPI({
+        nineadminAPI({
             type: 'POST',
             url: `/whitelist/requests/deny_all`,
             data: {newestVisible: newestRequest},
@@ -504,7 +504,7 @@
         }
     }
 
-    txAdminAPI({
+    nineadminAPI({
         type: "GET",
         url: '/whitelist/approvals',
         timeout: REQ_TIMEOUT_LONG,
@@ -540,7 +540,7 @@
     async function addApproval(){
         //TODO: when migrating to react, get this from the shared folder
         const acceptedIdTypes = ['discord', 'fivem', 'license', 'license2', 'live', 'steam', 'xbl'];
-        let identifier = await txAdminPrompt({
+        let identifier = await nineadminPrompt({
             modalColor: 'green',
             confirmBtnClass: 'btn-green',
             title: 'Whitelist player',
@@ -557,7 +557,7 @@
         }
 
         const notify = $.notify({ message: '<p class="text-center">Processing...</p>' }, {});
-        txAdminAPI({
+        nineadminAPI({
             type: 'POST',
             url: '/whitelist/approvals/add',
             data: {identifier},
@@ -585,7 +585,7 @@
     function removeApproval(identifier){
         const notify = $.notify({ message: '<p class="text-center">Processing...</p>' }, {});
 
-        txAdminAPI({
+        nineadminAPI({
             type: 'POST',
             url: '/whitelist/approvals/remove',
             data: {identifier},

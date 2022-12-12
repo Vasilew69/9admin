@@ -6,8 +6,8 @@ import { getLogSizes } from './loggerUtils.js'
 import logger from '@core/extras/console.js';
 const { dir, log, logOk, logWarn, logError } = logger(modulename);
 
-// NOTE: to turn this into an universal class outside txAdmin() instance
-// when a txAdmin profile starts, it does universal.logger.start(profilename)
+// NOTE: to turn this into an universal class outside nineadmin() instance
+// when a nineadmin profile starts, it does universal.logger.start(profilename)
 // and then the logger can be called as universal.logger.profiles[profilename].fxserver
 export default class Logger {
     constructor(config) {

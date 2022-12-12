@@ -1,5 +1,5 @@
 // CodeMirror fivem-cfg syntax highlight
-// Written by Vasilew for https://github.com/tabarra/txAdmin
+// Written by Vasilew for https://github.com/tabarra/nineadmin
 
 CodeMirror.defineSimpleMode('fivem-cfg', {
     // The start state contains the rules that are intially used

@@ -28,7 +28,7 @@ import { useKeyboardNavContext } from "./KeyboardNavProvider";
 import { useSnackbar } from "notistack";
 import { useTranslate } from "react-polyglot";
 import { useSetDisableTab, useSetListenForExit } from "../state/keys.state";
-import { txAdminMenuPage, usePageValue } from "../state/page.state";
+import { nineadminMenuPage, usePageValue } from "../state/page.state";
 
 const StyledDialogTitle = styled(DialogTitle)(({theme}) => ({
   color: theme.palette.primary.main,
@@ -81,7 +81,7 @@ export const DialogProvider: React.FC<DialogProviderProps> = ({ children }) => {
   const t = useTranslate();
 
   useEffect(() => {
-    if (curPage === txAdminMenuPage.Main) {
+    if (curPage === nineadminMenuPage.Main) {
       setDisabledKeyNav(dialogOpen);
       setDisableTabs(dialogOpen);
     }

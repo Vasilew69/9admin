@@ -12,7 +12,7 @@
 		<b>9Admin</b> is a <b>full featured</b> web panel to Manage & Monitor your FiveM/RedM Server remotely, in use by over <strong>18000</strong> servers worldwide at any given time.
 	</p>
 	<p align="center">
-		<a href="https://zap-hosting.com/txadmin4" target="_blank" rel="noopener">
+		<a href="https://zap-hosting.com/nineadmin4" target="_blank" rel="noopener">
 			<img src="docs/zaphosting.png" alt="zap-hosting"></img>
 		</a>
 	</p>
@@ -70,27 +70,27 @@
 Also, check our [Feature Graveyard](docs/feature_graveyard.md) for the features that are no longer among us (RIP).
 
 ## Running (Windows/Linux)
-**txAdmin is included in all FXServer builds** above 2524, so to run it for the first time simply do the following:
+**nineadmin is included in all FXServer builds** above 2524, so to run it for the first time simply do the following:
 - Update FXServer to the latest artifact/build (2524 or superior)
 - If Windows, run FXServer.exe | If Linux, run `screen ./run.sh`
-- Open one of the URLs shown and configure txAdmin
+- Open one of the URLs shown and configure nineadmin
 
-txAdmin requires to be launched from *inside* FXServer in monitor mode, to do that, just execute the `run.sh` or `FXServer.exe` without **any** `+exec` arguments.  
+nineadmin requires to be launched from *inside* FXServer in monitor mode, to do that, just execute the `run.sh` or `FXServer.exe` without **any** `+exec` arguments.  
   
 ### ConVars
 - **serverProfile:** The name of the server profile to start. Profiles are saved/loaded from the current directory inside the `txData` folder. The default is `default`.
-- **txAdminPort:** The TCP port to use as HTTP Server. The default is `40120`.
-- **txAdminInterface:** The interface to use as HTTP Server. The default is `0.0.0.0`.
+- **nineadminPort:** The TCP port to use as HTTP Server. The default is `40120`.
+- **nineadminInterface:** The interface to use as HTTP Server. The default is `0.0.0.0`.
 - **txDataPath:** The path of the data folder. The default on Windows is `<citizen_root>/../txData` and on Linux `<citizen_root>/../../../txData`.
-- **txAdminVerbose:** Set to `true` to print on the console more detailed information about errors and events. The default is `false`.
+- **nineadminVerbose:** Set to `true` to print on the console more detailed information about errors and events. The default is `false`.
   
 ConVar usage **example** for different port and profile:  
 ```bash
 # Windows
-./FXServer.exe +set serverProfile dev_server +set txAdminPort 40121
+./FXServer.exe +set serverProfile dev_server +set nineadminPort 40121
 
 # Linux
-./run.sh +set serverProfile dev_server +set txAdminPort 40121
+./run.sh +set serverProfile dev_server +set nineadminPort 40121
 ```
 
 ### Development

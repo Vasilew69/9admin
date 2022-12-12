@@ -30,9 +30,9 @@ export default async function Diagnostics(ctx) {
         headerTitle: 'Diagnostics',
         message: '',
     };
-    [data.host, data.txadmin, data.fxserver, data.proccesses] = await Promise.all([
+    [data.host, data.nineadmin, data.fxserver, data.proccesses] = await Promise.all([
         getHostData(),
-        gettxAdminData(),
+        getnineadminData(),
         getFXServerData(),
         getProcessesData(),
     ]);
@@ -69,7 +69,7 @@ async function getProcessesData() {
             let procName;
             let order = process.timestamp || 1;
             if (pid == process.pid) {
-                procName = 'txAdmin (inside FXserver)';
+                procName = 'nineadmin (inside FXserver)';
                 order = 0;
             } else if (curr.memory <= 10 * 1024 * 1024) {
                 procName = 'FXServer MiniDump';
@@ -152,7 +152,7 @@ async function getFXServerData() {
             resources: infoData.resources.length,
             onesync: (infoData.vars && infoData.vars.onesync_enabled === 'true') ? 'enabled' : 'disabled',
             maxClients: (infoData.vars && infoData.vars.sv_maxClients) ? infoData.vars.sv_maxClients : '--',
-            txAdminVersion: (infoData.vars && infoData.vars['txAdmin-version']) ? infoData.vars['txAdmin-version'] : '--',
+            nineadminVersion: (infoData.vars && infoData.vars['nineadmin-version']) ? infoData.vars['nineadmin-version'] : '--',
         };
     } catch (error) {
         logWarn('Failed to process FXServer information.');
@@ -202,9 +202,9 @@ async function getHostData() {
 
 //================================================================
 /**
- * Gets txAdmin Data
+ * Gets nineadmin Data
  */
-async function gettxAdminData() {
+async function getnineadminData() {
     const humanizeOptions = {
         round: true,
         units: ['d', 'h', 'm'],

@@ -54,7 +54,7 @@ export default class CitizenFXProvider {
     async getAuthURL(redirectUri, stateKern) {
         if (!this.ready) throw new Error(`${modulename} is not ready`);
 
-        const stateSeed = `txAdmin:${stateKern}`;
+        const stateSeed = `nineadmin:${stateKern}`;
         const state = crypto.createHash('SHA1').update(stateSeed).digest('hex');
         const url = await this.client.authorizationUrl({
             redirect_uri: redirectUri,
@@ -83,7 +83,7 @@ export default class CitizenFXProvider {
         if (typeof params.code == 'undefined') throw new Error('code not present');
 
         //Check the state
-        const stateSeed = `txAdmin:${stateKern}`;
+        const stateSeed = `nineadmin:${stateKern}`;
         const stateExpected = crypto.createHash('SHA1').update(stateSeed).digest('hex');
 
         //Exchange code for token

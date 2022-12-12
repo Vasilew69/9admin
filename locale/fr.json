@@ -45,11 +45,11 @@
     },
     "nui_menu": {
         "misc": {
-            "help_message": "Menu txAdmin activé, ecrivez /tx pour l'ouvrir.\nVous pouvez aussi configurer une touche [Paramètre du Jeu > Configuration des touches > FiveM > Menu: Open Main Page].",
-            "menu_not_allowed": "Votre identifiant ne coïncide avec aucun identifiant d'un administrateur sur txAdmin.\nSi vous êtes enregistré(e) sur txAdmin, allez dans Admin Manager et assurez-vous que votre identifiant est bien enregistré.",
+            "help_message": "Menu nineadmin activé, ecrivez /tx pour l'ouvrir.\nVous pouvez aussi configurer une touche [Paramètre du Jeu > Configuration des touches > FiveM > Menu: Open Main Page].",
+            "menu_not_allowed": "Votre identifiant ne coïncide avec aucun identifiant d'un administrateur sur nineadmin.\nSi vous êtes enregistré(e) sur nineadmin, allez dans Admin Manager et assurez-vous que votre identifiant est bien enregistré.",
             "no_perms": "Vous n'avez pas les permissions suffisantes.",
             "unknown_error": "Une erreur inconnue s'est produite.",
-            "not_enabled": "Le Menu txAdmin n'est pas activé ! Vous pouvez l'activer dans les paramètres de txAdmin.",
+            "not_enabled": "Le Menu nineadmin n'est pas activé ! Vous pouvez l'activer dans les paramètres de nineadmin.",
             "announcement_title": "Annonce serveur par %{author}:",
             "dialog_empty_input": "Vous ne pouvez pas avoir un champ vide.",
             "directmessage_title": "DM from admin %{author}:"

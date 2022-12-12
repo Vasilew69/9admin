@@ -39,7 +39,7 @@ function sendMenuMessage(action, data)
     })
 end
 
---- Toggle visibility of the txAdmin NUI menu
+--- Toggle visibility of the nineadmin NUI menu
 function toggleMenuVisibility(visible)
     if (visible == true and isMenuVisible) or (visible == false and not isMenuVisible) then
         return

@@ -4,42 +4,42 @@
 <div class="row justify-content-md-center">
     <div class="col-lg-8 col-xl-5 mw-col6">
 
-        <!-- txAdmin Config Card -->
+        <!-- nineadmin Config Card -->
         <div class="card card-accent-danger" style="min-height: 160px;">
             <div class="card-header font-weight-bold">9Admin Info:</div>
             <div class="card-body">
                 <h5>Stats:</h5>
                 <strong>Versions:</strong> 
-                    <code>v<%= txAdminVersion %></code> / <code><%= fxServerVersion %></code> <br>
-                <strong>Uptime:</strong> <code><%= txadmin.uptime %></code> <br>
+                    <code>v<%= nineadminVersion %></code> / <code><%= fxServerVersion %></code> <br>
+                <strong>Uptime:</strong> <code><%= nineadmin.uptime %></code> <br>
                 <strong>Ban/Whitelist Checking:</strong> 
-                    <code><%= txadmin.banlistEnabled %></code>, 
-                    <code><%= txadmin.whitelistEnabled %></code> <br>
+                    <code><%= nineadmin.banlistEnabled %></code>, 
+                    <code><%= nineadmin.whitelistEnabled %></code> <br>
                 <strong>HTTP Counter:</strong> 
-                    <code><%= txadmin.httpCounterLog %></code> &lt; <code><%= txadmin.httpCounterMax %></code> <br>
+                    <code><%= nineadmin.httpCounterLog %></code> &lt; <code><%= nineadmin.httpCounterMax %></code> <br>
                 <strong>Monitor Restarts:</strong> 
-                    <code>CL <%= txadmin.monitorRestarts.close %></code> /
-                    <code>HB <%= txadmin.monitorRestarts.heartBeat %></code> / 
-                    <code>HC <%= txadmin.monitorRestarts.healthCheck %></code> <br>
+                    <code>CL <%= nineadmin.monitorRestarts.close %></code> /
+                    <code>HB <%= nineadmin.monitorRestarts.heartBeat %></code> / 
+                    <code>HC <%= nineadmin.monitorRestarts.healthCheck %></code> <br>
                 <strong>HB Fails:</strong>
-                    <code>HTTP <%= txadmin.hbHTTPFails %></code> / <code>FD3 <%= txadmin.hbFD3Fails %></code> <br>
-                <strong>Boot Seconds:</strong> <code><%= txadmin.hbBootSeconds %></code> <br>
-                <strong>Freeze Seconds:</strong> <code><%= txadmin.freezeSeconds %></code> <br>
-                <strong>Koa Sessions:</strong> <code><%= txadmin.koaSessions %></code> <br>
-                <strong>Logs Storage Size:</strong> <code><%= txadmin.logStorageSize %></code> <br>
+                    <code>HTTP <%= nineadmin.hbHTTPFails %></code> / <code>FD3 <%= nineadmin.hbFD3Fails %></code> <br>
+                <strong>Boot Seconds:</strong> <code><%= nineadmin.hbBootSeconds %></code> <br>
+                <strong>Freeze Seconds:</strong> <code><%= nineadmin.freezeSeconds %></code> <br>
+                <strong>Koa Sessions:</strong> <code><%= nineadmin.koaSessions %></code> <br>
+                <strong>Logs Storage Size:</strong> <code><%= nineadmin.logStorageSize %></code> <br>
                 <strong>Logger Status:</strong> <br>
-                ├─ Admin: <code><%= txadmin.loggerStatusAdmin %></code> <br>
-                ├─ FXServer: <code><%= txadmin.loggerStatusFXServer %></code> <br>
-                └─ Server: <code><%= txadmin.loggerStatusServer %></code> <br>
+                ├─ Admin: <code><%= nineadmin.loggerStatusAdmin %></code> <br>
+                ├─ FXServer: <code><%= nineadmin.loggerStatusFXServer %></code> <br>
+                └─ Server: <code><%= nineadmin.loggerStatusServer %></code> <br>
                 <hr>
                 <h5>Settings:</h5>
-                <strong>Schedule:</strong> <code><%= txadmin.schedule %></code> <br>
-                <strong>Cooldown:</strong> <code><%= txadmin.cooldown %></code> <br>
-                <strong>FXServer Path:</strong> <code><%= txadmin.fxServerPath %></code> <br>
-                <strong>Server Data Path:</strong> <code><%= txadmin.serverDataPath %></code> <br>
-                <strong>CFG Path:</strong> <code><%= txadmin.cfgPath %></code> <br>
-                <strong>Connect Endpoint:</strong> <code><%= txadmin.fxServerHost %></code> <br>
-                <strong>Additional Arguments:</strong> <code><%= txadmin.commandLine %></code>
+                <strong>Schedule:</strong> <code><%= nineadmin.schedule %></code> <br>
+                <strong>Cooldown:</strong> <code><%= nineadmin.cooldown %></code> <br>
+                <strong>FXServer Path:</strong> <code><%= nineadmin.fxServerPath %></code> <br>
+                <strong>Server Data Path:</strong> <code><%= nineadmin.serverDataPath %></code> <br>
+                <strong>CFG Path:</strong> <code><%= nineadmin.cfgPath %></code> <br>
+                <strong>Connect Endpoint:</strong> <code><%= nineadmin.fxServerHost %></code> <br>
+                <strong>Additional Arguments:</strong> <code><%= nineadmin.commandLine %></code>
             </div>
         </div>
 
@@ -84,7 +84,7 @@
                     <strong>Resources:</strong> <%= fxserver.resources %> <br>
                     <strong>OneSync:</strong> <%= fxserver.onesync %> <br>
                     <strong>Max Clients:</strong> <%= fxserver.maxClients %> <br>
-                    <strong>9Admin Version:</strong> <%= fxserver.txAdminVersion %> <br>
+                    <strong>9Admin Version:</strong> <%= fxserver.nineadminVersion %> <br>
                 <% } %>
             </div>
         </div>

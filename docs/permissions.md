@@ -13,7 +13,7 @@ The permissions are saved in the `txData/admins.json` file and can be edited thr
 - `control.server`: Start/Stop/Restart Server;
 - `commands.resources`: Start/Stop Resources;
 - `server.cfg.editor`: Read/Write server.cfg;
-- `txadmin.log.view`: View txAdmin Log;
+- `nineadmin.log.view`: View nineadmin Log;
 - `menu.vehicle`: Spawn / Fix Vehicles;
 - `players.message`: Announcement / DM;
 - `players.whitelist`: Whitelist player;

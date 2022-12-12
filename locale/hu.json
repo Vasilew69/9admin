@@ -45,11 +45,11 @@
     },
     "nui_menu": {
         "misc": {
-            "help_message": "A txAdmin rendelkezik játékon belüli menüvel!\nGyorsgomb [Game Settings > Key Bindings > FiveM > Open the txAdmin Menu] Próbáld ki!",
-            "menu_not_allowed": "Az azonosítód nem egyezik a txAdminban található admin azonosítókkal.\nHa regisztrálva vagy txAdminban, bizonyosodj meg róla hogy el van mentve az Admin Managerben.",
+            "help_message": "A nineadmin rendelkezik játékon belüli menüvel!\nGyorsgomb [Game Settings > Key Bindings > FiveM > Open the nineadmin Menu] Próbáld ki!",
+            "menu_not_allowed": "Az azonosítód nem egyezik a nineadminban található admin azonosítókkal.\nHa regisztrálva vagy nineadminban, bizonyosodj meg róla hogy el van mentve az Admin Managerben.",
             "no_perms": "Ehhez nincs engedélyed.",
             "unknown_error": "Ismeretlen hiba lépett fel.",
-            "not_enabled": "A txAdmin menü nincs engedélyezve! Engedélyezheted a txAdmin beállítások fülön.",
+            "not_enabled": "A nineadmin menü nincs engedélyezve! Engedélyezheted a nineadmin beállítások fülön.",
             "announcement_title": "Szerver felhívás %{author}:",
             "dialog_empty_input": "Nem lehet üresen hagyni.",
             "directmessage_title": "DM from admin %{author}:"

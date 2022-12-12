@@ -1,7 +1,7 @@
 -- =============================================
 --  Client PlayerList handler
 -- =============================================
-if (GetConvar('txAdmin-menuEnabled', 'false') ~= 'true') then
+if (GetConvar('nineadmin-menuEnabled', 'false') ~= 'true') then
     return
 end
 

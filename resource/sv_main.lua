@@ -1,5 +1,5 @@
 --Check Environment
-if GetConvar('txAdminServerMode', 'false') ~= 'true' then
+if GetConvar('nineadminServerMode', 'false') ~= 'true' then
     return
 end
 
@@ -24,10 +24,10 @@ end
 -- Global Vars
 TX_ADMINS = {}
 TX_PLAYERLIST = {}
-TX_LUACOMHOST = GetConvar("txAdmin-luaComHost", "invalid")
-TX_LUACOMTOKEN = GetConvar("txAdmin-luaComToken", "invalid")
+TX_LUACOMHOST = GetConvar("nineadmin-luaComHost", "invalid")
+TX_LUACOMTOKEN = GetConvar("nineadmin-luaComToken", "invalid")
 TX_VERSION = GetResourceMetadata(GetCurrentResourceName(), 'version') -- for now, only used in the start print
-TX_DEBUGMODE = (GetConvar('txAdmin-debugMode', 'false') == 'true') -- TODO: start using this global
+TX_DEBUGMODE = (GetConvar('nineadmin-debugMode', 'false') == 'true') -- TODO: start using this global
 
 -- Checking convars
 if TX_LUACOMHOST == "invalid" or TX_LUACOMTOKEN == "invalid" then
@@ -42,12 +42,12 @@ end
 -- Erasing the token convar for security reasons, and then restoring it if debug mode.
 -- The convar needs to be reset on first tick to prevent other resources from reading it.
 -- We actually need to wait two frames: one for convar replication, one for debugPrint.
-SetConvar("txAdmin-luaComToken", "removed")
+SetConvar("nineadmin-luaComToken", "removed")
 CreateThread(function()
     Wait(0)
     if debugModeEnabled then
-        debugPrint("Restoring txAdmin-luaComToken for next monitor restart")
-        SetConvar("txAdmin-luaComToken", TX_LUACOMTOKEN)
+        debugPrint("Restoring nineadmin-luaComToken for next monitor restart")
+        SetConvar("nineadmin-luaComToken", TX_LUACOMTOKEN)
     end
 end)
 
@@ -85,7 +85,7 @@ end)
 function HTTPHeartBeat()
     local url = "http://"..TX_LUACOMHOST.."/intercom/monitor"
     local exData = {
-        txAdminToken = TX_LUACOMTOKEN
+        nineadminToken = TX_LUACOMTOKEN
     }
     PerformHttpRequest(url, function(httpCode, data, resultHeaders)
         local resp = tostring(data)
@@ -99,7 +99,7 @@ function HTTPHeartBeat()
 end
 
 function FD3HeartBeat()
-    local payload = json.encode({type = 'txAdminHeartBeat'})
+    local payload = json.encode({type = 'nineadminHeartBeat'})
     PrintStructuredTrace(payload)
 end
 
@@ -143,13 +143,13 @@ end
 -- =============================================
 -- Broadcast admin message to all players
 local function handleAnnouncementEvent(eventData)
-    TriggerClientEvent("txAdmin:receiveAnnounce", -1, eventData.message, eventData.author)
+    TriggerClientEvent("nineadmin:receiveAnnounce", -1, eventData.message, eventData.author)
     TriggerEvent('txaLogger:internalChatMessage', 'tx', "(Broadcast) "..eventData.author, eventData.message)
 end
 
 -- Sends a direct message from an admin to a player
 local function handleDirectMessageEvent(eventData)
-    TriggerClientEvent("txAdmin:receiveDirectMessage", eventData.target, eventData.message, eventData.author)
+    TriggerClientEvent("nineadmin:receiveDirectMessage", eventData.target, eventData.message, eventData.author)
     TriggerEvent('txaLogger:internalChatMessage', 'tx', "(DM) "..eventData.author, eventData.message)
 end
 
@@ -162,7 +162,7 @@ end
 local function handleWarnEvent(eventData)
     local pName = GetPlayerName(eventData.target)
     if pName ~= nil then
-        TriggerClientEvent('txAdminClient:warn', eventData.target, eventData.author, eventData.reason)
+        TriggerClientEvent('nineadminClient:warn', eventData.target, eventData.author, eventData.reason)
         log("Warning "..pName.." with reason: "..eventData.reason)
     else
         logError('handleWarnEvent: player not found')
@@ -220,7 +220,7 @@ function txaEvent(source, args)
     -- processing event
     local eventName = unDeQuote(args[1])
     local eventData = json.decode(unDeQuote(args[2]))
-    TriggerEvent("txAdmin:events:" .. eventName, eventData)
+    TriggerEvent("nineadmin:events:" .. eventName, eventData)
 
     if eventName == 'announcement' then 
         return handleAnnouncementEvent(eventData)
@@ -240,7 +240,7 @@ end
 
 
 -- =============================================
--- Get all resources/statuses and report back to txAdmin
+-- Get all resources/statuses and report back to nineadmin
 -- =============================================
 function txaReportResources(source, args)
     --Prepare resources list
@@ -266,10 +266,10 @@ function txaReportResources(source, args)
         table.insert(resources, currentRes)
     end
 
-    --Send to txAdmin
+    --Send to nineadmin
     local url = "http://"..TX_LUACOMHOST.."/intercom/resources"
     local exData = {
-        txAdminToken = TX_LUACOMTOKEN,
+        nineadminToken = TX_LUACOMTOKEN,
         resources = resources
     }
     log('Sending resources list to 9Admin.')
@@ -294,14 +294,14 @@ function handleConnections(name, setKickReason, d)
     end
 
     local player = source
-    if GetConvar("txAdmin-checkPlayerJoin", "invalid") == "true" then
+    if GetConvar("nineadmin-checkPlayerJoin", "invalid") == "true" then
         d.defer()
         Wait(0)
 
         --Preparing vars and making sure we do have indentifiers
         local url = "http://"..TX_LUACOMHOST.."/player/checkJoin"
         local exData = {
-            txAdminToken = TX_LUACOMTOKEN,
+            nineadminToken = TX_LUACOMTOKEN,
             playerIds = GetPlayerIdentifiers(player),
             playerName = name
         }

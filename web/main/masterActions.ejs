@@ -206,12 +206,12 @@
 
         generalBtnResetFXServer.onclick = async () => {
             const confirmOptions = {content: `Are you sure you would like to Reset FXServer settings?`};
-            if(!await txAdminConfirm(confirmOptions)){
+            if(!await nineadminConfirm(confirmOptions)){
                 return;
             }
 
             const notify = $.notify({ message: '<p class="text-center">Executing Command...</p>' }, {});
-            txAdminAPI({
+            nineadminAPI({
                 type: "POST",
                 url: `/masterActions/reset_fxserver`,
                 data: {},
@@ -264,10 +264,10 @@
                 title: 'Are you sure wou want to:',
                 content: '<ul>' + changes.map(x => `<li>${x}</li>`).join('\n') + '</ul>'
             }
-            if(!await txAdminConfirm(confirmOptions)) return;
+            if(!await nineadminConfirm(confirmOptions)) return;
             
             //Send API request
-            txAdminAPI({
+            nineadminAPI({
                 type: "POST",
                 url: `/masterActions/cleanDatabase`,
                 data: {
@@ -278,13 +278,13 @@
                 timeout: REQ_TIMEOUT_LONG,
                 success: function (data) {
                     if(data.error){
-                        return txAdminAlert({
+                        return nineadminAlert({
                             title: 'Error:',
                             modalColor: 'red',
                             content: data.error
                         });
                     }else{
-                        return txAdminAlert({
+                        return nineadminAlert({
                             title: 'Result:',
                             content: `<b>Players deleted: ${data.playersRemoved}</b> <br>
                                 <b>Actions deleted: ${data.actionsRemoved}</b> <br>
@@ -293,7 +293,7 @@
                     }
                 },
                 error: function (xmlhttprequest, textstatus, message) {
-                    return txAdminAlert({
+                    return nineadminAlert({
                         title: 'Error:',
                         modalColor: 'red',
                         content: message
@@ -318,10 +318,10 @@
                 title: 'Are you sure wou want to:',
                 content: actionText
             }
-            if(!await txAdminConfirm(confirmOptions)) return;
+            if(!await nineadminConfirm(confirmOptions)) return;
             
             //Send API request
-            txAdminAPI({
+            nineadminAPI({
                 type: "POST",
                 url: `/masterActions/revokeWhitelists`,
                 data: {
@@ -330,13 +330,13 @@
                 timeout: REQ_TIMEOUT_LONG,
                 success: function (data) {
                     if(data.error){
-                        return txAdminAlert({
+                        return nineadminAlert({
                             title: 'Error:',
                             modalColor: 'red',
                             content: data.error
                         });
                     }else{
-                        return txAdminAlert({
+                        return nineadminAlert({
                             title: 'Result:',
                             content: `<b>Whitelists revoked: ${data.cntRemoved}</b> <br>
                                 Process finished in ${data.msElapsed}ms.`
@@ -344,7 +344,7 @@
                     }
                 },
                 error: function (xmlhttprequest, textstatus, message) {
-                    return txAdminAlert({
+                    return nineadminAlert({
                         title: 'Error:',
                         modalColor: 'red',
                         content: message

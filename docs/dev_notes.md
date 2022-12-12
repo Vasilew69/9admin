@@ -59,7 +59,7 @@
     - [x] set note
     - [x] add/remove wl
     - [x] warn
-    - [x] ban (also replace `txaDropIdentifiers` with `txAdmin:events:playerBanned`) (FIXME: close #625)
+    - [x] ban (also replace `txaDropIdentifiers` with `nineadmin:events:playerBanned`) (FIXME: close #625)
     - [x] dm (replace `txaSendDM` with event+snackbar)
     - [x] kick
     - [x] revoke action (+ actionRevoked event - PR #612)
@@ -139,7 +139,7 @@ TODO for beta2:
 - [x] merge taso PR
 - [x] fix car boost func (double + veh type check)
 - [x] fix csrf
-- [x] force `txAdminAPI` to have `dataType: 'json'` for all calls
+- [x] force `nineadminAPI` to have `dataType: 'json'` for all calls
 - [x] write changelog + announcement
 - [x] announce to top servers
 
@@ -149,7 +149,7 @@ The diagnostics reporting button thing (2d?):
 
 
 After v5.0.0 release:
-- [ ] rename txAdmin Logs to System Logs (check chungus commands as well)
+- [ ] rename nineadmin Logs to System Logs (check chungus commands as well)
 - [ ] server logger add events/min average
 - [ ] add stats for HWID: `count, q1, q25, q50, q75, q99`. Result will only be valid for servers with netid over 1k but that's fine
 - [ ] migrate `!addwl` make possible to `/addwl @mention`
@@ -175,7 +175,7 @@ After v5.0.0 release:
         - requestId: Rxxxx
         - license: xxxxxx
 - [ ] mock out insights page (assets + http reqs)
-- [ ] Melhorar ou remover mensagem `[txAdmin] You do not have at least 1 valid identifier. If you own this server, make sure sv_lan is disabled in your server.cfg`
+- [ ] Melhorar ou remover mensagem `[nineadmin] You do not have at least 1 valid identifier. If you own this server, make sure sv_lan is disabled in your server.cfg`
 - [ ] At the schedule restart input prompt, add a note saying what is the current server time
 - [ ] `cfg cyclical 'exec' command detected to file` should be blocking instead of warning
 - [ ] create events for dynamic scheduled restarts
@@ -352,16 +352,16 @@ const defaults = {
     };
 }
 ```
-- maybe get rid of txAdmin.ts passing down specific cfgs, and pass txAdmin instance instead
-- the modules can go `this.config.onJoinCheckWhitelist = txAdmin.cfgVault.configs.playercontroller_onJoinCheckWhitelist`
+- maybe get rid of nineadmin.ts passing down specific cfgs, and pass nineadmin instance instead
+- the modules can go `this.config.onJoinCheckWhitelist = nineadmin.cfgVault.configs.playercontroller_onJoinCheckWhitelist`
 - careful because some will passs by value, some may pass as object reference therefore be live updated inside the module
-- modules can do `txAdmin.cfgVault.subscribe(this.refreshConfig.bind(this), [...deps])`
-- settings_get page reads from `txAdmin.cfgVault.configs`, so if a value was overwritten by proc.env, it will not cause confusion
-- settings_save does `txAdmin.cfgVault.save([...])`
+- modules can do `nineadmin.cfgVault.subscribe(this.refreshConfig.bind(this), [...deps])`
+- settings_get page reads from `nineadmin.cfgVault.configs`, so if a value was overwritten by proc.env, it will not cause confusion
+- settings_save does `nineadmin.cfgVault.save([...])`
 - use zod for validation https://www.npmjs.com/package/zod
 - maybe even use zod's `.default()`?
 - maybe components don't even need to hold a `this.config`? couldn't we just access it directly from the vault?
-- need to keep in mind that many configs are used in the webroutes, so maybe just `txAdmin.config.xxx` and `ServerInstance.config.xxx`?
+- need to keep in mind that many configs are used in the webroutes, so maybe just `nineadmin.config.xxx` and `ServerInstance.config.xxx`?
 - 'convict' was the name of that one lib
 
 
@@ -386,7 +386,7 @@ Up next-ish:
 - [ ] Tooling:
     - [ ] Inline `.deploy.config.js > copy[]` into `main-builder.js`
     - [ ] Use `dotenv` or something to read FXServer's path from
-    - [ ] Adapt `main-builder.js` to accept txAdmin convars
+    - [ ] Adapt `main-builder.js` to accept nineadmin convars
     - [ ] Update `development.md`
 - [ ] checar se outros resources conseguem chamar 'txaLogger:menuEvent'?
 - [ ] add ram usage to perf chart?
@@ -409,7 +409,7 @@ FIXME: sendMenuMessage('setServerCtx', ServerCtx)
 
 FIXME: quando o menu abrir, deveria voltar os list item pro default deles
 
--- Adapt `txAdmin:beta:deathLog` as well as add cusstom commands and logs
+-- Adapt `nineadmin:beta:deathLog` as well as add cusstom commands and logs
 
 - pagina de adicionar admin precisa depois do modal, mostrar mais info:
     - username, senha, potencialmente link, instruções de login
@@ -435,7 +435,7 @@ https://www.npmjs.com/search?q=effective%20domain
 https://www.npmjs.com/package/parse-domain
 https://www.npmjs.com/package/tldts
 
-### txAdminAPI interface in base.js:
+### nineadminAPI interface in base.js:
 - Create prop `pendingMessage` to replace `const notify = $.notify({ message: 'xxxxxx' }, {});`
 - Pass `notify` as last argument to `success()` and `error()`
 - Create default `success()` and `error()`
@@ -543,7 +543,7 @@ https://freesound.org/browse/tags/laser/?page=5#sound
     - create `txData/actions.json` which is an append-only, line delimited json
     - multiple servers write to this file, use debounced chokidar to read it starting from last offset to reload in-memory state;
 - Via sqlite:
-    - first txadmin to run will instantiate a `txData/actions.sqlite` database (becoming master)
+    - first nineadmin to run will instantiate a `txData/actions.sqlite` database (becoming master)
     - will provide an http endpoint for the slaves to query data
     - leader election can be done via the first to acquire a lock on a file
 - Via external server process
@@ -571,7 +571,7 @@ https://github.com/duckdb/duckdb
 
 
 
-### txAdmin API/integrations:
+### nineadmin API/integrations:
 - ban/warn/whitelist + revoke action: probably exports with GetInvokingResource() for perms 
 - get player info (history, playtime, joindate, etc): state bags
 - events: keep the way it is
@@ -580,8 +580,8 @@ https://github.com/duckdb/duckdb
 > for menu and internal stuff to use token-based rest api: ok, just make sure to use the webpipe proxy
 > for resource permissions, use resource.* ace thing, which also works for exports
 
-> for ban things, bubble wants a generic thing that is not just for txadmin, so any resource could implement it
-> so its not exports.txadmin.xxxx, but some other generic thing that bubble would need to expose
+> for ban things, bubble wants a generic thing that is not just for nineadmin, so any resource could implement it
+> so its not exports.nineadmin.xxxx, but some other generic thing that bubble would need to expose
 
 > querying user info: in-server monitor resource should set specific state keys (non-replicated), which get properly specified so other resources can also populate any 'generic' fields. thinking of kubernetes-style namespaces as java-style namespaces are disgusting (playerdata.cfx.re/firstjoin or so)
 > bans: some sort of generic event/provide-stuff api. generic event spec format is needed for a lot of things, i don't want 'xd another api no other resource uses', i just want all resources from X on to do things proper event-y way
@@ -594,15 +594,15 @@ ps.: need to also include the external events reporting thing
 ### Admin ACE sync:
 On server start, or admins permission change:
 - write a `txData/<profile>/txAcePerms.cfg` with:
-    - remove_ace/remove_principal to wipe old permissions (would need something like `remove_ace identifier.xxx:xx txadmin.* any`)
+    - remove_ace/remove_principal to wipe old permissions (would need something like `remove_ace identifier.xxx:xx nineadmin.* any`)
     - add_ace/add_principal for each admin
 - stdin> `exec xxx.cfg; txaBroadcast xxxxx`
 
 - We should be able to get rid of our menu state management, mainly the part that sends to lua what are the admin ids when something changes
-To check of admin perm, just do `IsPlayerAceAllowed(src, 'txadmin.xxxxxx')`
+To check of admin perm, just do `IsPlayerAceAllowed(src, 'nineadmin.xxxxxx')`
 > Don't use, but I'll leave it saved here: https://github.com/citizenfx/fivem/commit/fd3fae946163e8af472b7f739aed6f29eae8105f
 - need to find a way to protect against scripts, cfg/console changing these aces
-- would be cool to have a `SetProtectedMonitorAces(table)` native dedicated to txadmin to set every admin/resource ace perms
+- would be cool to have a `SetProtectedMonitorAces(table)` native dedicated to nineadmin to set every admin/resource ace perms
 
 
 ### txPointing (old txBanana)
@@ -676,7 +676,7 @@ Small Stuff:
 - [ ] create `admin.useroptions` for dark mode, welcome modals and such
 
 > Soon™ (hopefully the next update)
-- [ ] get all functions from `web\public\js\txadmin\players.js` and wrap in some object.
+- [ ] get all functions from `web\public\js\nineadmin\players.js` and wrap in some object.
 - [ ] maybe hardcode if(recipeName == plume) to open the readme in a new tab
 - [ ] add new hardware bans
 - [ ] add stats enc?
@@ -685,7 +685,7 @@ Small Stuff:
 - [ ] add ban/whitelist fxs-side cache (last 1000 bans + 1000 whitelists), automatically updated
     - before starting the server, get last 1k bans/whitelists and write to a json file
     - quen monitor starts, it will read the file and load to memory
-    - start sending the affected identifiers for the events `txAdmin:events:*` whitelisted, banned, and create a new for action revoked (type, action id).
+    - start sending the affected identifiers for the events `nineadmin:events:*` whitelisted, banned, and create a new for action revoked (type, action id).
     - monitor listens to the event, and when it happens either add it to the cache, or erase from cache
 - [ ] add a commend system?
 - [ ] add stopwatch (or something) to the db functions and print on `/diagnostics`
@@ -705,9 +705,9 @@ Small Stuff:
 ### Rate limiter
 We could be more sensible when restarting the server and pushing an event to alert other resources that might want to auto block it.
 ```bat
-netsh advfirewall firewall add rule name="txAdmin_block_XXXX" dir=in interface=any action=block remoteip=198.51.100.108/32
-netsh advfirewall firewall show rule name="txAdmin_block_XXXX"
-netsh advfirewall firewall delete rule name="txAdmin_block_XXXX"
+netsh advfirewall firewall add rule name="nineadmin_block_XXXX" dir=in interface=any action=block remoteip=198.51.100.108/32
+netsh advfirewall firewall show rule name="nineadmin_block_XXXX"
+netsh advfirewall firewall delete rule name="nineadmin_block_XXXX"
 ```
 https://github.com/citizenfx/fivem/search?q=KeyedRateLimiter
 
@@ -776,7 +776,7 @@ https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
 {
     "interface": "192.168.0.123",
     "fxServerPort": 30120,
-    "txAdminPort": 40120,
+    "nineadminPort": 40120,
     "loginPageLogo": "https://github.com/vasilew69/9admin/raw/master/docs/banner.png",
     "defaults": {
         "license": "cfxk_xxxxxxxxxxxxxxxxxxxx_xxxxx",
@@ -799,17 +799,17 @@ https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
 
 ```bash
 # convars
-+set txAdminVerbose true
++set nineadminVerbose true
 +set txDebugPlayerlistGenerator true
 +set txDebugPlayerlistGenerator true
 +set txDebugExternalSource "x.x.x.x:30120"
 
 # other stuff
-export TXADMIN_DEFAULT_LICENSE="cfxk_xxxxxxxxxxxxxxxxxxxx_xxxxx"
+export nineadmin_DEFAULT_LICENSE="cfxk_xxxxxxxxxxxxxxxxxxxx_xxxxx"
 npx depcheck
 npm-upgrade
 con_miniconChannels script:monitor*
-+setr txAdmin-menuDebug true
++setr nineadmin-menuDebug true
 nui_devtoold mpMenu
 
 # hang fxserver (runcode)

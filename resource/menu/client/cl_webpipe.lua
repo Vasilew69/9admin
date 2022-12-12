@@ -1,8 +1,8 @@
 -- =============================================
 --  This file contains all Client WebPipe logic.
---  It is used to pass NUI HTTP reqs to txAdmin
+--  It is used to pass NUI HTTP reqs to nineadmin
 -- =============================================
-if (GetConvar('txAdmin-menuEnabled', 'false') ~= 'true') then
+if (GetConvar('nineadmin-menuEnabled', 'false') ~= 'true') then
     return
 end
 -- Vars
@@ -66,13 +66,13 @@ RegisterRawNuiCallback('WebPipe', function(req, cb)
         pipeCallbackCounter = 1
     end
 
-    TriggerServerEvent('txAdmin:WebPipe', id, method, path, headers, body or '')
+    TriggerServerEvent('nineadmin:WebPipe', id, method, path, headers, body or '')
 end)
 
 
 -- receive the http responses from server
-RegisterNetEvent('txAdmin:WebPipe')
-AddEventHandler('txAdmin:WebPipe', function(callbackId, statusCode, body, headers)
+RegisterNetEvent('nineadmin:WebPipe')
+AddEventHandler('nineadmin:WebPipe', function(callbackId, statusCode, body, headers)
     local ret = pipeReturnCallbacks[callbackId]
     if not ret then return end
     

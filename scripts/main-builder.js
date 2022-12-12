@@ -42,9 +42,9 @@ const copyStaticFiles = (targetPath, eventName) => {
 
 
 /**
- * Class to handle the fxserver process running txadmin
+ * Class to handle the fxserver process running nineadmin
  */
-class txAdminRunner {
+class nineadminRunner {
     constructor(fxServerRootPath, fxsBinPath) {
         this.config = config;
         this.fxServerRootPath = fxServerRootPath;
@@ -53,7 +53,7 @@ class txAdminRunner {
 
         this.spawnVariables = {
             command: fxsBinPath,
-            args: config.txAdminArgs ?? [],
+            args: config.nineadminArgs ?? [],
         };
     }
 
@@ -131,7 +131,7 @@ const runDevTask = () => {
         console.error(error);
         process.exit(1);
     }
-    console.log(`[BUILDER] Starting txAdmin Dev Builder for ${fxServerRootPath}`);
+    console.log(`[BUILDER] Starting nineadmin Dev Builder for ${fxServerRootPath}`);
 
     //Sync target path and start chokidar
     //We don't really care about the path, just remove everything and copy again
@@ -147,8 +147,8 @@ const runDevTask = () => {
     watcher.on('unlink', () => { debouncedCopier(monitorPath, 'unlink'); });
     fs.writeFileSync(path.join(monitorPath, 'package.json'), '{"type":"commonjs"}');
 
-    //Create txAdmin process runner
-    const txInstance = new txAdminRunner(fxServerRootPath, fxsBinPath);
+    //Create nineadmin process runner
+    const txInstance = new nineadminRunner(fxServerRootPath, fxsBinPath);
 
     //Transpile & bundle
     //NOTE: "result" is {errors[], warnings[], stop()}

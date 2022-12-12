@@ -33,7 +33,7 @@ export default {
             color: cardColor,
             title: cardTitle,
             description: desc,
-            footer: `Powered by 9City v${txEnv.txAdminVersion}.`,
+            footer: `Powered by 9City v${txEnv.nineadminVersion}.`,
         });
 
         return await message.reply({embeds: [outMsg]});

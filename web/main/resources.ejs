@@ -151,7 +151,7 @@
     //============================================== Refresh List
     $('#btnRefresh').click(() => {
         const notify = $.notify({ message: '<p class="text-center">Executing Command...</p>' }, {});
-        txAdminAPI({
+        nineadminAPI({
             type: "POST",
             url: '/fxserver/commands',
             timeout: REQ_TIMEOUT_LONG,
@@ -177,7 +177,7 @@
     //============================================== Start/Stop/Restart buttons
     function btnCommand(action, parameter) {
         const notify = $.notify({ message: '<p class="text-center">Executing Command...</p>' }, {});
-        txAdminAPI({
+        nineadminAPI({
             type: "POST",
             url: '/fxserver/commands',
             data: { action, parameter },

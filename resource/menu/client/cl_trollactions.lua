@@ -1,11 +1,11 @@
 -- =============================================
 --  Troll action logic from the player modal is located here (callbacks, events)
 -- =============================================
-if (GetConvar('txAdmin-menuEnabled', 'false') ~= 'true') then
+if (GetConvar('nineadmin-menuEnabled', 'false') ~= 'true') then
     return
 end
 
-local EFFECT_TIME_MS = GetConvarInt('txAdmin-menuDrunkDuration', 30)*1000
+local EFFECT_TIME_MS = GetConvarInt('nineadmin-menuDrunkDuration', 30)*1000
 local DRUNK_ANIM_SET = "move_m@drunk@verydrunk"
 
 local DRUNK_DRIVING_EFFECTS = {
@@ -103,31 +103,31 @@ end
 
 
 --[[ Net Events ]]
-RegisterNetEvent('txAdmin:menu:drunkEffect', drunkThread)
+RegisterNetEvent('nineadmin:menu:drunkEffect', drunkThread)
 
-RegisterNetEvent('txAdmin:menu:setOnFire', function()
+RegisterNetEvent('nineadmin:menu:setOnFire', function()
     debugPrint('Setting player on fire')
     local playerPed = PlayerPedId()
     StartEntityFire(playerPed)
 end)
 
-RegisterNetEvent('txAdmin:menu:wildAttack', function()
+RegisterNetEvent('nineadmin:menu:wildAttack', function()
     startWildAttack()
 end)
 
 
 --[[ NUI Callbacks ]]
 RegisterNUICallback('drunkEffectPlayer', function(data, cb)
-    TriggerServerEvent('txAdmin:menu:drunkEffectPlayer', tonumber(data.id))
+    TriggerServerEvent('nineadmin:menu:drunkEffectPlayer', tonumber(data.id))
     cb({})
 end)
 
 RegisterNUICallback('setOnFire', function(data, cb)
-    TriggerServerEvent('txAdmin:menu:setOnFire', tonumber(data.id))
+    TriggerServerEvent('nineadmin:menu:setOnFire', tonumber(data.id))
     cb({})
 end)
 
 RegisterNUICallback('wildAttack', function(data, cb)
-    TriggerServerEvent('txAdmin:menu:wildAttack', tonumber(data.id))
+    TriggerServerEvent('nineadmin:menu:wildAttack', tonumber(data.id))
     cb({})
 end)

@@ -31,7 +31,7 @@ export default async function AuthGet(ctx) {
         return ctx.utils.render('login', {
             template: 'justMessage',
             errorTitle: 'No admins configured.',
-            errorMessage: 'This likely means that you moved or deleted the admins.json file. Please restart txAdmin to configure a new master account.',
+            errorMessage: 'This likely means that you moved or deleted the admins.json file. Please restart nineadmin to configure a new master account.',
         });
     }
 

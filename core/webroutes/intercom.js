@@ -20,7 +20,7 @@ export default async function Intercom(ctx) {
     const scope = ctx.params.scope;
 
     const postData = cloneDeep(ctx.request.body);
-    postData.txAdminToken = true;
+    postData.nineadminToken = true;
 
     //Delegate to the specific scope functions
     if (scope == 'monitor') {
@@ -32,9 +32,9 @@ export default async function Intercom(ctx) {
                 // 7: changed web folder paths, which affect txStatsData.pageViews
                 '$statsVersion': 7,
                 isZapHosting: convars.isZapHosting,
-                txAdminVersion: txEnv.txAdminVersion,
-                txAdminIsDefaultPort: (convars.txAdminPort == 40120),
-                txAdminUptime: Math.round(process.uptime()),
+                nineadminVersion: txEnv.nineadminVersion,
+                nineadminIsDefaultPort: (convars.nineadminPort == 40120),
+                nineadminUptime: Math.round(process.uptime()),
                 fxServerUptime: globals.fxRunner.getUptime(),
                 discordBotStats: (globals.discordBot.config.enabled) ? globals.discordBot.usageStats : false,
                 banlistEnabled: globals.playerDatabase.config.onJoinCheckBan,
@@ -46,7 +46,7 @@ export default async function Intercom(ctx) {
             return ctx.send(JSON.stringify(outData, null, 2));
         } catch (error) {
             return ctx.send({
-                txAdminVersion: txEnv.txAdminVersion,
+                nineadminVersion: txEnv.nineadminVersion,
                 success: false,
             });
         }
@@ -66,7 +66,7 @@ export default async function Intercom(ctx) {
     }
 
     return ctx.send({
-        txAdminVersion: txEnv.txAdminVersion,
+        nineadminVersion: txEnv.nineadminVersion,
         success: false,
     });
 };

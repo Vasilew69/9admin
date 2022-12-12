@@ -1,7 +1,7 @@
 -- =============================================
 --  This file contains all player freeze logic
 -- =============================================
-if (GetConvar('txAdmin-menuEnabled', 'false') ~= 'true') then
+if (GetConvar('nineadmin-menuEnabled', 'false') ~= 'true') then
   return
 end
 
@@ -19,16 +19,16 @@ RegisterNUICallback('togglePlayerFreeze', function(data, cb)
       return sendSnackbarMessage('error', 'nui_menu.player_modal.actions.interaction.notifications.freeze_yourself', true)
   end
 
-  TriggerServerEvent('txAdmin:menu:freezePlayer', targetPlayerId)
+  TriggerServerEvent('nineadmin:menu:freezePlayer', targetPlayerId)
   cb({})
 end)
 
-RegisterNetEvent('txAdmin:menu:freezeResp', function(isFrozen)
+RegisterNetEvent('nineadmin:menu:freezeResp', function(isFrozen)
   local localeKey = isFrozen and 'nui_menu.frozen.froze_player' or 'nui_menu.frozen.unfroze_player'
   sendSnackbarMessage('info', localeKey, true)
 end)
 
-RegisterNetEvent('txAdmin:menu:freezePlayer', function(isFrozen)
+RegisterNetEvent('nineadmin:menu:freezePlayer', function(isFrozen)
   debugPrint('Frozen: ' .. tostring(isFrozen))
   local playerPed = PlayerPedId()
   if IsPedInAnyVehicle(playerPed) then

@@ -8,7 +8,7 @@ import React, {
 } from "react";
 import { fetchNui } from "../utils/fetchNui";
 import { useIsMenuVisibleValue } from "../state/visibility.state";
-import { txAdminMenuPage, usePageValue } from "../state/page.state";
+import { nineadminMenuPage, usePageValue } from "../state/page.state";
 
 const KeyboardNavContext = createContext(null);
 
@@ -31,13 +31,13 @@ export const KeyboardNavProvider: React.FC<KeyboardNavProviderProps> = ({
     if (!isMenuVisible) return;
 
     if (
-      curPage === txAdminMenuPage.IFrame ||
-      curPage === txAdminMenuPage.Players
+      curPage === nineadminMenuPage.IFrame ||
+      curPage === nineadminMenuPage.Players
     ) {
       return setDisabledKeyNav(true);
     }
 
-    if (curPage === txAdminMenuPage.Main) {
+    if (curPage === nineadminMenuPage.Main) {
       return setDisabledKeyNav(false);
     }
   }, [curPage, isMenuVisible]);

@@ -2,7 +2,7 @@ import React from "react";
 import { Box } from "@mui/material";
 import { PlayersPage } from "./PlayersPage/PlayersPage";
 import { IFramePage } from "./IFramePage/IFramePage";
-import { txAdminMenuPage, usePageValue } from "../state/page.state";
+import { nineadminMenuPage, usePageValue } from "../state/page.state";
 import { useHudListenersService } from "../hooks/useHudListenersService";
 import { HelpTooltip } from "./misc/HelpTooltip";
 import { useServerCtxValue } from "../state/server.state";
@@ -29,8 +29,8 @@ const MenuRoot: React.FC = () => {
           <MenuRootContent />
         </HelpTooltip>
       </Box>
-      <PlayersPage visible={curPage === txAdminMenuPage.Players} />
-      <IFramePage visible={curPage === txAdminMenuPage.IFrame} />
+      <PlayersPage visible={curPage === nineadminMenuPage.Players} />
+      <IFramePage visible={curPage === nineadminMenuPage.IFrame} />
     </>
   );
 };

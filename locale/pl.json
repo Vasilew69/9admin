@@ -45,11 +45,11 @@
     },
     "nui_menu": {
         "misc": {
-            "help_message": "Menu txAdmin'a jest włączone, wpisz /tx aby je otworzyć.\nMożesz również skonfigurować inny bind w [Ustawienia/Przypisane klawisze/FiveM/Menu: Open Main Page]",
-            "menu_not_allowed": "Twoje identyfikatory nie są zgodne z żadnym adminem zarejestrowanym w txAdmin'e, udaj się do menadżera adminów i upewnij się że zapisałeś dodanych administratorów.",
+            "help_message": "Menu nineadmin'a jest włączone, wpisz /tx aby je otworzyć.\nMożesz również skonfigurować inny bind w [Ustawienia/Przypisane klawisze/FiveM/Menu: Open Main Page]",
+            "menu_not_allowed": "Twoje identyfikatory nie są zgodne z żadnym adminem zarejestrowanym w nineadmin'e, udaj się do menadżera adminów i upewnij się że zapisałeś dodanych administratorów.",
             "no_perms": "Nie posiadasz tego uprawnienia.",
             "unknown_error": "Wystąpił nieznany błąd.",
-            "not_enabled": "Menu txAdmin'a nie jest uruchomione! Możesz je włączyć z poziomu ustawień txAdmin'a.",
+            "not_enabled": "Menu nineadmin'a nie jest uruchomione! Możesz je włączyć z poziomu ustawień nineadmin'a.",
             "announcement_title": "Ogłoszenie serwerowe nadane przez %{author}:",
             "dialog_empty_input": "Nie możesz pozostawić pustego pola tekstowego.",
             "directmessage_title": "DM from admin %{author}:"

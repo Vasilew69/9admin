@@ -2,7 +2,7 @@
 --  Logger
 -- =============================================
 --Check Environment
-if GetConvar('txAdminServerMode', 'false') ~= 'true' then
+if GetConvar('nineadminServerMode', 'false') ~= 'true' then
     return
 end
 
@@ -44,7 +44,7 @@ CreateThread(function()
 
             --Sending logs via FD3 and resetting buffer
             local payload = json.encode({
-                type = 'txAdminLogData',
+                type = 'nineadminLogData',
                 logs = loggerBuffer
             })
             PrintStructuredTrace(payload)

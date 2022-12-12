@@ -17,7 +17,7 @@ interface fetchWebPipeOpts<T> {
   mockData?: T;
 }
 /**
- * A wrapper around fetch for HTTP reqs to the txAdminPipe
+ * A wrapper around fetch for HTTP reqs to the nineadminPipe
  * @param path The path to send the req to
  * @param options Additional options to control the fetch event's behavior
  **/

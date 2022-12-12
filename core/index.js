@@ -1,4 +1,4 @@
-import TxAdmin from './txAdmin';
+import nineadmin from './nineAdmin';
 import logger from '@core/extras/console';
 import { txEnv } from './globalData.ts';
 import checkPreRelease from '@core/extras/checkPreRelease.js';
@@ -6,7 +6,7 @@ const { dir, log, logOk, logWarn, logError, setTTYTitle } = logger();
 
 
 /**
- * Starting txAdmin (have fun :p)
+ * Starting nineadmin (have fun :p)
  */
 const serverProfile = GetConvar('serverProfile', 'default').replace(/[^a-z0-9._-]/gi, '').trim();
 if (serverProfile.endsWith('.base')) {
@@ -16,9 +16,9 @@ if (!serverProfile.length) {
     logDie('Invalid server profile name. Are you using Google Translator on the instructions page? Make sure there are no additional spaces in your command.');
 }
 
-setTTYTitle(txEnv.txAdminVersion, serverProfile);
+setTTYTitle(txEnv.nineadminVersion, serverProfile);
 checkPreRelease();
-new TxAdmin(serverProfile);
+new nineadmin(serverProfile);
 
 
 /**
@@ -59,7 +59,7 @@ process.on('uncaughtException', function (err) {
     dir(err.stack);
 });
 process.on('exit', (code) => {
-    log('Stopping txAdmin');
+    log('Stopping nineadmin');
 });
 // Error.stackTraceLimit = 25;
 // process.on('warning', (warning) => {

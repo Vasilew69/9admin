@@ -18,7 +18,7 @@ const now = () => { return Math.round(Date.now() / 1000); };
     Other relevant apis:
         https://changelogs-live.fivem.net/api/changelog/versions/win32/server? (the one being used below)
         https://changelogs-live.fivem.net/api/changelog/versions
-        https://api.github.com/repos/tabarra/txAdmin/releases (changelog in [].body)
+        https://api.github.com/repos/tabarra/nineadmin/releases (changelog in [].body)
 
     NOTE: old logic
     if == recommended, you're fine
@@ -43,16 +43,16 @@ export default async () => {
         const requiredFields = [
             'recommended',
             'recommended_download',
-            'recommended_txadmin',
+            'recommended_nineadmin',
             'optional',
             'optional_download',
-            'optional_txadmin',
+            'optional_nineadmin',
             'latest',
             'latest_download',
-            'latest_txadmin',
+            'latest_nineadmin',
             'critical',
             'critical_download',
-            'critical_txadmin',
+            'critical_nineadmin',
         ];
         const missing = requiredFields.find((x) => !apiResponse.hasOwnProperty(x));
         if (missing) {
@@ -64,12 +64,12 @@ export default async () => {
         return;
     }
 
-    //Checking txAdmin version
+    //Checking nineadmin version
     let txOutput = false;
     try {
-        const isOutdated = semver.lt(txEnv.txAdminVersion, apiResponse.latest_txadmin);
+        const isOutdated = semver.lt(txEnv.nineadminVersion, apiResponse.latest_nineadmin);
         if (isOutdated) {
-            const semverDiff = semver.diff(txEnv.txAdminVersion, apiResponse.latest_txadmin);
+            const semverDiff = semver.diff(txEnv.nineadminVersion, apiResponse.latest_nineadmin);
             if (semverDiff === 'patch') {
                 logWarn('This version of 9Admin is outdated.');
                 logWarn('A patch (bug fix) update is available for 9Admin.');
@@ -77,7 +77,7 @@ export default async () => {
                 logWarn('For more information: https://discord.gg/uAmsGa2');
                 txOutput = {
                     semverDiff,
-                    latest: apiResponse.latest_txadmin,
+                    latest: apiResponse.latest_nineadmin,
                     color: 'secondary',
                 };
             } else {
@@ -86,7 +86,7 @@ export default async () => {
                 logError('For more information: https://discord.gg/uAmsGa2');
                 txOutput = {
                     semverDiff,
-                    latest: apiResponse.latest_txadmin,
+                    latest: apiResponse.latest_nineadmin,
                     color: 'danger',
                 };
             }
@@ -134,7 +134,7 @@ export default async () => {
 
     //Output
     globals.databus.updateChecker = {
-        txadmin: txOutput,
+        nineadmin: txOutput,
         fxserver: fxsOutput,
     };
 };

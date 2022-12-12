@@ -125,7 +125,7 @@ export default class ServerLogger extends LoggerBase {
                 this.lrStream.write(`${eventString}\n`);
             } catch (error) {
                 if (verbose) {
-                    logError('Error processing FD3 txAdminLogData:');
+                    logError('Error processing FD3 nineadminLogData:');
                     dir(error);
                 }
             }
@@ -143,8 +143,8 @@ export default class ServerLogger extends LoggerBase {
         let srcObject; //to be sent to the UI
         let srcString; //to ve saved to the log file
         if (eventData.src === 'tx') {
-            srcObject = { id: false, name: 'txAdmin' };
-            srcString = 'txAdmin';
+            srcObject = { id: false, name: 'nineadmin' };
+            srcString = 'nineadmin';
 
         } else if (typeof eventData.src === 0) {
             srcObject = { id: false, name: 'CONSOLE' };

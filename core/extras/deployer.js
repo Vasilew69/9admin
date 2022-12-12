@@ -290,7 +290,7 @@ export class Deployer {
                 if (contextVariables.$step) {
                     msg += '\nDebug/Status: '
                         + JSON.stringify([
-                            txEnv.txAdminVersion,
+                            txEnv.nineadminVersion,
                             await getOsDistro(),
                             contextVariables.$step
                         ]);

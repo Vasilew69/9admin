@@ -1,7 +1,7 @@
 -- =============================================
 --  Contains all spectate related logic
 -- =============================================
-if (GetConvar('txAdmin-menuEnabled', 'false') ~= 'true') then
+if (GetConvar('nineadmin-menuEnabled', 'false') ~= 'true') then
     return
 end
 -- Last spectate location stored in a vec3
@@ -17,7 +17,7 @@ local storedGameTag
 
 
 RegisterNUICallback('spectatePlayer', function(data, cb)
-    TriggerServerEvent('txAdmin:menu:spectatePlayer', tonumber(data.id))
+    TriggerServerEvent('nineadmin:menu:spectatePlayer', tonumber(data.id))
     cb({})
 end)
 
@@ -183,11 +183,11 @@ local function toggleSpectate(targetPed, targetPlayerId)
     end
 end
 
-RegisterCommand('txAdmin:menu:endSpectate', function()
+RegisterCommand('nineadmin:menu:endSpectate', function()
     if isSpectateEnabled then
         toggleSpectate(storedTargetPed)
         preparePlayerForSpec(false)
-        TriggerServerEvent('txAdmin:menu:endSpectate')
+        TriggerServerEvent('nineadmin:menu:endSpectate')
     end
 end)
 
@@ -209,7 +209,7 @@ local function cleanupFailedResolve()
 end
 
 -- Client-side event handler for an authorized spectate request
-RegisterNetEvent('txAdmin:menu:specPlayerResp', function(targetServerId, coords)
+RegisterNetEvent('nineadmin:menu:specPlayerResp', function(targetServerId, coords)
     local spectatorPed = PlayerPedId()
     lastSpectateLocation = GetEntityCoords(spectatorPed)
 

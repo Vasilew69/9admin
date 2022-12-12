@@ -28,7 +28,7 @@ const getRenderErrorText = (view, error, data) => {
 };
 const getWebViewPath = (view) => {
     if (view.includes('..')) throw new Error('Path Traversal?');
-    return path.join(txEnv.txAdminResourcePath, 'web', view + '.ejs');
+    return path.join(txEnv.nineadminResourcePath, 'web', view + '.ejs');
 };
 const getJavascriptConsts = (allConsts = []) => {
     return Object.entries(allConsts)
@@ -44,8 +44,8 @@ const THEME_DARK = 'theme--dark';
 const DEFAULT_AVATAR = 'img/default_avatar.png';
 
 function getEjsOptions(filePath) {
-    const webTemplateRoot = path.resolve(txEnv.txAdminResourcePath, 'web');
-    const webCacheDir = path.resolve(txEnv.txAdminResourcePath, 'web-cache', filePath);
+    const webTemplateRoot = path.resolve(txEnv.nineadminResourcePath, 'web');
+    const webCacheDir = path.resolve(txEnv.nineadminResourcePath, 'web-cache', filePath);
     return {
         cache: true,
         filename: webCacheDir,
@@ -117,7 +117,7 @@ async function renderView(view, reqSess, data, txVars) {
 async function renderLoginView(data, txVars) {
     data.logoURL = convars.loginPageLogo || 'img/9admin.png';
     data.isMatrix = (Math.random() <= 0.05);
-    data.ascii = helpers.txAdminASCII();
+    data.ascii = helpers.nineadminASCII();
     data.message = data.message || '';
     data.errorTitle = data.errorTitle || 'Warning:';
     data.errorMessage = data.errorMessage || '';
@@ -208,7 +208,7 @@ function testPermission(ctx, perm, fromCtx) {
 //================================================================
 export default async function WebCtxUtils(ctx, next) {
     //Prepare variables
-    const isWebInterface = (typeof ctx.headers['x-txadmin-token'] !== 'string');
+    const isWebInterface = (typeof ctx.headers['x-nineadmin-token'] !== 'string');
     ctx.txVars = {
         isWebInterface,
         realIP: ctx.ip,
@@ -230,12 +230,12 @@ export default async function WebCtxUtils(ctx, next) {
     //NOTE: not used anywhere except rate limiter, and
     // should be kept this way. When auth changes, delete this shit;
     if (
-        typeof ctx.headers['x-txadmin-identifiers'] === 'string'
-        && typeof ctx.headers['x-txadmin-token'] === 'string'
-        && ctx.headers['x-txadmin-token'] === globals.webServer.luaComToken
+        typeof ctx.headers['x-nineadmin-identifiers'] === 'string'
+        && typeof ctx.headers['x-nineadmin-token'] === 'string'
+        && ctx.headers['x-nineadmin-token'] === globals.webServer.luaComToken
         && convars.loopbackInterfaces.includes(ctx.ip)
     ) {
-        const ipIdentifier = ctx.headers['x-txadmin-identifiers']
+        const ipIdentifier = ctx.headers['x-nineadmin-identifiers']
             .split(', ')
             .find((i) => i.startsWith('ip:'));
         if (typeof ipIdentifier === 'string') {
@@ -264,10 +264,10 @@ export default async function WebCtxUtils(ctx, next) {
             resourcePath: (isWebInterface) ? '' : RESOURCE_PATH,
             serverProfile: globals.info.serverProfile,
             serverName: globals.config.serverName || globals.info.serverProfile,
-            uiTheme: (ctx.cookies.get('txAdmin-darkMode') === 'true' || !isWebInterface) ? THEME_DARK : '',
+            uiTheme: (ctx.cookies.get('nineadmin-darkMode') === 'true' || !isWebInterface) ? THEME_DARK : '',
             fxServerVersion: (convars.isZapHosting) ? `${txEnv.fxServerVersion}/ZAP` : txEnv.fxServerVersion,
-            txAdminVersion: txEnv.txAdminVersion,
-            txaOutdated: globals.databus.updateChecker?.txadmin,
+            nineadminVersion: txEnv.nineadminVersion,
+            txaOutdated: globals.databus.updateChecker?.nineadmin,
             fxsOutdated: globals.databus.updateChecker?.fxserver,
             jsInjection: getJavascriptConsts({
                 csrfToken: (ctx.session?.auth?.csrfToken) ? ctx.session.auth.csrfToken : 'not_set',

@@ -39,14 +39,14 @@ const getIPs = async () => {
 
 const getOSMessage = async () => {
     const serverMessage = [
-        `To be able to access 9Admin from the internet open port ${convars.txAdminPort}`,
+        `To be able to access 9Admin from the internet open port ${convars.nineadminPort}`,
         'on your OS Firewall as well as in the hosting company.',
     ];
     const winWorkstationMessage = [
         '[!] Home-hosting fxserver is not recommended [!]',
         'You need to open the fxserver port (usually 30120) on Windows Firewall',
         'and port forward it in your router for other players be able to access it.',
-        'We recommend renting a server from ' + chalk.inverse(' https://zap-hosting.com/txAdmin ') + '.',
+        'We recommend renting a server from ' + chalk.inverse(' https://zap-hosting.com/nineadmin ') + '.',
     ];
 
     const distro = await getOsDistro();
@@ -156,7 +156,7 @@ export const printBanner = async () => {
     };
     const boxLines = [
         'All ready! Please access:',
-        ...addrs.map((addr) => chalk.inverse(` http://${addr}:${convars.txAdminPort}/ `)),
+        ...addrs.map((addr) => chalk.inverse(` http://${addr}:${convars.nineadminPort}/ `)),
         ...adminPinLines,
     ];
     printMultiline(boxen(boxLines.join('\n'), boxOptions), chalk.bold.bgGreen);
@@ -166,7 +166,7 @@ export const printBanner = async () => {
 
     //Opening page
     if (txEnv.isWindows && adminPinRes.value) {
-        open(`http://localhost:${convars.txAdminPort}/auth#${adminPinRes.value}`).catch();
+        open(`http://localhost:${convars.nineadminPort}/auth#${adminPinRes.value}`).catch();
     }
 
     //Starting server

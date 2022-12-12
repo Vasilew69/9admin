@@ -45,11 +45,11 @@
     },
     "nui_menu": {
         "misc": {
-            "help_message": "txAdmin Menu aktiveret, skriv /tx for at åbne den.\nDu kan også konfigurere egne keybinds under [Spilindstillinger > Nøglebindinger > FiveM > Menu: Åbn hovedside].",
-            "menu_not_allowed": "Dine identifikatorer matcher ikke nogen admin registreret på txAdmin.\nHvis du er registreret på txAdmin, skal du gå til Admin Manager og sørge for, at dine identifikatorer er gemt.",
+            "help_message": "nineadmin Menu aktiveret, skriv /tx for at åbne den.\nDu kan også konfigurere egne keybinds under [Spilindstillinger > Nøglebindinger > FiveM > Menu: Åbn hovedside].",
+            "menu_not_allowed": "Dine identifikatorer matcher ikke nogen admin registreret på nineadmin.\nHvis du er registreret på nineadmin, skal du gå til Admin Manager og sørge for, at dine identifikatorer er gemt.",
             "no_perms": "Du har ikke denne tilladelse.",
             "unknown_error": "Der opstod en ukendt fejl.",
-            "not_enabled": "txAdmin-menuen er ikke aktiveret! Du kan aktivere det på siden med txAdmin-indstillinger.",
+            "not_enabled": "nineadmin-menuen er ikke aktiveret! Du kan aktivere det på siden med nineadmin-indstillinger.",
             "announcement_title": "Servermeddelelse af %{author}:",
             "dialog_empty_input": "Du kan ikke have et tomt input.",
             "directmessage_title": "DM from admin %{author}:"

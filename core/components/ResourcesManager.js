@@ -50,7 +50,7 @@ export default class ResourcesManager {
 
 
     /**
-     * Handler for all txAdminResourceStatus structured trace events
+     * Handler for all nineadminResourceStatus structured trace events
      * @param {object} payload
      * @param {string} mutex
      */

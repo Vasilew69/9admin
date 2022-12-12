@@ -290,7 +290,7 @@
 
         //Buttons
         announcementBtn.addEventListener("click", async (event) => {
-            const message = await txAdminPrompt({
+            const message = await nineadminPrompt({
                 modalColor: 'orange',
                 confirmBtnClass: 'btn-warning',
                 title: 'Announcement',
@@ -305,7 +305,7 @@
             }
 
             const notify = $.notify({ message: 'Executing Command...' }, {});
-            txAdminAPI({
+            nineadminAPI({
                 type: "POST",
                 url: '/fxserver/commands',
                 data: {

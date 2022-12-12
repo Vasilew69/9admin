@@ -1,5 +1,5 @@
 --Check Environment
-if GetConvar('txAdminServerMode', 'false') ~= 'true' then
+if GetConvar('nineadminServerMode', 'false') ~= 'true' then
   return
 end
 
@@ -15,13 +15,13 @@ ServerCtxObj = {
   locale = nil,
   localeData = nil,
   switchPageKey = '',
-  txAdminVersion = '',
+  nineadminVersion = '',
   alignRight = false,
   announceNotiPos = '', -- top-center, top-right, top-left, bottom-center, bottom-right, bottom-left
 }
 
 
-RegisterCommand('txAdmin-debug', function(src, args)
+RegisterCommand('nineadmin-debug', function(src, args)
   if src > 0 then
     if not PlayerHasTxPermission(src, 'control.server') then
       return
@@ -37,18 +37,18 @@ RegisterCommand('txAdmin-debug', function(src, args)
   if args[1] == '1' then
     debugModeEnabled = true
     debugPrint("^1!! Debug mode enabled by ^2" .. playerName .. "^1 !!^0")
-    TriggerClientEvent('txAdmin:events:setDebugMode', -1, true)
+    TriggerClientEvent('nineadmin:events:setDebugMode', -1, true)
   elseif args[1] == '0' then
     debugPrint("^1!! Debug mode disabled by ^2" .. playerName .. "^1 !!^0")
     debugModeEnabled = false
-    TriggerClientEvent('txAdmin:events:setDebugMode', -1, false)
+    TriggerClientEvent('nineadmin:events:setDebugMode', -1, false)
   end
 end)
 
 
 local function getCustomLocaleData()
   --Get convar
-  local filePath = GetConvar('txAdmin-localeFile', 'false')
+  local filePath = GetConvar('nineadmin-localeFile', 'false')
   if filePath == 'false' then
     return false
   end
@@ -95,14 +95,14 @@ local function syncServerCtx()
 
   -- Convar must match the event.code *EXACTLY* as shown on this site
   -- https://keycode.info/
-  local switchPageKey = GetConvar('txAdmin-menuPageKey', 'Tab')
+  local switchPageKey = GetConvar('nineadmin-menuPageKey', 'Tab')
   ServerCtxObj.switchPageKey = switchPageKey
 
-  local alignRight = (GetConvar('txAdmin-menuAlignRight', 'false') == 'true')
+  local alignRight = (GetConvar('nineadmin-menuAlignRight', 'false') == 'true')
   ServerCtxObj.alignRight = alignRight
 
-  local txAdminVersion = GetConvar('txAdmin-version', '0.0.0')
-  ServerCtxObj.txAdminVersion = txAdminVersion
+  local nineadminVersion = GetConvar('nineadmin-version', '0.0.0')
+  ServerCtxObj.nineadminVersion = nineadminVersion
 
   -- Default '' in fxServer
   local svProjectName = GetConvar('sv_projectname', '')
@@ -115,15 +115,15 @@ local function syncServerCtx()
   ServerCtxObj.maxClients = svMaxClients
 
   -- Custom locale
-  local txAdminLocale = GetConvar('txAdmin-locale', 'bg')
-  ServerCtxObj.locale = txAdminLocale
-  if txAdminLocale == 'custom' then
+  local nineadminLocale = GetConvar('nineadmin-locale', 'bg')
+  ServerCtxObj.locale = nineadminLocale
+  if nineadminLocale == 'custom' then
     ServerCtxObj.localeData = getCustomLocaleData()
   else
     ServerCtxObj.localeData = false
   end
 
-  local announceNotiPos = GetConvar('txAdmin-menuAnnounceNotiPos', 'top-center')
+  local announceNotiPos = GetConvar('nineadmin-menuAnnounceNotiPos', 'top-center')
   -- verify we have a valid position type
   if announceNotiPos == 'top-center' or announceNotiPos == 'top-right' or announceNotiPos == 'top-left' or announceNotiPos == 'bottom-center' or announceNotiPos == 'bottom-right' or announceNotiPos == 'bottom-left' then
     ServerCtxObj.announceNotiPos = announceNotiPos
@@ -134,22 +134,22 @@ local function syncServerCtx()
   end
 
   debugPrint('Updated ServerCtx.')
-  GlobalState.txAdminServerCtx = ServerCtxObj
+  GlobalState.nineadminServerCtx = ServerCtxObj
 
   -- Telling admins that the server context changed
   for adminID, _ in pairs(TX_ADMINS) do
-    TriggerClientEvent('txAdmin:events:setServerCtx', adminID, ServerCtxObj)
+    TriggerClientEvent('nineadmin:events:setServerCtx', adminID, ServerCtxObj)
   end
 end
 
-RegisterNetEvent('txAdmin:events:getServerCtx', function()
+RegisterNetEvent('nineadmin:events:getServerCtx', function()
   local src = source
-  TriggerClientEvent('txAdmin:events:setServerCtx', src, ServerCtxObj)
+  TriggerClientEvent('nineadmin:events:setServerCtx', src, ServerCtxObj)
 end)
 
--- Everytime the txAdmin convars are changed this event will fire
+-- Everytime the nineadmin convars are changed this event will fire
 -- Therefore, lets update global state with that.
-AddEventHandler('txAdmin:events:configChanged', function()
+AddEventHandler('nineadmin:events:configChanged', function()
   debugPrint('configChanged event triggered, syncing GlobalState')
   syncServerCtx()
 end)

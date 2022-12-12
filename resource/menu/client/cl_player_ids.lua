@@ -1,7 +1,7 @@
 -- =============================================
 --  This file contains all overhead player ID logic
 -- =============================================
-if (GetConvar('txAdmin-menuEnabled', 'false') ~= 'true') then
+if (GetConvar('nineadmin-menuEnabled', 'false') ~= 'true') then
     return
 end
 
@@ -9,7 +9,7 @@ local isPlayerIDActive = false
 local playerGamerTags = {}
 
 -- Convar used to determine the distance in which player ID's are visible
-local distanceToCheck = GetConvarInt('txAdmin-menuPlayerIdDistance', 150)
+local distanceToCheck = GetConvarInt('nineadmin-menuPlayerIdDistance', 150)
 
 local gamerTagCompsEnum = {
     GamerName = 0,
@@ -101,13 +101,13 @@ local function showPlayerIDs(enabled)
     debugPrint('Show Player IDs Status: ' .. tostring(isPlayerIDActive))
 end
 
-RegisterNetEvent('txAdmin:menu:showPlayerIDs', function(enabled)
+RegisterNetEvent('nineadmin:menu:showPlayerIDs', function(enabled)
     debugPrint('Received showPlayerIDs event')
     showPlayerIDs(enabled)
 end)
 
 local function togglePlayerIDsHandler()
-    TriggerServerEvent('txAdmin:menu:showPlayerIDs', not isPlayerIDActive)
+    TriggerServerEvent('nineadmin:menu:showPlayerIDs', not isPlayerIDActive)
 end
 
 RegisterNUICallback('togglePlayerIDs', function(_, cb)
@@ -115,7 +115,7 @@ RegisterNUICallback('togglePlayerIDs', function(_, cb)
     cb({})
 end)
 
-RegisterCommand('txAdmin:menu:togglePlayerIDs', togglePlayerIDsHandler)
+RegisterCommand('nineadmin:menu:togglePlayerIDs', togglePlayerIDsHandler)
 
 CreateThread(function()
     local sleep = 150

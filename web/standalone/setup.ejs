@@ -13,7 +13,7 @@
     <link href="css/coreui.min.css" rel="stylesheet">
     <link href="css/dark.css" rel="stylesheet">
     <link rel="shortcut icon" type="image/png" href="img/9a-default.png" id="favicon" />
-    <link rel="stylesheet" href="css/txAdmin.css">
+    <link rel="stylesheet" href="css/nineadmin.css">
 
     <!-- Page CSS -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -98,7 +98,7 @@
 
         <!-- Logo Row -->
         <div class="row justify-content-center pt-4 mb-4">
-            <img src="img/9admin.png" alt="txAdmin Logo">
+            <img src="img/9admin.png" alt="nineadmin Logo">
         </div>
 
         <!-- Stepper Row -->
@@ -238,7 +238,7 @@
                                             If you are developing your own recipes, we highly recommend you to check the following:
                                             <ul class="font-weight-bold">
                                                 <li><a href="https://github.com/Vasilew69/9admin/blob/master/docs/recipe.md" target="_blank" rel="noopener">Recipe Documentation</a></li>
-                                                <li><a href="https://github.com/tabarra/txAdmin-recipes" target="_blank" rel="noopener">Example Recipes</a></li>
+                                                <li><a href="https://github.com/tabarra/nineadmin-recipes" target="_blank" rel="noopener">Example Recipes</a></li>
                                                 <li><a href="https://discord.gg/NsXGTszYjK" target="_blank" rel="noopener">Discord Support</a></li>
                                             </ul>
                                         </p>
@@ -360,7 +360,7 @@
             <div class="col-md-4 ">
                 <div class="alert alert-secondary text-center small" style="min-width: 280px;" role="alert">
                     <strong>Server profile:</strong> <%= serverProfile %> <br>
-                    <strong>9Admin version:</strong> <%= txAdminVersion %> <br>
+                    <strong>9Admin version:</strong> <%= nineadminVersion %> <br>
                     <strong>FXServer build:</strong> <%= fxServerVersion %>
                     <div class="hrsep hrsep-small">//</div>
                     <h5 class="text-muted">
@@ -391,13 +391,13 @@
     <script src="https://cdn.jsdelivr.net/npm/marked@4.0.16/lib/marked.umd.min.js"></script>
     <script src="js/coreui.bundle.min.js"></script>
     <script src="js/bootstrap-notify.min.js"></script>
-    <script src="js/txadmin/base.js"></script>
+    <script src="js/nineadmin/base.js"></script>
 
     <!-- JS -->
     <script src="https://unpkg.com/materialize-stepper@3.1.0/dist/js/mstepper.js"></script>
     <script>
         //Constants
-        const recipesIndexURL = 'https://raw.githubusercontent.com/tabarra/txAdmin-recipes/main/indexv3.json';
+        const recipesIndexURL = 'https://raw.githubusercontent.com/tabarra/nineadmin-recipes/main/indexv3.json';
         const txDataPath = '<%= txDataPath %>';
         const deployerEngineVersion = parseInt('<%= deployerEngineVersion %>');
         const isReset = ('<%= isReset %>' === 'true');
@@ -664,7 +664,7 @@
             s4RemoteTemplateInput.classList.remove('is-invalid', 'is-valid');
             s4RemoteTemplateInputError.classList.add('d-none');
 
-            txAdminAPI({
+            nineadminAPI({
                 type: "POST",
                 url: '/setup/validateRecipeURL',
                 timeout: REQ_TIMEOUT_LONG,
@@ -712,7 +712,7 @@
             s5DeployerTargetInput.classList.remove('is-invalid', 'is-valid');
             s5DeployerTargetError.classList.add('d-none');
 
-            txAdminAPI({
+            nineadminAPI({
                 type: "POST",
                 url: '/setup/validateLocalDeployPath',
                 timeout: REQ_TIMEOUT_LONG,
@@ -752,7 +752,7 @@
             s5ServerCFGError.classList.add('d-none');
             s5ServerCFGInput.value = '';
 
-            txAdminAPI({
+            nineadminAPI({
                 type: "POST",
                 url: '/setup/validateLocalDataFolder',
                 timeout: REQ_TIMEOUT_LONG,
@@ -800,7 +800,7 @@
                 cfgFile: s5ServerCFGInput.value.trim(),
             };
             
-            txAdminAPI({
+            nineadminAPI({
                 type: "POST",
                 url: '/setup/validateCFGFile',
                 timeout: REQ_TIMEOUT_LONG,
@@ -861,7 +861,7 @@
                 return alert('Unknown deployment type')
             }
             
-            txAdminAPI({
+            nineadminAPI({
                 type: "POST",
                 url: '/setup/save',
                 timeout: REQ_TIMEOUT_LONG,

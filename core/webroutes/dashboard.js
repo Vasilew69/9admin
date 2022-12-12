@@ -30,7 +30,7 @@ export default async function Dashboard(ctx) {
         //     isLive: false,
         //     time: '15 minutes ago',
         //     isLive: true,
-        //     description: 'Release of txAdmin v4.14.0 - What\'s New - How to Update - Feature Voting - Giveaway',
+        //     description: 'Release of nineadmin v4.14.0 - What\'s New - How to Update - Feature Voting - Giveaway',
         //     joinLink: 'https://discord.gg/2KpVQX665M',
         //     imgSrc: 'https://discordapp.com/api/guilds/577993482761928734/widget.png?style=shield',
         // },

@@ -7,8 +7,8 @@ assignees: ''
 
 ---
 
-**txAdmin/FXServer versions:**
-You can see that at the bottom of the txAdmin page, or in the terminal as soon as you start fxserver.  
+**nineadmin/FXServer versions:**
+You can see that at the bottom of the nineadmin page, or in the terminal as soon as you start fxserver.  
   
 **Describe the bug**
 A clear and concise description of what the bug is.

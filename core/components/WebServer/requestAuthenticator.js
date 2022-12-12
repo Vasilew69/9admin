@@ -12,8 +12,8 @@ export const requestAuth = (epType) => {
     //Intercom auth function
     const intercomAuth = async (ctx, next) => {
         if (
-            typeof ctx.request.body.txAdminToken !== 'undefined'
-            && ctx.request.body.txAdminToken === globals.webServer.luaComToken
+            typeof ctx.request.body.nineadminToken !== 'undefined'
+            && ctx.request.body.nineadminToken === globals.webServer.luaComToken
         ) {
             await next();
         } else {
@@ -28,7 +28,7 @@ export const requestAuth = (epType) => {
         //This is kinda messy and in the wrong place, but it's fine for now
         if (epType === 'api') {
             const sessToken = ctx.session?.auth?.csrfToken;
-            const headerToken = ctx.headers['x-txadmin-csrftoken'];
+            const headerToken = ctx.headers['x-nineadmin-csrftoken'];
             if(sessToken && (sessToken !== headerToken)){
                 //DEBUG
                 // ogConsole.dir({
@@ -216,23 +216,23 @@ const nuiAuthLogic = (reqIP, reqHeader) => {
     }
 
     // Check missing headers
-    if (typeof reqHeader['x-txadmin-token'] !== 'string') {
+    if (typeof reqHeader['x-nineadmin-token'] !== 'string') {
         return { isValidAuth: false, rejectReason: 'Invalid Request: token header' };
     }
-    if (typeof reqHeader['x-txadmin-identifiers'] !== 'string') {
+    if (typeof reqHeader['x-nineadmin-identifiers'] !== 'string') {
         return { isValidAuth: false, rejectReason: 'Invalid Request: identifiers header' };
     }
 
     // Check token value
-    if (reqHeader['x-txadmin-token'] !== globals.webServer.luaComToken) {
+    if (reqHeader['x-nineadmin-token'] !== globals.webServer.luaComToken) {
         if (verbose) {
-            logWarn(`NUI Auth Failed: token received ${reqHeader['x-txadmin-token']} !== expected ${globals.webServer.luaComToken}.`);
+            logWarn(`NUI Auth Failed: token received ${reqHeader['x-nineadmin-token']} !== expected ${globals.webServer.luaComToken}.`);
         }
         return { isValidAuth: false, rejectReason: 'Unauthorized: token value' };
     }
 
     // Check identifier array
-    const identifiers = reqHeader['x-txadmin-identifiers']
+    const identifiers = reqHeader['x-nineadmin-identifiers']
         .split(',')
         .map((i) => i.trim().toLowerCase())
         .filter((i) => i.length);

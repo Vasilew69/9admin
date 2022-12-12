@@ -1,14 +1,14 @@
 import React from "react";
 import { Box, Collapse, styled, Typography } from "@mui/material";
 import { PageTabs} from "@nui/src/components/misc/PageTabs";
-import { txAdminMenuPage, usePageValue } from "@nui/src/state/page.state";
+import { nineadminMenuPage, usePageValue } from "@nui/src/state/page.state";
 import { MainPageList } from "@nui/src/components/MainPage/MainPageList";
 import { useServerCtxValue } from "@nui/src/state/server.state";
 import { useDebounce } from "@nui/src/hooks/useDebouce";
 
-const TxAdminLogo: React.FC = () => (
+const nineadminLogo: React.FC = () => (
   <Box my={1} display="flex" justifyContent="center">
-    <img src="images/9admin.png" alt="txAdmin logo" />
+    <img src="images/9admin.png" alt="nineadmin logo" />
   </Box>
 );
 
@@ -25,7 +25,7 @@ const StyledRoot = styled(Box)(({ theme }) => ({
 export const MenuRootContent: React.FC = React.memo(() => {
   const serverCtx = useServerCtxValue();
   const curPage = usePageValue()
-  const padSize = Math.max(0, 9 - serverCtx.txAdminVersion.length);
+  const padSize = Math.max(0, 9 - serverCtx.nineadminVersion.length);
   const versionPad = "\u0020\u205F".repeat(padSize);
 
   // Hack to prevent collapse transition from breaking
@@ -36,7 +36,7 @@ export const MenuRootContent: React.FC = React.memo(() => {
 
   return (
     <StyledRoot p={2} pb={1}>
-      <TxAdminLogo />
+      <nineadminLogo />
       <Typography
         color="textSecondary"
         style={{
@@ -46,12 +46,12 @@ export const MenuRootContent: React.FC = React.memo(() => {
           fontSize: 12,
         }}
       >
-        v{serverCtx.txAdminVersion}
+        v{serverCtx.nineadminVersion}
         {versionPad}
       </Typography>
       <PageTabs />
       <Collapse
-        in={debouncedCurPage === txAdminMenuPage.Main}
+        in={debouncedCurPage === nineadminMenuPage.Main}
         unmountOnExit
         mountOnEnter
       >

@@ -119,7 +119,7 @@ async function handleWarning(ctx: Context, sess: any, player: PlayerClass): Prom
     }
     ctx.utils.logAction(`Warned player [${player.netid}] ${player.displayName}: ${reason}`);
 
-    // Dispatch `txAdmin:events:playerWarned`
+    // Dispatch `nineadmin:events:playerWarned`
     const cmdOk = globals.fxRunner.sendEvent('playerWarned', {
         target: player.netid,
         author: sess.auth.username,
@@ -213,7 +213,7 @@ async function handleBan(ctx: Context, sess: any, player: PlayerClass): Promise<
         kickMessage = globals.translator.t('ban_messages.kick_permanent', tOptions);
     }
 
-    // Dispatch `txAdmin:events:playerBanned`
+    // Dispatch `nineadmin:events:playerBanned`
     const cmdOk = globals.fxRunner.sendEvent('playerBanned', {
         author: sess.auth.username,
         reason,
@@ -268,7 +268,7 @@ async function handleSetWhitelist(ctx: Context, sess: any, player: PlayerClass):
 
         //FIXME: make this code look like the one from the other functions, separating setWhitelist in trycatch and here doing a cmdOk check
         //FIXME:
-        // Dispatch `txAdmin:events:playerWhitelisted`
+        // Dispatch `nineadmin:events:playerWhitelisted`
         // globals.fxRunner.sendEvent('playerWhitelisted', {
         //     license: player.license,
         //     author: sess.auth.username,
@@ -314,7 +314,7 @@ async function handleMessage(ctx: Context, sess: any, player: PlayerClass): Prom
     try {
         ctx.utils.logAction(`DM to #${player.displayName}: ${message}`);
 
-        // Dispatch `txAdmin:events:playerDirectMessage`
+        // Dispatch `nineadmin:events:playerDirectMessage`
         globals.fxRunner.sendEvent('playerDirectMessage', {
             target: player.netid,
             author: sess.auth.username,
@@ -357,7 +357,7 @@ async function handleKick(ctx: Context, sess: any, player: PlayerClass): Promise
     try {
         ctx.utils.logAction(`Kicked #${player.displayName}: ${reason}`);
 
-        // Dispatch `txAdmin:events:playerKicked`
+        // Dispatch `nineadmin:events:playerKicked`
         globals.fxRunner.sendEvent('playerKicked', {
             target: player.netid,
             author: sess.auth.username,
