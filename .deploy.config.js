@@ -7,6 +7,7 @@ export default {
         '+set', 'nineadminVerbose', 'true',
         // '+set', 'nineadminPort', '40121',
         '+set', 'txBuildVersion', '9999',
+        '+set', 'locale', 'bg',
         
 
         //FIXME: broken
