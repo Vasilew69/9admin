@@ -40,6 +40,6 @@ jobs:
       - name: Create and Upload Pre-Release
         uses: "marvinpinto/action-automatic-releases@v1.2.1"
         with:
-          permissions: read-all
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
           prerelease: true
           files: monitor.zip
